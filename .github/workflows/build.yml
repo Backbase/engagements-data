@@ -82,7 +82,6 @@ jobs:
       - name: Generate Engagements data collections
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         uses: ./.github/actions/build-and-test
         with:
           githubProject: ${{ github.event.repository.name }}
@@ -122,5 +121,5 @@ jobs:
         if: "contains(github.ref, 'master') || contains(github.ref, 'support/')"
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.STREAM_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
