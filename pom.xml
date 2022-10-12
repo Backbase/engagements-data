@@ -13,7 +13,7 @@
 
     <properties>
         <backbase-bom.version>2022.09</backbase-bom.version>
-        <docker.repo.url>${DEVOPS_CICD_ECR_BASE_URL}</docker.repo.url>
+        <docker.repo.url>repo.backbase.com/development</docker.repo.url>
         <gitflow-maven-plugin.version>1.17.0</gitflow-maven-plugin.version>
         <docker-maven-plugin.version>0.40.2</docker-maven-plugin.version>
         <exec.plugin.version>3.0.0</exec.plugin.version>
