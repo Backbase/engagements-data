@@ -113,6 +113,8 @@ jobs:
         if: "contains(github.ref, 'master') || contains(github.ref, 'support/')"
         run: |
           echo "Adding github tag ${NEW_VERSION}"
+          git config --global user.email "engagements_data_releaser@backbase.com"
+          git config --global user.name "bb-engagements_data-bot"
           git commit -m "[skip bump] version bump" -a
           git tag -a $NEW_VERSION -m "[version bump]"
           git push origin $NEW_VERSION
