@@ -1,0 +1,49 @@
+name: "Create Branch"
+description: "Github Composite actions to Create Branch"
+##
+#
+# Action responsible to create a branch
+#
+#
+##
+inputs:
+  token:
+    description: "Github Token"
+    required: true
+  baseBranch:
+    description: "Base Branch of a new Branch"
+    required: true
+  newBranch:
+    description: "Name of the branch"
+    required: true
+  newBranchVersion:
+    description: "Initial version of new branch"
+    required: false
+runs:
+  using: "composite"
+  steps:
+      ##
+      #
+      # Create branch with base and name from inputs
+      #
+      ##
+      - name: Create branch
+        if: ${{ inputs.baseBranch != null && inputs.newBranch != null }}
+        shell: bash
+        run: |
+          git checkout ${{ inputs.baseBranch }}
+          git fetch
+          git pull
+          git checkout -b ${{ inputs.newBranch }}
+          git push -u origin ${{ inputs.newBranch }}
+      ##
+      #
+      # Bumps version of newly created branch with requested version
+      #
+      ##
+      - name: Bump version
+        if: ${{ inputs.newBranchVersion != null }}
+        uses: ./.github/actions/bump-version
+        with:
+          newVersion: ${{ inputs.newBranchVersion }}
+          token: ${{ inputs.token }}

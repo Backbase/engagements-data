@@ -1,0 +1,9 @@
+{
+  "name": "apple-pay-message-center",
+  "description": "Order our travel card now and spend free",
+  "title": "Pay With Apple Pay",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}

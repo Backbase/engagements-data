@@ -1,0 +1,79 @@
+name: "Extract version"
+description: "Github Actions to Extract version"
+##
+#
+# Action responsible for extracting version from pom.xml
+# from multiple branch at different stage of the workflow process
+#
+#
+##
+inputs:
+  branch:
+    description: "Branch name"
+    required: false
+  token:
+    description: "Github Token"
+    required: true
+outputs:
+  build-version:
+    description: "build version"
+    value: ${{ steps.build-version.outputs.version }}
+  develop-release-version:
+    description: "main version in develop branch"
+    value: ${{ steps.develop-version.outputs.release }}
+  develop-metadata-version:
+    description: "metadata in develop branch"
+    value: ${{ steps.develop-version.outputs.metadata }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout develop
+      uses: actions/checkout@v2
+      if: ${{ inputs.branch != null }}
+      with:
+        ref: ${{ inputs.branch }}
+        token: ${{ inputs.token }}
+    ##
+    #
+    # Steps to extract build version for tagging
+    #
+    ##
+    - name: Extract build version for tagging
+      id: build-version
+      shell: bash
+      run: |
+        bomVersion=$(mvn help:evaluate -Dexpression=backbase-bom.version -q -DforceStdout)
+        projectVersion=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+
+        echo "Backbase BOM version: $bomVersion"
+        echo "Project version: $projectVersion"
+
+        if [[ ${bomVersion} == *"null"* ]]; then
+          echo ::set-output name=version::`echo ${projectVersion}`
+        else
+          echo ::set-output name=version::`echo ${bomVersion}-${projectVersion}`
+        fi
+    ##
+    #
+    # Steps to Extract metadata from develop version
+    #
+    ##
+    - name: Extract release and metadata from develop version
+      id: develop-version
+      if: ${{ inputs.branch == 'develop' }}
+      shell: bash
+      run: |
+        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        oldIFS=IFS
+        IFS='-'
+        read -ra versionTokens <<< "$version"
+        if [ ${#versionTokens[@]} -ne 3 ]; then
+        	echo "Wrong versionTokens array size: ${#versionTokens[@]}";
+            versionTokens[1]=SNAPSHOT;
+            versionTokens[2]=0;
+        fi
+        IFS=''
+        echo "Extracted metadata part: ${versionTokens[1]}-${versionTokens[2]}"
+        echo ::set-output name=release::`echo ${versionTokens[0]}`
+        echo ::set-output name=metadata::`echo ${versionTokens[1]}-${versionTokens[2]}`

@@ -1,0 +1,9 @@
+{
+  "name": "bill-pay-message-center",
+  "description": "Pay your Bills with one button",
+  "title": "Pay Your Bills",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}

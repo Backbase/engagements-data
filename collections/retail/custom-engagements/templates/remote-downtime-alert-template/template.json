@@ -1,0 +1,9 @@
+{
+  "name": "remote-downtime-alert-center",
+  "description": "We are doing repairs over the weekend",
+  "title": "Downtime Alert",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}

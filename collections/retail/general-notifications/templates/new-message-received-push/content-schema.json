@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "New Message Received",
+  "description": "Action event for push notifications when a new message have been received",
+  "type": "object",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string",
+      "metadata": {
+        "placeholderText": "Enter a title (max. 50 chars)",
+        "renderingHint": "textarea",
+        "customErrorMessages" :  {
+          "required": "Please provide a title"
+        }
+      },
+      "default": "New Message!"
+    },
+    "body": {
+      "title": "Body",
+      "type": "string",
+      "metadata": {
+        "placeholderText": "Enter a body message (max. 2000 chars)",
+        "renderingHint": "textarea",
+        "customErrorMessages" :  {
+          "required": "Please provide a body text"
+        }
+      },
+      "default": "Go to your inbox now!"
+    }
+  },
+  "required": ["title", "body"]
+}

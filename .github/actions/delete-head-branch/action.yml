@@ -1,0 +1,27 @@
+name: "Delete PR head branch"
+description: "Github action to delete PR head branch"
+##
+#
+# Action responsible to delete PR head branch
+#
+##
+runs:
+  using: "composite"
+  steps:
+    ##
+    #
+    # Delete pull request head after merge
+    #
+    ##
+    - name: Delete ${{ github.event.pull_request.head.ref }} branch
+      id: delete-pull-request-head-branch
+      if: ${{ github.event.pull_request.head.ref != null }}
+      shell: bash
+      run: |
+        git fetch
+        existed_in_remote=$(git ls-remote --heads origin ${{ github.event.pull_request.head.ref }})
+        if [[ -z ${existed_in_remote} ]]; then
+              echo "Branch ${{ github.event.pull_request.head.ref }} doesn't exist in remote"
+          else
+              git push origin --delete ${{ github.event.pull_request.head.ref }}
+          fi

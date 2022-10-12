@@ -1,0 +1,136 @@
+name: Release and Hotfix Start
+
+###
+#
+# Initiates release process from issues
+#
+# Trigger: issues opened with release or hotfix labels
+#
+###
+on:
+  issues:
+    types: [ opened ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    if: contains(join(github.event.issue.labels.*.name, ' '), 'release:') || contains(join(github.event.issue.labels.*.name, ' '), 'bug:hotfix')
+    strategy:
+      matrix:
+        java: [11]
+    name: Initiates release or hotfix process from issues
+    timeout-minutes: 30
+    env:
+      DEVOPS_CICD_ECR_BASE_URL: ${{ secrets.DEVOPS_CICD_ECR_BASE_URL }}
+      DEVOPS_CICD_ACR_BASE_URL: ${{ secrets.DEVOPS_CICD_ACR_BASE_URL }}
+
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+    steps:
+      - name: Generate token
+        id: generate_token
+        uses: navikt/github-app-token-generator@v1
+        with:
+          private-key: ${{ secrets.GIT_GITHUB_APP_PEM_FILE }}
+          app-id: ${{ secrets.GIT_GITHUB_APP_ID }}
+
+      - id: flow-type
+        run: |
+          echo ::set-output name=release_minor::${{ contains(join(github.event.issue.labels.*.name, ' '), 'release:minor') }}
+          echo ::set-output name=release_major::${{ contains(join(github.event.issue.labels.*.name, ' '), 'release:major') }}
+          echo ::set-output name=hotfix::${{ contains(join(github.event.issue.labels.*.name, ' '), 'bug:hotfix') }}
+
+      - name: Checkout develop
+        uses: actions/checkout@v2
+        if: steps.flow-type.outputs.release_major == 'true' || steps.flow-type.outputs.release_minor == 'true'
+        with:
+          ref: develop
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Checkout master
+        uses: actions/checkout@v2
+        if: steps.flow-type.outputs.hotfix == 'true'
+        with:
+          ref: master
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Setup Cache and Maven
+        uses: ./.github/actions/setup-cache-and-maven
+        with:
+          mavenUsername: ${{ secrets.BAAS_BB_ARTIFACTORY_MAVEN_USERNAME }}
+          mavenPassword: ${{ secrets.BAAS_BB_ARTIFACTORY_MAVEN_PASSWORD }}
+          githubPackagesUser: botuser
+          githubPackagesPassword: ${{ secrets.BB_GITHUB_PACKAGES_PAT }}
+
+      - name: Evaluate Release Version
+        id: evaluate-release-version
+        uses: ./.github/actions/evaluate-release-version
+        with:
+          releaseMajor: ${{ steps.flow-type.outputs.release_major }}
+          releaseMinor: ${{ steps.flow-type.outputs.release_minor }}
+          hotfix: ${{ steps.flow-type.outputs.hotfix }}
+
+      - name: Create new Release branch
+        if: steps.flow-type.outputs.release_major == 'true' || steps.flow-type.outputs.release_minor == 'true'
+        uses: ./.github/actions/create-branch
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+          baseBranch: develop
+          newBranch: release/${{ steps.evaluate-release-version.outputs.next-release-version }}
+          newBranchVersion: ${{ steps.evaluate-release-version.outputs.next-release-version }}.0-RC1
+
+      - name: Create new Hotfix branch
+        if: steps.flow-type.outputs.hotfix == 'true'
+        uses: ./.github/actions/create-branch
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+          baseBranch: master
+          newBranch: hotfix/${{ steps.evaluate-release-version.outputs.next-release-version }}
+          newBranchVersion: ${{ steps.evaluate-release-version.outputs.next-release-version }}-0
+
+      - name: Overwrite CHANGELOG.md
+        uses: ./.github/actions/changelog
+        with:
+          action: 'update'
+          releaseVersion: ${{ steps.evaluate-release-version.outputs.next-release-version }}
+
+      - name: Close Issue
+        uses: peter-evans/close-issue@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: Auto-closing issue
+
+      - name: build and publish artifact
+        uses: ./.github/actions/build-and-publish
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+          accessKey: ${{ secrets.DEVOPS_CICD_AWS_ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.DEVOPS_CICD_AWS_SECRET_ACCESS_KEY }}
+          region: ${{ secrets.DEVOPS_CICD_AWS_REGION }}
+          azure-creds: ${{ secrets.DEVOPS_CICD_NPA_AZURE_CREDENTIALS }}
+          azure-base-url: ${{ secrets.DEVOPS_CICD_ACR_BASE_URL }}
+          awsEnabled: ${{ secrets.AWS_ENABLED }}
+          azureEnabled: ${{ secrets.AZURE_ENABLED }}
+
+      - name: Create Pull Request - release
+        if: steps.flow-type.outputs.release_major == 'true' || steps.flow-type.outputs.release_minor == 'true'
+        uses: thomaseizinger/create-pull-request@master
+        with:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          head: 'release/${{ steps.evaluate-release-version.outputs.next-release-version }}'
+          base: master
+          title: "Next release: ${{ steps.evaluate-release-version.outputs.next-release-version }}"
+          body: "Closes #${{ github.event.issue.number }}"
+          reviewers: ${{ github.event.issue.user.login }}
+          labels: ${{ join(github.event.issue.labels.*.name, ',') }}
+
+      - name: Create Pull Request - hotfix
+        if: steps.flow-type.outputs.hotfix == 'true'
+        uses: thomaseizinger/create-pull-request@master
+        with:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          head: 'hotfix/${{ steps.evaluate-release-version.outputs.next-release-version }}'
+          base: master
+          title: "Hotfix to version: ${{ steps.evaluate-release-version.outputs.current-release-version }}"
+          body: "Closes #${{ github.event.issue.number }}"
+          reviewers: ${{ github.event.issue.user.login }}
+          labels: ${{ join(github.event.issue.labels.*.name, ',') }}

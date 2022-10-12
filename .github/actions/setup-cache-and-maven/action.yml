@@ -1,0 +1,47 @@
+name: "Setup Cache and Maven"
+description: "Github composite Action for setup cache and maven"
+##
+#
+# Action responsible for setting Cache, Java, Maven and Git config
+#
+#
+##
+inputs:
+  mavenUsername:
+    description: "Backbase Maven Username"
+    required: true
+  mavenPassword:
+    description: "Backbase Maven Password"
+    required: true
+  githubPackagesUser:
+    description: "Backbase Github Packages User"
+    required: true
+  githubPackagesPassword:
+    description: "Backbase Github Packages Password"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    ##
+    #
+    # Setup Backbase maven repository
+    #
+    ##
+    - name: maven-settings-xml-action
+      uses: whelk-io/maven-settings-xml-action@v4
+      with:
+        repositories: '[{ "id": "Backbase Repository", "url": "https://repo.backbase.com/repo" }, { "id": "github", "url": "https://maven.pkg.github.com/${GITHUB_REPOSITORY_OWNER}/mambu-clients" }]'
+        plugin_repositories: '[{ "id": "Backbase Repository", "url": "https://repo.backbase.com/repo" }]'
+        servers: '[{ "id": "Backbase Repository", "username": "${{ inputs.mavenUsername }}", "password": "${{ inputs.mavenPassword }}" }, { "id": "github", "username": "${{ inputs.githubPackagesUser }}", "password": "${{ inputs.githubPackagesPassword }}" }]'
+
+    ##
+    #
+    # Steps to set git username and password for maven gitflow plugin
+    #
+    ##
+    - name: Set git username and email
+      shell: bash
+      run: |
+        git config --global user.email "bot@backbase.com"
+        git config --global user.name "Release BOT"
+

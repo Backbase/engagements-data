@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Travelling for less</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border-radius: 16px;
+      background: linear-gradient(0deg, #0079c9 0%, #00b2d1 100%);
+      overflow: hidden;
+    }
+
+    .container,
+    .background {
+      max-width: 492px;
+      margin: 0 auto;
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 11% 8.5% 6% 7%;
+      color: #ffffff;
+    }
+
+    .heading {
+      margin: 0;
+      margin-bottom: 16px;
+      font-size: min(9.2vw, 46px);
+      line-height: normal;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .subheading {
+      margin-bottom: 38px;
+      font-size: min(5vw, 25px);
+      line-height: normal;
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: 16px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      align-self: flex-end;
+      margin-top: auto;
+      padding: 8px 28px;
+      line-height: 1.5;
+      font-size: min(5vw, 25px);
+      font-weight: 600;
+      text-align: center;
+      border: 0;
+      outline: 0;
+      border-radius: 25px;
+      color: #0079c9;
+      background-color: #ffffff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <div class="inner">
+      <h1 class="heading">{{title}}</h1>
+      <div class="subheading">{{message}}</div>
+      <img src="{{picture}}" />
+      <a class="cta-btn" href="{{buttonLink}}" target="_blank" rel="noopener">{{buttonText}}</a>
+    </div>
+  </div>
+</body>
+
+</html>

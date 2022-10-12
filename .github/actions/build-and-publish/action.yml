@@ -1,0 +1,132 @@
+name: "Build and publish artifact"
+description: "Github composite action to tag version on Github and then Build and publish artifact to ECR/ACR"
+##
+#
+# Action responsible for setting AWS credentials,
+# tagging the version on Github,
+# building docker image and pushing to ECR/ACR
+#
+##
+inputs:
+  token:
+    description: "Github Token"
+    required: true
+  accessKey:
+    description: "AWS access key id"
+    required: true
+  secretAccessKey:
+    description: "AWS secret access key"
+    required: true
+  region:
+    description: "AWS region"
+    required: true
+  azure-creds:
+    description: "Azure creds"
+    required: true
+  azure-base-url:
+    description: "Azure base-url"
+    required: true
+  awsEnabled:
+    description: "aws enabled or not"
+    required: false
+    default: 'false'
+  azureEnabled:
+    description: "azure enabled or not"
+    required: false
+    default: 'false'
+  enableBuildTagging:
+    description: "Enable build tagging"
+    required: false
+    default: 'false'
+runs:
+  using: "composite"
+  steps:
+    ##
+    #
+    # Configure AWS credentials
+    #
+    ##
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      if: ${{ inputs.awsEnabled == 'true' }}
+      with:
+        aws-access-key-id: ${{ inputs.accessKey }}
+        aws-secret-access-key: ${{ inputs.secretAccessKey }}
+        aws-region: ${{ inputs.region }}
+    ##
+    #
+    # Setting AWS login details in env variables
+    #
+    ##
+    - name: Get AWS ECR credentials
+      id: ecr-credentials
+      if: ${{ inputs.awsEnabled == 'true' }}
+      shell: bash
+      run: |
+        echo "::set-output name=username::AWS"
+        echo "::set-output name=password::`aws ecr get-login-password --region ${{ inputs.region }}`"
+    ##
+    #
+    # Extract a build version for tagging
+    #
+    ##
+    - name: Extract a build version for tagging
+      id: build-version
+      uses: ./.github/actions/extract-version
+      with:
+        token: ${{ inputs.token }}
+    ##
+    #
+    # Push tag with build version on Github
+    #
+    ##
+    - name: Add tag
+      if: ${{ inputs.enableBuildTagging == 'true' }}
+      shell: bash
+      run: |
+        echo "Adding github tag ${{ steps.build-version.outputs.build-version }}"
+        git tag -a ${{ steps.build-version.outputs.build-version }} -m "${{ steps.build-version.outputs.build-version }}"
+        git push origin ${{ steps.build-version.outputs.build-version }}
+    ##
+    #
+    # Use maven-docker-plugin to build and push docker image to ECR
+    #
+    ##
+    - name: Build and push docker image
+      if: ${{ inputs.awsEnabled == 'true' }}
+      shell: bash
+      run: |
+        echo "ECR Docker build with tag ${{ steps.build-version.outputs.build-version }}"
+        mvn clean package -Pretail-build -B docker:tag -Ddocker.image.tag=${{ steps.build-version.outputs.build-version }} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        mvn clean package -Pretail-push -Ddocker.skip.extendedAuth=true -Ddocker.push.username=${{ steps.ecr-credentials.outputs.username }} -Ddocker.push.password=${{ steps.ecr-credentials.outputs.password }} -B docker:tag -Ddocker.image.tag=${{ steps.build-version.outputs.build-version }} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+
+    ##
+    #
+    # Azure login
+    #
+    ##
+    - name: 'Az CLI login'
+      uses: azure/login@1f63701bf3e6892515f1b7ce2d2bf1708b46beaf #v1.4.3
+      if: ${{ inputs.azureEnabled == 'true' }}
+      with:
+        creds: ${{ inputs.azure-creds }}
+        base-url: ${{ inputs.azure-base-url }}
+
+    - name: 'Run az commands'
+      if: ${{ inputs.azureEnabled == 'true' }}
+      shell: bash
+      run: |
+        az acr login -n ${{ inputs.azure-base-url }}
+
+    ##
+    #
+    # Use ssdk's maven docker-image profile to push image to ACR
+    #
+    ##
+    - name: Build and publish docker image ACR
+      if: ${{ inputs.azureEnabled == 'true' }}
+      shell: bash
+      run: |
+        echo "ACR Docker build with tag ${{ steps.build-version.outputs.build-version }}"
+        mvn clean package -Pretail-build -B docker:tag -Ddocker.repo.url=${{ inputs.azure-base-url }} -Ddocker.image.tag=${{ steps.build-version.outputs.build-version }} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        mvn clean package -Pretail-push -Ddocker.skip.extendedAuth=true -B docker:tag -Ddocker.repo.url=${{ inputs.azure-base-url }} -Ddocker.image.tag=${{ steps.build-version.outputs.build-version }} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn

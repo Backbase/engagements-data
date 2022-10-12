@@ -1,0 +1,86 @@
+name: "Evaluate release version"
+description: "Github Composite Action to Update Changelog file"
+##
+#
+# Action responsible to update changelog file
+#
+##
+inputs:
+  releaseMajor:
+    description: "Indicator if issue type is Release Major"
+    required: true
+  releaseMinor:
+    description: "Indicator if issue type is Release Minor"
+    required: true
+  hotfix:
+    description: "Indicator if issue type is Hotfix"
+    required: true
+outputs:
+  next-release-version:
+    description: "Next Release version"
+    value: ${{ steps.target.outputs.newVersion }}
+  current-release-version:
+    description: "Current version of release"
+    value: ${{ steps.target.outputs.currentVersion }}
+runs:
+  using: "composite"
+  steps:
+    ##
+    #
+    # Steps to next release version
+    #
+    ##
+    - name: Determine new project version
+      id: target
+      shell: bash
+      run: |
+        echo "::group::Extracting project version"
+        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        oldIFS=IFS
+        if [ ${{ inputs.hotfix }} == 'true' ]; then
+          echo ::set-output name=currentVersion::`echo $version`
+          IFS='.'
+          read -ra semVerTokens <<< "$version"
+          if [ ${#semVerTokens[@]} -ne 3 ]; then
+            echo "Wrong semVerTokens array size: ${#semVerTokens[@]}";
+            exit 1;
+          fi
+        else
+          IFS='-'
+          read -ra versionTokens <<< "$version"
+          if [ ${#versionTokens[@]} -ne 3 ]; then
+            echo "Wrong versionTokens array size: ${#versionTokens[@]}";
+            exit 1;
+          fi
+
+          IFS='.'
+          read -ra semVerTokens <<< "${versionTokens[0]}"
+          if [ ${#semVerTokens[@]} -ne 3 ]; then
+            echo "Wrong semVerTokens array size: ${#semVerTokens[@]}";
+            exit 1;
+          fi
+        fi
+        IFS=oldIFS
+
+        MAJOR=${semVerTokens[0]}
+        MINOR=${semVerTokens[1]}
+        PATCH=${semVerTokens[2]}
+        echo "::endgroup::"
+
+        echo "::group::Determine new project version"
+        if ${{ inputs.releaseMinor }} == 'true'
+        then
+          MINOR=`expr $MINOR + 1`
+          NEW_VERSION=$MAJOR.$MINOR
+        elif ${{ inputs.releaseMajor }} == 'true'
+        then
+          MAJOR=`expr $MAJOR + 1`
+          NEW_VERSION=$MAJOR.0
+        elif ${{ inputs.hotfix }} == 'true'
+        then
+          PATCH=`expr $PATCH + 1`
+          NEW_VERSION=$MAJOR.$MINOR.$PATCH
+        fi
+        echo "New project version: $NEW_VERSION"
+        echo ::set-output name=newVersion::`echo $NEW_VERSION`
+        echo "::endgroup::"

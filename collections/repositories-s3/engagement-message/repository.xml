@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:repositories
+	xmlns:ns2="http://www.backbase.com/content/model/1.0">
+	<ns2:repository>
+		<ns2:repositoryId>engagement-message</ns2:repositoryId>
+		<ns2:name>Engagement Message Repository</ns2:name>
+		<ns2:description>Repository to store engagement messages</ns2:description>
+		<ns2:isPrivate>true</ns2:isPrivate>
+		<ns2:implementation>s3</ns2:implementation>
+		<ns2:c3RepositoryId>engagement-message</ns2:c3RepositoryId>
+		<ns2:versioningEnabled>false</ns2:versioningEnabled>
+	</ns2:repository>
+</ns2:repositories>

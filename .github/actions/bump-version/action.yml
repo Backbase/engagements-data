@@ -1,0 +1,167 @@
+name: "Bump version"
+description: "Github composite action to Bump Version"
+##
+#
+# Action responsible for bumping the develop/master/release branch version
+# on Pull request creation and merge
+#
+##
+inputs:
+  newVersion:
+    description: "Version to be bumped"
+    required: false
+  token:
+    description: "github token"
+    required: false
+outputs:
+  release-version:
+    description: "Target Release version"
+    value: ${{ steps.target.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    ##
+    #
+    # Baseline master branch version on first commit
+    #
+    ##
+    - name: Baseline project version on master
+      id: baseline-master-version
+      if: ${{ inputs.newVersion != null }}
+      shell: bash
+      run: |
+        mvn build-helper:parse-version versions:set -DnewVersion=${{ inputs.newVersion }} versions:commit -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        git add .
+        git commit --message "Bumping version to ${{ inputs.newVersion }}"
+        git push origin
+    ##
+    #
+    # Bump version when pull request is raised from feature branch to develop branch
+    # update will consist of 4 steps
+    #
+    ##
+    # Step 1 - checkout develop branch in order to know current version of develop branch
+    - name: Checkout develop branch
+      if: ${{ startsWith(github.event.pull_request.base.ref, 'develop') && (startsWith(github.event.pull_request.head.ref, 'feature/') || startsWith(github.event.pull_request.head.ref, 'bugfix/')) }}
+      uses: actions/checkout@v2
+      with:
+        ref: develop
+        token: ${{ inputs.token }}
+
+    # Step 2 - Calculate next version of feature branch based on current version of develop branch
+    - name: Bump version metadata part
+      if: ${{ startsWith(github.event.pull_request.base.ref, 'develop') && (startsWith(github.event.pull_request.head.ref, 'feature/') || startsWith(github.event.pull_request.head.ref, 'bugfix/')) }}
+      id: version-bump
+      shell: bash
+      run: |
+        echo "::group::Extracting project version"
+        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        oldIFS=IFS
+        IFS='-'
+        read -ra versionParts <<< "$version"
+        if [ ${#versionParts[@]} -ne 3 ]; then
+        	echo "Wrong versionParts array size: ${#versionParts[@]}, setting metadataParts to SNAPSHOT-0";
+        	versionParts[1]=SNAPSHOT-0
+        fi
+        echo "::endgroup::"
+
+        echo "::group::Updating build part version"
+        buildPart=${versionParts[1]}
+
+        if [[ "$buildPart" == *"SNAPSHOT"* ]]; then
+          echo "SNAPSHOT prefix found, build number will be incremented"
+          number=${versionParts[2]}
+          echo "current build number $number"
+          number=$((number+1))
+          echo "Bumped build number $number"
+          buildPart="SNAPSHOT-$number"
+        elif [[ "$buildPart" == *"."* ]]; then
+          echo "old metada found change it to SNAPSHOT-1"
+          buildPart="SNAPSHOT-1"
+        else
+          echo "metadata or build part not found, the job will be failed"
+          exit 1
+        fi
+        echo "Complete build part $buildPart"
+
+        echo "::endgroup::"
+
+        echo "::set-output name=newVersion::${versionParts[0]}-${buildPart}"
+
+    #Step 3 : Checkout head branch in order to push the version
+    - name: Checkout head branch
+      if: ${{ startsWith(github.event.pull_request.base.ref, 'develop') && (startsWith(github.event.pull_request.head.ref, 'feature/') || startsWith(github.event.pull_request.head.ref, 'bugfix/')) }}
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+        token: ${{ inputs.token }}
+    # Step 4 : Push the new version in head branch
+    - name: Push new version in head branch
+      if: ${{ startsWith(github.event.pull_request.base.ref, 'develop') && (startsWith(github.event.pull_request.head.ref, 'feature/') || startsWith(github.event.pull_request.head.ref, 'bugfix/')) }}
+      shell: bash
+      run: |
+        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        if [[ "$version" != "${{ steps.version-bump.outputs.newVersion }}" ]]; then
+            mvn versions:set -DnewVersion="${{ steps.version-bump.outputs.newVersion }}" versions:commit -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+            git add -A
+            git commit -am "Bumping version to '${{ steps.version-bump.outputs.newVersion }}'"
+            git push origin HEAD
+        fi
+    ##
+    #
+    # Bump version when pull request is merged
+    # to hotfix branch
+    #
+    ##
+    - name: Bump to next PATCH version
+      if: ${{ inputs.newVersion == null && github.event.pull_request.merged == true && startsWith(github.event.pull_request.base.ref, 'hotfix/') }}
+      id: hotfix-version-bump
+      shell: bash
+      run: |
+        export qualifier=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout |  sed 's/.*-//')
+        export nextQualifier=$((qualifier+1))
+        mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.incrementalVersion}-${nextQualifier} versions:commit -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        git add --all
+        git commit -m "New hotfix version"
+        git push
+        echo ::set-output name=newVersion::`mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
+    ##
+    #
+    # Bump version when pull request is merged
+    # to release branch
+    #
+    ##
+    - name: Bump release version
+      id: release-version-bump
+      if: ${{ inputs.newVersion == null && github.event.pull_request.merged == true && startsWith(github.event.pull_request.base.ref, 'release/') }}
+      shell: bash
+      run: |
+        export rc=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout |  sed 's/.*-//')
+        export qualifier=$(echo "$rc" | sed 's/[^0-9]*//g')
+        export nextQualifier=$((qualifier+1))
+        mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.incrementalVersion}-RC${nextQualifier} versions:commit -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        git add --all
+        git commit -m "Update release version"
+        git push
+        echo ::set-output name=newVersion::`mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
+    ##
+    #
+    # Bump version when pull request is merged
+    # from release branch to master branch
+    #
+    ##
+    - name: Update master version after release pull requst merge
+      id: target
+      if: ${{ inputs.newVersion == null && github.event.pull_request.merged == true && (startsWith(github.event.pull_request.head.ref, 'release/') || startsWith(github.event.pull_request.head.ref, 'hotfix/')) }}
+      shell: bash
+      run: |
+        if [[ "${{ github.event.pull_request.head.ref }}" == "hotfix/"* ]]; then
+          mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.incrementalVersion} versions:commit -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        else
+          mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.0 versions:commit -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        fi
+        git add --all
+        git commit -m "updating master version"
+        git push
+        NEW_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        echo ::set-output name=version::`echo $NEW_VERSION`

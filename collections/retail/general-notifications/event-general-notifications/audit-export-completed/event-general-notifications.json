@@ -1,0 +1,56 @@
+{
+  "eventClassName": "com.backbase.audit.persistence.event.spec.v1.AuditExportCompletedEvent",
+  "id": "audit-export-completed",
+  "eventBusinessName": "Audit Export Completed",
+  "recipientType": "internal",
+  "extractor": "#this['userId']",
+  "serviceAgreementExtractor": "#this['serviceAgreement']",
+  "generalNotifications": [
+    {
+      "id": "audit-export-ready",
+      "name": "Audit Export Ready",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'successful'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "audit-export-ready/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "audit-download-view",
+            "data": "{\"link\":\"{{{event.link}}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/audit-export-ready/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "audit-export-failed",
+      "name": "Audit Export Failed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'failed'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "audit-export-failed/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/audit-export-failed/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

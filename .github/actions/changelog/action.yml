@@ -1,0 +1,70 @@
+name: "Update Changelog file"
+description: "Github Composite Action to Update Changelog file"
+##
+#
+# Action responsible to update changelog file
+#
+##
+inputs:
+  action:
+    description: "Type of Github Action"
+    required: true
+    default: 'reset'
+  releaseVersion:
+    description: "New Release Version"
+    required: false
+runs:
+  using: "composite"
+  steps:
+    ##
+    #
+    #
+    # This step reset the content of changelog file for a new repo or new baas
+    # cutout
+    #
+    - name: Overwrite CHANGELOG.md
+      if: ${{ inputs.action == 'reset' }}
+      shell: bash
+      run: |
+        echo "# Changelog\n\n## [Unreleased]" > CHANGELOG.md
+
+    ##
+    #
+    # KEEP CHANGELOG
+    #
+    # These steps update the log file with the list provided in the
+    # issue.
+    #
+    ##
+    - name: Write to CHANGELOG.md
+      if: ${{ inputs.action == 'update' }}
+      env:
+        delimiter: /## \[Unreleased\]/
+        file: CHANGELOG.md
+      shell: bash
+      run: |
+        HEAD=`sed '${{ env.delimiter }}q' ${{ env.file }}`
+        CONTENT=`sed -n '${{ env.delimiter }},${${{ env.delimiter }}!p;}' ${{ env.file }}`
+        echo -e """$HEAD\n\n${{ github.event.issue.body }}\n$CONTENT""" > ${{ env.file }}
+    ##
+    #
+    # Step to update the changelog file with new release details
+    #
+    ##
+    - name: Update CHANGELOG.md
+      if: ${{ inputs.action == 'update' }}
+      uses: thomaseizinger/keep-a-changelog-new-release@1.2.1
+      with:
+        version: ${{ inputs.releaseVersion }}
+
+    ##
+    #
+    # Step to push the changelog file
+    #
+    ##
+    - name: Commit and push CHANGELOG.md
+      shell: bash
+      run: |
+        git add .
+        git commit --message "Update changelog for ${{ inputs.releaseVersion }} release"
+        git push origin

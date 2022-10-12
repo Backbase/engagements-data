@@ -1,0 +1,9 @@
+{
+  "name": "travel-for-less-message-center",
+  "description": "We’ve partnered with AMEX to bring the best travel card available",
+  "title": "Travel for Less",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}

@@ -1,0 +1,19 @@
+name: "Generate Engagements data collections"
+description: "Github action to Generate Engagements data collections"
+##
+#
+# Action responsible to generate Engagement data collections by verify Maven build
+#
+# Dependency on ENV variables : GITHUB_PROJECT
+#
+##
+inputs:
+  githubProject:
+    description: "Github Project Name"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Generate Engagements data collections
+      run: mvn verify -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+      shell: bash

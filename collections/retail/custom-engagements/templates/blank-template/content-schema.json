@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Blank Template",
+  "description": "Create Your Own Content",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "title": "Subject",
+      "type": "string",
+      "maxLength": 100,
+      "default": "",
+      "metadata": {
+        "placeholderText": "Enter a subject (max. 100 chars)",
+        "escaping": false
+      }
+    },
+    "body": {
+      "title": "Body of the message",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 100,
+          "default": "",
+          "metadata": {
+            "placeholderText": "Enter a title (max. 100 chars)",
+            "renderingHint": "simplerichtext"
+          }
+        },
+        "message": {
+          "title": "Message",
+          "type": "string",
+          "maxLength": 500,
+          "default": "",
+          "metadata": {
+            "placeholderText": "Enter a text (max. 500 chars)",
+            "renderingHint": "richtext"
+          }
+        }
+      },
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  },
+  "required": [
+    "subject",
+    "message"
+  ]
+}
