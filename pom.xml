@@ -13,7 +13,7 @@
 
     <properties>
         <backbase-bom.version>2022.09</backbase-bom.version>
-        <docker.repo.url>repo.backbase.com/development</docker.repo.url>
+        <docker.repo.url>ecr.backbase.com/development</docker.repo.url>
         <gitflow-maven-plugin.version>1.17.0</gitflow-maven-plugin.version>
         <docker-maven-plugin.version>0.40.2</docker-maven-plugin.version>
         <exec.plugin.version>3.0.0</exec.plugin.version>
@@ -104,7 +104,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <docker.repo.url>repo.backbase.com/development</docker.repo.url>
+                <docker.repo.url>ecr.backbase.com/development</docker.repo.url>
                 <docker.skip>false</docker.skip>
                 <docker.skipPush>true</docker.skipPush>
             </properties>

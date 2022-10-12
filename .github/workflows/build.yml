@@ -113,8 +113,14 @@ jobs:
         if: "contains(github.ref, 'master') || contains(github.ref, 'support/')"
         run: |
           echo "Adding github tag ${NEW_VERSION}"
-          git config --global user.email "engagements_data_releaser@backbase.com"
-          git config --global user.name "bb-engagements_data-bot"
+          git config --local user.email "stream_releaser@backbase.com"
+          git config --local user.name "bb-stream-bot"
           git commit -m "[skip bump] version bump" -a
           git tag -a $NEW_VERSION -m "[version bump]"
-          git push origin $NEW_VERSION
+
+      - name: Push changes
+        if: "contains(github.ref, 'master') || contains(github.ref, 'support/')"
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.STREAM_BOT_TOKEN }}
+          branch: ${{ github.ref }}
