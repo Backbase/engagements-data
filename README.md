@@ -158,5 +158,32 @@ mvn clean install -Pdocker
 * [How to import collections using Provisioner container](https://community.backbase.com/documentation/foundation_services/latest/import_collections_using_provisioner_container)
 
 ---
+## Repository Release Workflow
+
+1. Clone the Engagements Data project from the GitHub repository.
+2. Create a `feature/*` branch based on the `master` branch.
+3. Create new or edit existing General Notifications or Message Center template definitions by copying and modifying the existing JSON and HTML files in your branch, for example, event definition, templates, content schema.
+   > Backbase recommends using the `feature/` and `hotfix/` prefixes in branch names during development. This will trigger the corresponding out-of-the-box workflows.
+4. Create a pull request based on your branch.
+
+Every time the pipeline is run, the Docker image is built but not pushed into the Docker container registry. To push to Elastic Container Registry, credentials must be configured in `pom.xml` and `.github/workflows`.
+
+| Property name          |Example |Description |
+|------------------------|-------|------------|
+| `project.version`      | • `0.1.0` is used in the `master` branch | This property may vary depending on the branch you are working on. The deployment pipeline automatically changes the version property depending on the branch. |
+| `backbase-bom.version` |`2022.09`|This is defined in the parent `pom.xml` file and matches the released Backbase version.|
+
+To build the Docker image, take one of the following actions:
+1. Merge your pull request to the `master` branch.
+> The format of the `project.version` property is `X.Y.Z`.
+2. The Engage Defaults collection is packaged and the Docker image is created, for example `engagements-data-retail:2022.09-0.10.0`.
+> This is not pushed to the Docker container registry, unless you configure credentials in `pom.xml`
+and `.github/workflows`.
+3. After the PR is merged to the `master` branch, `project.version` is automatically increased based on the type of the source branch:
+* **Minor release**: a pull request is raised from the `feature/*` branch.
+* **Hotfix release**: a pull request is raised from the `hofitx/*` branch.
+> The `hotfix/*` branch is only available for the latest version on the master branch.
+
+---
 ## Contributions
 Please create a feature branch from develop and a PR with your contributions. Commit messages should follow [semantic commit messages](https://seesparkbox.com/foundry/semantic_commit_messages)
