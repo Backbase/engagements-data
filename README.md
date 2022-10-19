@@ -158,7 +158,7 @@ mvn clean install -Pdocker
 * [How to import collections using Provisioner container](https://community.backbase.com/documentation/foundation_services/latest/import_collections_using_provisioner_container)
 
 ---
-## Repository Release Workflow
+## Release Workflow
 
 1. Clone the Engagements Data project from the GitHub repository.
 2. Create a `feature/*` branch based on the `master` branch.
