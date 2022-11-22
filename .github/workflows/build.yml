@@ -94,8 +94,11 @@ jobs:
       - name: Build Engagements Data docker image
         shell: bash
         run: |
-          echo "ECR Docker build with tag ${NEW_VERSION}"
-          mvn clean package -Pretail-build -B docker:tag -Ddocker.image.tag=${NEW_VERSION} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+          echo "ECR Docker build retail with tag ${NEW_VERSION}"
+          mvn clean package -Pbuild-retail -B docker:tag -Ddocker.image.tag=${NEW_VERSION} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+
+          echo "ECR Docker build business with tag ${NEW_VERSION}"
+          mvn clean package -Pbuild-business -B docker:tag -Ddocker.image.tag=${NEW_VERSION} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 
       ##
       #
@@ -105,8 +108,11 @@ jobs:
 #      - name: Push Engagements Data docker image
 #        shell: bash
 #        run: |
-#          echo "ECR Docker push with tag ${NEW_VERSION}"
-#          mvn clean package -Pretail-push -Ddocker.skip.extendedAuth=true -Ddocker.push.username=${{ steps.ecr-credentials.outputs.username }} -Ddocker.push.password=${{ steps.ecr-credentials.outputs.password }} -B docker:tag -Ddocker.image.tag=${NEW_VERSION} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+#          echo "ECR Docker push retail with tag ${NEW_VERSION}"
+#          mvn clean package -Ppush-retail -Ddocker.skip.extendedAuth=true -Ddocker.push.username=${{ steps.ecr-credentials.outputs.username }} -Ddocker.push.password=${{ steps.ecr-credentials.outputs.password }} -B docker:tag -Ddocker.image.tag=${NEW_VERSION} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+#
+#          echo "ECR Docker push business with tag ${NEW_VERSION}"
+#          mvn clean package -Ppush-business -Ddocker.skip.extendedAuth=true -Ddocker.push.username=${{ steps.ecr-credentials.outputs.username }} -Ddocker.push.password=${{ steps.ecr-credentials.outputs.password }} -B docker:tag -Ddocker.image.tag=${NEW_VERSION} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 
       - name: Commit files
         if: "contains(github.ref, 'master') || contains(github.ref, 'support/')"

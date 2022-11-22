@@ -1,0 +1,34 @@
+{
+  "eventClassName": "com.backbase.account.statement.event.spec.v1.AccountStatementsArchiveCreationCompletedEvent",
+  "id": "account-statements-archive-creation-completed",
+  "eventBusinessName": "Account Statements Archive Creation Completed",
+  "recipientType": "internal",
+  "extractor": "#this['userId']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "account-statements-archive-download-ready",
+      "name": "Account Statements Archive Download Ready",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "account-statements-archive-download-ready/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "account-statements-archive-download-view",
+            "data": "{\"link\":\"{{{event.link}}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/account-statements-archive-download-ready/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

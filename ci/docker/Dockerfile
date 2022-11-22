@@ -27,10 +27,12 @@ COPY --from=build-env /etc/group /etc/group
 COPY --chown=nonroot:nonroot --from=build-env /tmp/cp /usr/local/bin/cp
 COPY --chown=nonroot:nonroot --from=build-env /home/backbase/content /home/backbase/content
 
+ARG PRODUCT_LINE=retail
+
 # bootstrap folders structure
-COPY --chown=nonroot:nonroot ./target/assembly/repositories-s3.zip /content/init/repositories-s3.zip
-COPY --chown=nonroot:nonroot ./target/assembly/repositories-azure.zip /content/init-azure/repositories-azure.zip
-COPY --chown=nonroot:nonroot ./target/assembly/retail/*.zip /content/upgrade/
+COPY --chown=nonroot:nonroot ./target/assembly/${PRODUCT_LINE}/repositories/repositories-s3.zip /content/init/repositories-s3.zip
+COPY --chown=nonroot:nonroot ./target/assembly/${PRODUCT_LINE}/repositories/repositories-azure.zip /content/init-azure/repositories-azure.zip
+COPY --chown=nonroot:nonroot ./target/assembly/${PRODUCT_LINE}/collections/*.zip /content/upgrade/
 
 USER nonroot
 CMD ["cp","-rf","/content", "/home/backbase"]

@@ -9,7 +9,7 @@ This repository contains collections with out-of-the box engagements data.
 These collections contain the following data:
 - Events with general notifications
 - Templates (general notifications and custom engagements)
-- Repositories (for AWS S3)
+- Repositories (for AWS S3 and Azure Blob Storage)
 
 ### Project Structure
 This repository has the following structure:
@@ -44,22 +44,56 @@ This repository has the following structure:
     │   │       ├── {placeholder-group-name}
     │   │       │   └── placeholders.json                       # A placeholder group configuration
     │   │       └── ...
-    │   └── custom-engagements                                  # Custom engagements related collection
-    │       └── templates                                       # The folder to store templates
-    │           ├── {template-name}
-    │           │   ├── content-schema.json                     # A structure of an engagement template based on a given template (Specifies the path to image as {{contextRoot}}/assets/apple-pay.png)
-    │           │   ├── template.json                           # A template definition
-    │           │   └── assets                                  # Folder that contains all assets (index.html, image.png, thumbnail.png)
-    │           │       ├── index.html                          # HTML file with embedded styling, expressions and templating language placeholders that should match the layoutPath property specified in the content schema
-    │           │       ├── image.png                           # Images that are used within the template
-    │           │       └── thumbnail.png                       # A representation of the rendered version of your template (recommended size: 164 x 217)
-    │           └── ...
-    └── repositories                                            # The folder with a repository definition. Contains a repository that has a cloud storage (AWS S3) as the underlying storage
-        ├── {repository-name}
-        │   ├── format.txt                                      # Applicable package format
-        │   ├── package.txt                                     # List of items to be imported into a repository
-        │   └── repository.xml                                  # A repository definitions
-        └── ...
+    │   ├── custom-engagements                                  # Custom engagements related collection
+    │   │    └── templates                                      # The folder to store templates
+    │   │        ├── {template-name}
+    │   │        │   ├── content-schema.json                    # A structure of an engagement template based on a given template (Specifies the path to image as {{contextRoot}}/assets/apple-pay.png)
+    │   │        │   ├── template.json                          # A template definition
+    │   │        │   └── assets                                 # Folder that contains all assets (index.html, image.png, thumbnail.png)
+    │   │        │       ├── index.html                         # HTML file with embedded styling, expressions and templating language placeholders that should match the layoutPath property specified in the content schema
+    │   │        │       ├── image.png                          # Images that are used within the template
+    │   │        │       └── thumbnail.png                      # A representation of the rendered version of your template (recommended size: 164 x 217)
+    │   │        └── ...
+    │   └── repositories                                        # The folder with a repository definition.
+    │        ├── {repositories-type}                            #  Contains a repository that has a cloud storage (AWS S3 or Azure) as the underlying storage
+    │        │    ├── {repository-name}
+    │        │    │   ├── format.txt                            # Applicable package format
+    │        │    │   ├── package.txt                           # List of items to be imported into a repository
+    │        │    │   └── repository.xml                        # A repository definitions
+    │        │    └── ...
+    │        └── ...
+    └── business                                                # Business collection
+        ├── general-notifications                               # General notifications related collection
+        │   ├── event-general-notifications     
+        │   │   ├── {event-general-notifications-name}              
+        │   │   │   ├── {general-notification-name}             # The folder to store channel specific data for general notifications   
+        │   │   │   │   ├── in-app-notification                         
+        │   │   │   │   │   ├── {locale}                        # The folder to store locale-specific engagement templates
+        │   │   │   │   │   │   └── engagement-template.json    # The engagement template that contains default messages with the Handlebars expressions
+        │   │   │   │   │   └── in-app_channel-settings.json    # The channel settings for in-app notification channels per locale
+        │   │   │   │   └── push
+        │   │   │   │       ├── {locale} 
+        │   │   │   │       │   └── engagement-template.json 
+        │   │   │   │       └── in-app_channel-settings.json     
+        │   │   │   └── event-general-notifications.json        # The event with one or more general-notification definitions
+        │   │   └── ... 
+        │   ├── templates                                       # The folder to store templates
+        │   │   ├── {template-name}
+        │   │   │   ├── content-schema.json                     # A structure of an engagement template based on a given template
+        │   │   │   └── template.json                           # A template definition
+        │   │   └── ...
+        │   └── placeholders                                    # The folder to store placeholder group
+        │       ├── {placeholder-group-name}
+        │       │   └── placeholders.json                       # A placeholder group configuration
+        │       └── ...
+        └── repositories                                        # The folder with a repository definition.
+             ├── {repositories-type}                            #  Contains a repository that has a cloud storage (AWS S3 or Azure) as the underlying storage
+             │    ├── {repository-name}
+             │    │   ├── format.txt                            # Applicable package format
+             │    │   ├── package.txt                           # List of items to be imported into a repository
+             │    │   └── repository.xml                        # A repository definitions
+             │    └── ...
+             └── ...
 ```
 
 ### Repository definition configuration
@@ -171,12 +205,12 @@ Every time the pipeline is run, the Docker image is built but not pushed into th
 | Property name          |Example |Description |
 |------------------------|-------|------------|
 | `project.version`      | • `0.1.0` is used in the `master` branch | This property may vary depending on the branch you are working on. The deployment pipeline automatically changes the version property depending on the branch. |
-| `backbase-bom.version` |`2022.09`|This is defined in the parent `pom.xml` file and matches the released Backbase version.|
+| `backbase-bom.version` |`2022.11`|This is defined in the parent `pom.xml` file and matches the released Backbase version.|
 
 To build the Docker image, take one of the following actions:
 1. Merge your pull request to the `master` branch.
 > The format of the `project.version` property is `X.Y.Z`.
-2. The Engage Defaults collection is packaged and the Docker image is created, for example `engagements-data-retail:2022.09-0.10.0`.
+2. The Engage Defaults collection is packaged and the Docker image is created, for example `engagements-data-retail:2022.11-0.10.0` and `engagements-data-sme:2022.11-0.10.0`.
 > This is not pushed to the Docker container registry, unless you configure credentials in `pom.xml`
 and `.github/workflows`.
 3. After the PR is merged to the `master` branch, `project.version` is automatically increased based on the type of the source branch:
