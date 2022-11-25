@@ -2,4 +2,4 @@
 # the repo. Unless a later match takes precedence,
 # @Backbase/engage-defaults will be requested for
 # review when someone opens a pull request.
-* @Backbase/engage-defaults @eacarvalho @sergii-backbase @ajitavbb
+* @Backbase/engage-defaults @eacarvalho @sergii-backbase @ajitavbb @bb-cops-bot

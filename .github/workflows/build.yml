@@ -119,7 +119,7 @@ jobs:
         run: |
           echo "Adding github tag ${NEW_VERSION}"
           git config --local user.email "engagements-data_releaser@backbase.com"
-          git config --local user.name "bb-engagements-data-bot"
+          git config --local user.name "bb-cops-bot"
           git commit -m "[skip bump] version bump" -a
           git tag -a $NEW_VERSION -m "[version bump]"
 
