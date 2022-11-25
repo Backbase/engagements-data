@@ -1,0 +1,50 @@
+{
+  "eventClassName": "com.backbase.dbs.messages.pandp.event.spec.v4.MessageReceivedEvent",
+  "id": "message-received",
+  "eventBusinessName": "Message Received",
+  "recipientType": "internal",
+  "extractor": "#this['recipient']",
+  "generalNotifications": [
+    {
+      "id": "new-message-received",
+      "name": "New Message Received",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/new-message-received/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-message-received/in-app-notification/en_US/engagement-template.json",
+              "templateName": "new-message-received-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/new-message-received/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-message-received/push/en_US/engagement-template.json",
+              "templateName": "new-message-received-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

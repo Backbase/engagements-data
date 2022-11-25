@@ -1,0 +1,43 @@
+{
+  "eventClassName": "com.backbase.account.statement.event.spec.v1.AccountStatementReadyEvent",
+  "id": "account-statement-ready",
+  "eventBusinessName": "Account Statement Ready",
+  "recipientType": "internal",
+  "extractor": "#this['userId']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "account-statement-ready",
+      "name": "Account Statement Is Ready",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/account-statement-ready/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-statement-ready/in-app-notification/en_US/engagement-template.json",
+              "templateName": "account-statement-ready-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/account-statement-ready/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-statement-ready/push/en_US/engagement-template.json",
+              "templateName": "account-statement-ready-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

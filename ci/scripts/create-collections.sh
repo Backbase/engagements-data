@@ -33,6 +33,8 @@ MANIFEST=()
 workspace=$(pwd)
 mkdir -p ${workspace}/target/assembly
 mkdir -p ${workspace}/target/assembly/${PRODUCT_LINE}
+mkdir -p ${workspace}/target/assembly/${PRODUCT_LINE}/collections
+mkdir -p ${workspace}/target/assembly/${PRODUCT_LINE}/repositories
 if [[ -d "${workspace}/target/assembly/*" ]]; then
   echo "Removing from /target/assembly/*"
   rm -r ${workspace}/target/assembly/*
@@ -49,7 +51,7 @@ if [ -d "${general_notifications_location}" ] && [ ! -z "$(ls -A ${general_notif
   buildZipsFromSubFolders event-general-notifications
   addManifestEntries event-general-notifications engagement:/event-general-notifications
   writeManifestFile
-  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/general-notifications-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/general-notifications-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
 fi
 
 custom_engagements_location=${workspace}/collections/${PRODUCT_LINE}/custom-engagements
@@ -61,25 +63,25 @@ if [ -d "${custom_engagements_location}" ] && [ ! -z "$(ls -A ${custom_engagemen
   buildZipsFromSubFolders templates
   addManifestEntries templates content-enricher:/template
   writeManifestFile
-  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/custom-engagements-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/custom-engagements-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
 fi
 
-repositories_s3_location=${workspace}/collections/repositories-s3
+repositories_s3_location=${workspace}/collections/${PRODUCT_LINE}/repositories/repositories-s3
 if [ -d "${repositories_s3_location}" ] && [ ! -z "$(ls -A ${repositories_s3_location})" ]; then
   echo "Create Repository package for S3"
   cd "${repositories_s3_location}"
   buildZipsFromSubFolders .
   addManifestEntries . repository
   writeManifestFile
-  cd assembly && zip -r "${workspace}/target/assembly/repositories-s3.zip" "." && cd - && rm -rf assembly
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/repositories/repositories-s3.zip" "." && cd - && rm -rf assembly
 fi
 
-repositories_azure_location=${workspace}/collections/repositories-azure
+repositories_azure_location=${workspace}/collections/${PRODUCT_LINE}/repositories/repositories-azure
 if [ -d "${repositories_azure_location}" ] && [ ! -z "$(ls -A ${repositories_azure_location})" ]; then
   echo "Create Repository package for Azure"
   cd "${repositories_azure_location}"
   buildZipsFromSubFolders .
   addManifestEntries . repository
   writeManifestFile
-  cd assembly && zip -r "${workspace}/target/assembly/repositories-azure.zip" "." && cd - && rm -rf assembly
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/repositories/repositories-azure.zip" "." && cd - && rm -rf assembly
 fi

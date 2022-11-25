@@ -1,0 +1,8 @@
+{
+   "name":"account-statement-ready-push",
+   "description":"Push notification template for Account Statement Is Ready general notification",
+   "title":"Account Statement Is Ready",
+   "engagement": "general-notification",
+   "channel": "push",
+   "placeholderGroups": ["userProfile"]
+} 

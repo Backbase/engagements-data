@@ -1,0 +1,30 @@
+{
+  "eventClassName": "com.backbase.account.statement.event.spec.v1.AccountStatementsArchiveCreationFailedEvent",
+  "id": "account-statements-archive-creation-failed",
+  "eventBusinessName": "Account Statements Archive Creation Failed",
+  "recipientType": "internal",
+  "extractor": "#this['userId']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "account-statements-archive-creation-failed",
+      "name": "Account Statements Archive Creation Failed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "account-statements-archive-creation-failed/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-statements-archive-creation-failed/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

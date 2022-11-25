@@ -1,0 +1,19 @@
+[
+  {
+    "name": "userProfile",
+    "placeholders": [
+      {
+        "name": "preferred-name",
+        "title": "Preferred Name",
+        "description": "Preferred name of the user",
+        "value": "{{{user.preferredName}}} "
+      },
+      {
+        "name": "family-name",
+        "title": "Family Name",
+        "description": "Family name of the user",
+        "value": "{{{user.familyName}}}"
+      }
+    ]
+  }
+]

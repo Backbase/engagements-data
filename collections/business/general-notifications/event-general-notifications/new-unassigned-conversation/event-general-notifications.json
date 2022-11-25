@@ -1,0 +1,33 @@
+{
+  "eventClassName": "com.backbase.dbs.messages.pandp.event.spec.v4.NewUnassignedConversationEvent",
+  "id": "new-unassigned-conversation",
+  "eventBusinessName": "New Unassigned Conversation",
+  "recipientType": "internal",
+  "extractor": "#this['topicSubscribers']",
+  "generalNotifications": [
+    {
+      "id": "new-unassigned-conversation",
+      "name": "New Unassigned Conversation",
+      "manageable": false,
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/new-unassigned-conversation/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-unassigned-conversation/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

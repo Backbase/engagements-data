@@ -1,0 +1,8 @@
+{
+  "name": "new-message-received-in-app-notification",
+  "description": "In-app notification template for New Message Received general notification",
+  "title": "New Message Received",
+  "engagement": "general-notification",
+  "channel": "in-app-notification",
+  "placeholderGroups": ["messageReceived", "userProfile"]
+}
