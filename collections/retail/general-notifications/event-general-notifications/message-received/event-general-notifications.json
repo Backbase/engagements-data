@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../../schema/v1/general-notification.json",
+  "$schema": "../../../../../schema/v1/trigger-event.json",
   "eventClassName": "com.backbase.dbs.messages.pandp.event.spec.v4.MessageReceivedEvent",
   "id": "message-received",
   "eventBusinessName": "Message Received",

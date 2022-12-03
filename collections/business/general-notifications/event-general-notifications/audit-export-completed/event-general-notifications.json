@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../../schema/v1/general-notification.json",
+  "$schema": "../../../../../schema/v1/trigger-event.json",
   "eventClassName": "com.backbase.audit.persistence.event.spec.v1.AuditExportCompletedEvent",
   "id": "audit-export-completed",
   "eventBusinessName": "Audit Export Completed",
