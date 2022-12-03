@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../schema/v1/general-notification.json",
   "eventClassName": "com.backbase.transaction.persistence.event.spec.v1.TransactionsAddedEvent",
   "id": "transaction-added",
   "eventBusinessName": "Transaction Added",

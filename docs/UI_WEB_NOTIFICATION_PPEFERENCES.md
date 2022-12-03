@@ -6,7 +6,7 @@ This documents builds on our official Community guide, so be sure to read that f
 In the Retail notification preferences journey, the bank customer views a list of available accounts and sets up notifications for each account.
 
 #### Configure a web journey
-More information on [how to change properties for a journey in code](###-Change-properties-for-a-journey-in-code).
+More information on [how to change properties for a journey in code](#Change-properties-for-a-journey-in-code).
 
 #### Views
 This journey has the following views:

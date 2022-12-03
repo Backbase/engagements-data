@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../schema/v1/general-notification.json",
   "eventClassName": "com.backbase.account.statement.event.spec.v1.AccountStatementsArchiveCreationFailedEvent",
   "id": "account-statements-archive-creation-failed",
   "eventBusinessName": "Account Statements Archive Creation Failed",

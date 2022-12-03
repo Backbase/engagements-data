@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../../../schema/v1/push-channel-settings.json",
   "appName": "model-bank",
   "payload": {
     "android": {

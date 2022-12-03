@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../../../../schema/v1/in-app-content.json",
   "title": "Download failed",
   "body": "The statements file you requested failed to process"
 }

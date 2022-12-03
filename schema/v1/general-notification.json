@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the trigger event."
+    },
+    "eventClassName": {
+      "type": "string",
+      "description": "A fully qualified class name for the trigger event."
+    },
+    "$schema": { "type": "string" }
+  },
+  "required": [
+    "id"
+  ],
+  "additionalProperties": true
+}

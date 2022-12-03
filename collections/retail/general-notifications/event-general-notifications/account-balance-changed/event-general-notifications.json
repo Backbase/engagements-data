@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../schema/v1/general-notification.json",
   "eventClassName": "com.backbase.dbs.actions.reactive.event.spec.v2.AccountBalanceChangedEvent",
   "id": "account-balance-changed",
   "eventBusinessName": "Account Balance Changed",

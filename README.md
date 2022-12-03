@@ -126,12 +126,11 @@ A general notification template defines the structure of a general notification 
   "recipientType": "internal",
   "extractor": "#this['recipient']",
   "generalNotifications": [
-    ...
   ]
 }
 ```
 
-More information on [how to create a custom Event General Notification](documentation/EVENT_GENERAL_NOTIFICATIONS.md).
+More information on [how to create a custom Event General Notification](docs/EVENT_GENERAL_NOTIFICATIONS.md).
 
 ### UI Notification Preferences
 There are two types of recipients of Genera Notifications Notifications. 
@@ -140,7 +139,7 @@ subscription - This type of GN requires the user to opt in via a notification pr
 
 If your GN is of type subscription you need to build a UI (Android, IOS, Web) that uses the pre-existing backend API, allowing users to opt-in to your GN.
 
-More information on [how to build notification preferences UI for OOTB general notification](documentation/UI_WEB_NOTIFICATION_PPEFERENCES.md).
+More information on [how to build notification preferences UI for OOTB general notification](docs/UI_WEB_NOTIFICATION_PPEFERENCES.md).
 
 ---
 ## Project dependencies
@@ -155,7 +154,7 @@ More information on [how to build notification preferences UI for OOTB general n
 ### Create Engagements data package 
 To create new or modify existing *General Notification* you'll have to modify JSON files (event definition, templates, and content-schema, etc). Once changes to those files are pushed to the version control system, pipeline would automatically build provisioning packages and package them to the docker image:
 
-![Process of Engagements data creation!](documentation/create_engagement_data.png)
+![Process of Engagements data creation!](docs/create_engagement_data.png)
 Once projects clone the repo, the docker image should be built with the pipeline described above. Docker image will contain out-of-the-box *Engagements data* package, that can be used from day 1.
 
 More information on [how to create custom General notifications](https://community.backbase.com/documentation/foundation_services/latest/create_general_notifications).

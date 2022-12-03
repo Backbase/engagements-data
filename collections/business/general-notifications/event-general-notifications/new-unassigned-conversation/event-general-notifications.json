@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../schema/v1/general-notification.json",
   "eventClassName": "com.backbase.dbs.messages.pandp.event.spec.v4.NewUnassignedConversationEvent",
   "id": "new-unassigned-conversation",
   "eventBusinessName": "New Unassigned Conversation",

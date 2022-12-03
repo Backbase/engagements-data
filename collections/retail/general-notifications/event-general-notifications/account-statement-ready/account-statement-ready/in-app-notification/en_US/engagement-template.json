@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../../../../schema/v1/in-app-content.json",
   "title": "Account statement is ready",
   "body": "Your account statement is ready to download"
 }

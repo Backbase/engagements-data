@@ -1,5 +1,5 @@
 {
+  "$schema": "../../../../../../../schema/v1/in-app-channel-settings.json",
   "level": "SUCCESS",
-  "targetGroup": "USER",
   "origin": "AccountStatement"
 }

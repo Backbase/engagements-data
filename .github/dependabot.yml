@@ -1,0 +1,33 @@
+version: 2
+
+registries:
+  bb-artifactory:
+    type: maven-repository
+    url: https://repo.backbase.com
+    username: ${{secrets.MAVEN_USERNAME}}
+    password: ${{secrets.MAVEN_PASSWORD}}
+
+updates:
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: "gitleaks/gitleaks-action"
+        update-types: ["version-update:semver-major"]
+
+  # Maintain dependencies for docker
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: weekly
+
+  # Maintain dependencies for maven
+  - package-ecosystem: maven
+    directory: "/"
+    registries:
+      - bb-artifactory
+    schedule:
+      interval: weekly
