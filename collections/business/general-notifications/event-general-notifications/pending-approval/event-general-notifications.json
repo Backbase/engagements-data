@@ -1,0 +1,35 @@
+{
+  "eventClassName": "com.backbase.dbs.approval.persistence.event.spec.v3.PendingApprovalEvent",
+  "id": "pending-approval",
+  "eventBusinessName": "Pending Approval",
+  "recipientType": "internal",
+  "extractor": "#this['approverIds']",
+  "serviceAgreementExtractor": "#this['approval']['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "payment-to-approve",
+      "name": "Payment To Approve",
+      "userPreferenceEnabled": true,
+      "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Payments'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/payment-to-approve/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "payment-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/payment-to-approve/in-app-notification/en_US/engagement-template.json",
+              "templateName": "payment-to-approve-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
