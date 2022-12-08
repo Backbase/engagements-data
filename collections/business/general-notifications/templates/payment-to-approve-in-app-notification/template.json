@@ -1,0 +1,8 @@
+{
+   "name":"payment-to-approve-in-app-notification",
+   "description":"In-app notification template for Payment To Approve general notification",
+   "title":"Payment To Approve",
+   "engagement": "general-notification",
+   "channel": "in-app-notification",
+   "placeholderGroups":["paymentToApprove", "userProfile"]
+} 
