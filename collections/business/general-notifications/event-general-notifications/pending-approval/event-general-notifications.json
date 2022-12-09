@@ -30,6 +30,31 @@
           ]
         }
       ]
+    },
+    {
+      "id": "contact-to-approve",
+      "name": "Contact To Approve",
+      "userPreferenceEnabled": true,
+      "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Contacts'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/contact-to-approve/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "party-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/contact-to-approve/in-app-notification/en_US/engagement-template.json",
+              "templateName": "contact-to-approve-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
