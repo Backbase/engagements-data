@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Contact to approve",
+  "description": "Action event for in-app notifications when a contact has to be approved",
+  "type": "object",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string",
+      "metadata": {
+        "placeholderText": "Enter a title (max. 50 chars)",
+        "renderingHint": "textarea",
+        "customErrorMessages" :  {
+          "required": "Please provide a title"
+        }
+      },
+      "default": "Contact to approve"
+    },
+    "body": {
+      "title": "Body",
+      "type": "string",
+      "metadata": {
+        "placeholderText": "Enter a body message (max. 2000 chars)",
+        "renderingHint": "textarea",
+        "customErrorMessages" :  {
+          "required": "Please provide a body text"
+        }
+      },
+      "default": "Please approve the contact"
+    }
+  },
+  "required": ["title", "body"]
+}
