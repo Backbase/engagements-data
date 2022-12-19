@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "from": {
+      "description": "Phone number of SMS sender. Note that setting this field could lead to unexpected behaviour(for example - implementation service has no access to this phone number)",
+      "type": "string",
+      "maxLength": 36
+    }
+  },
+  "additionalProperties": false
+}

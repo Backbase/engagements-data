@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../../../../schema/v1/in-app-content.json",
   "title": "New transaction",
   "body": "&#128184; {{#eq event.creditDebitIndicator 'CRDT' }}Received{{else}}Paid{{/eq}} {{event.transactionAmountCurrency.currencyCode}} {{formatAmount event.transactionAmountCurrency.amount locale}}"
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../../../../schema/v1/in-app-content.json",
   "title": "New message",
   "body": "From: {{{event.senderName}}}<br/>Subject: {{{event.subject}}}<br/>Topic: {{{event.topicName}}}"
 }
