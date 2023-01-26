@@ -1,0 +1,36 @@
+{
+  "eventClassName": "com.backbase.party.persistence.event.spec.v1.PartyUpdatedEvent",
+  "id": "party-updated",
+  "eventBusinessName": "Party Updated",
+  "recipientType": "internal",
+  "extractor": "#this['party']['internalUserId']",
+  "serviceAgreementExtractor": "#this['party']['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "contact-status-updated-rejected",
+      "name": "Contact Status Updated (Rejected)",
+      "userPreferenceEnabled": true,
+      "manageable": true,
+      "additionalFilterLogic": "#triggeredEvent['party']['status'] == 'REJECTED'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/contact-status-updated-rejected/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "party-view",
+            "data": "{\"id\": \"{{event.party.id}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/contact-status-updated-rejected/in-app-notification/en_US/engagement-template.json",
+              "templateName": "contact-status-updated-rejected-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

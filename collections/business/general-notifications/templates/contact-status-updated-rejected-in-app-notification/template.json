@@ -1,0 +1,8 @@
+{
+   "name":"contact-status-updated-rejected-in-app-notification",
+   "description":"In-app notification template for Contact Status Updated (Rejected) general notification",
+   "title":"Contact Status Updated (Rejected)",
+   "engagement": "general-notification",
+   "channel": "in-app-notification",
+   "placeholderGroups":["partyUpdated", "userProfile"]
+} 
