@@ -30,7 +30,7 @@
         "name": "name",
         "title": "Name",
         "description": "The name of the counterparty",
-        "value": "{{event.paymentOrder.transferTransactionInformation.counterparty.name}}"
+        "value": "{{{event.paymentOrder.transferTransactionInformation.counterparty.name}}}"
       }
     ]
   }
