@@ -9,6 +9,7 @@
       "id": "account-statement-ready",
       "name": "Account Statement Is Ready",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "in-app-notification",

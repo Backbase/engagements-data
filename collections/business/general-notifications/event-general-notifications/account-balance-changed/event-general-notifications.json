@@ -1,0 +1,53 @@
+{
+  "eventClassName": "com.backbase.dbs.actions.reactive.event.spec.v2.AccountBalanceChangedEvent",
+  "id": "account-balance-changed",
+  "eventBusinessName": "Account Balance Changed",
+  "recipientType": "subscription",
+  "extractor": "#this['arrangementId']",
+  "subscriptionType": "arrangement",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "account-balance-low",
+      "name": "Account Balance Low",
+      "userPreferenceEnabled": true,
+      "additionalFilterLogic": "T(java.lang.Double).valueOf(#triggeredEvent['currentBalance']) < #userConditions['amount'] && T(java.lang.Double).valueOf(#triggeredEvent['previousBalance']) >= #userConditions['amount']",
+      "userPreferenceDefaults": "{\"amount\":0}",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/account-balance-low/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "arrangement-view",
+            "data": "{\"id\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low/in-app-notification/en_US/engagement-template.json",
+              "templateName": "account-balance-low-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/account-balance-low/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "arrangement-view",
+            "data": "{\"id\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low/push/en_US/engagement-template.json",
+              "templateName": "account-balance-low-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

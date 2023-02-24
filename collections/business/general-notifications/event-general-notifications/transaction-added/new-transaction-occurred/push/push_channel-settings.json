@@ -1,0 +1,23 @@
+{
+  "appName": "model-bank",
+  "payload": {
+    "android": {
+      "settings": {
+        "sound": "default",
+        "color": "#FFE5CC",
+        "icon": "hello"
+      }
+    },
+    "ios": {
+      "settings": {
+        "category": "NEW_TRANSACTION_CATEGORY",
+        "sound": "bingbong.aiff",
+        "badge": 2,
+        "interruption-level": "active"
+      }
+    },
+    "data": {
+      "level": "ALERT"
+    }
+  }
+}
