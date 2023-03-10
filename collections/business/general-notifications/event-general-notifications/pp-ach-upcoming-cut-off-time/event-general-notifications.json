@@ -1,0 +1,34 @@
+{
+  "eventClassName": "com.backbase.positivepay.event.spec.v1.PpAchUpcomingCutOffTimeEvent",
+  "id": "pp-ach-upcoming-cut-off-time",
+  "eventBusinessName": "Positive Pay ACH Upcoming cut-off time",
+  "recipientType": "subscription",
+  "extractor": "#this['arrangementId']",
+  "subscriptionType": "arrangement",
+  "generalNotifications": [
+    {
+      "id": "pp-ach-upcoming-cut-off-time",
+      "name": "Positive Pay ACH Upcoming cut-off time",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "pp-ach-upcoming-cut-off-time/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": true,
+          "routeInfo": {
+            "whereTo": "positive-pay-ach-active-exceptions-view",
+            "data": ""
+          },
+          "engagementTemplates": [
+            {
+              "path": "/pp-ach-upcoming-cut-off-time/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
