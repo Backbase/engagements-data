@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "from": {
+      "description": "Email address of email sender",
+      "type": "string"
+    },
+    "replyTo": {
+      "description": "ReplyTo address of email sender",
+      "type": "string"
+    },
+    "important": {
+      "description": "Email importance flag",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "additionalProperties": false
+}

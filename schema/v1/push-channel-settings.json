@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Push Settings",
+  "type": "object",
+  "required": [
+    "appName",
+    "payload"
+  ],
+  "properties": {
+    "appName": {
+      "type": "string",
+      "description": "The name of the app that the push message should be sent to.\nCredentials for the app must be registered in the Push Notifications Service.\n"
+    },
+    "payload": {
+      "title": "PushNotificationPayload",
+      "$ref": "#/$defs/PushNotificationPayload"
+    },
+    "$schema": { "type": "string" }
+  },
+  "description": "Notification, customizable for Android and IOS separately",
+  "$defs": {
+    "PushNotificationPayload": {
+      "type": "object",
+      "properties": {
+        "android": {
+          "$ref": "#/$defs/PayloadFcm"
+        },
+        "ios": {
+          "$ref": "#/$defs/PayloadApns"
+        },
+        "data": {
+          "type": "object",
+          "description": "Flat map of additional strings of data."
+        }
+      }
+    },
+    "PayloadFcm": {
+      "type": "object",
+      "description": "Push notification payload, allowing to tweak platform settings independently.\nE.g. allows to send a silent push to Android, but a non-silent push to iOS if the user has an iOS device.\n",
+      "properties": {
+        "notification": {
+          "$ref": "#/$defs/PushNotification"
+        },
+        "settings": {
+          "type": "object",
+          "description": "A map of additional Android and IOS push notification properties according to the official documentation.\n\niOS documentation: https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification\niOS supported properties:\n  - badge\n  - sound\n  - category\n  - content-available\n  - mutable-content\n  - thread-id\n  - priority\n\nAndroid documentation: https://firebase.google.com/docs/cloud-messaging/http-server-ref\nAndroid supported properties:\n  - collapse_key\n  - priority\n  - restricted_package_name\n  - sound\n  - channel_id\n  - icon\n"
+        }
+      }
+    },
+    "PayloadApns": {
+      "type": "object",
+      "description": "Push notification payload, allowing to tweak platform settings independently.\nE.g. allows to send a silent push to Android, but a non-silent push to iOS if the user has an iOS device.\n",
+      "properties": {
+        "notification": {
+          "$ref": "#/$defs/PushNotification"
+        },
+        "settings": {
+          "type": "object",
+          "description": "A map of additional Android and IOS push notification properties according to the official documentation.\n\niOS documentation: https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification\niOS supported properties:\n  - badge\n  - sound\n  - category\n  - content-available\n  - mutable-content\n  - thread-id\n  - priority\n\nAndroid documentation: https://firebase.google.com/docs/cloud-messaging/http-server-ref\nAndroid supported properties:\n  - collapse_key\n  - priority\n  - restricted_package_name\n  - sound\n  - channel_id\n  - icon\n"
+        }
+      }
+    },
+    "PushNotification": {
+      "type": "object",
+      "description": "Notification title and body, handled by the OS and displayed in the notification center.\nIf this object is omitted, a silent push notification is sent.\n",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Notification title"
+        },
+        "body": {
+          "type": "string",
+          "description": "Notification body"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

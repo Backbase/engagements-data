@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trigger Event",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the trigger event."
+    },
+    "eventClassName": {
+      "type": "string",
+      "description": "A fully qualified class name for the trigger event."
+    },
+    "eventBusinessName": {
+      "type": "string",
+      "description": "A business name for the trigger event."
+    },
+    "recipientType": {
+      "$ref": "#/$defs/RecipientType"
+    },
+    "extractor": {
+      "type": "string",
+      "description": "The SpEL expression to extract a recipient or subscription."
+    },
+    "subscriptionType": {
+      "$ref": "#/$defs/SubscriptionType"
+    },
+    "eventSlicer": {
+      "type": "string",
+      "description": "The SpEL expression to process entries separately in case the event is an array."
+    },
+    "serviceAgreementExtractor": {
+      "type": "string",
+      "description": "The SpEL expression to extract a service agreement."
+    },
+    "generalNotifications": {
+      "type": "array",
+      "description": "One or more general notifications.",
+      "items": {
+        "$ref": "#/$defs/GeneralNotification"
+      }
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "RecipientType": {
+      "type": "string",
+      "description": "Identifies the type of recipient based on their subscription",
+      "enum": [
+        "subscription",
+        "internal"
+      ]
+    },
+    "SubscriptionType": {
+      "type": "string",
+      "description": "The entity type if recipientType is subscription.",
+      "enum": [
+        "arrangement"
+      ]
+    },
+    "DeliveryOptions": {
+      "type": "object",
+      "title": "Delivery Option",
+      "properties": {
+        "channel": {
+          "type": "string",
+          "description": "A delivery channel."
+        },
+        "channelSettings": {
+          "type": "string",
+          "description": "A path to channel-specific settings that should be present in the import package."
+        },
+        "isEnabledByDefault": {
+          "type": "boolean",
+          "description": "Indicates whether the channel is enabled by default."
+        },
+        "isManageableByUser": {
+          "type": "boolean",
+          "description": "Indicates whether the user can manage preferences for the channel."
+        },
+        "routeInfo": {
+          "type": "object",
+          "description": "A key for mapping to the route of the web and mobile application."
+        },
+        "engagementTemplates": {
+          "type": "array",
+          "description": "One or more engagement templates.",
+          "items": {
+            "$ref": "#/$defs/EngagementTemplates"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "GeneralNotification": {
+      "type": "object",
+      "title": "General Notification",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the general notification."
+        },
+        "name": {
+          "type": "string",
+          "description": "A business name for the general notification engagement."
+        },
+        "manageable": {
+          "type": "boolean",
+          "description": "Indicates whether a general notification is manageable via Engage App."
+        },
+        "userPreferenceEnabled": {
+          "type": "boolean",
+          "description": "Indicates whether a general notification has any user notification preferences."
+        },
+        "priority": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 7,
+          "description": "The delivery priority of the general notification. The range is from 0 to 7."
+        },
+        "additionalFilterLogic": {
+          "type": "string",
+          "description": "The SpEL expression to apply additional filtering based on the incoming event data. For example, to filter only credit transactions, the following expression is used: #triggeredEvent['creditDebitIndicator'] == 'CRDT'"
+        },
+        "userPreferenceDefaults": {
+          "type": "string",
+          "description": "Defines user preference default values for general notifications where the user can set their own value for their notification preferences."
+        },
+        "deliveryOptions": {
+          "type": "array",
+          "description": "One or more delivery options.",
+          "items": {
+            "$ref": "#/$defs/DeliveryOptions"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "EngagementTemplates": {
+      "type": "object",
+      "title": "Engagement Template",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "A path to the engagement template file that should be present in the import package."
+        },
+        "content": {
+          "type": "object",
+          "description": "Engagement template content in JSON format."
+        },
+        "templateName": {
+          "type": "string",
+          "description": "A template name based on which the engagement template is created."
+        },
+        "locale": {
+          "type": "string",
+          "description": "A locale of the engagement template."
+        }
+      },
+      "additionalProperties": false
+    },
+    "routeInfo": {
+      "type": "object",
+      "title": "Route Info",
+      "properties": {
+        "whereTo": {
+          "type": "string",
+          "description": "Route Name"
+        },
+        "data": {
+          "type": "string",
+          "description": "JSON String containing route data"
+        }
+      },
+      "required": [
+        "whereTo",
+        "data"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

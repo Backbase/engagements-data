@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../../../../schema/v1/in-app-content.json",
   "title": "Download is ready",
   "body": "The statements file you requested is ready to download"
 }

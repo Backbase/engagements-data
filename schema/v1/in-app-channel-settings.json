@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "level": {
+      "$ref": "#/$defs/SeverityLevel"
+    },
+    "origin": {
+      "maxLength": 200,
+      "minLength": 1,
+      "type": "string",
+      "description": "Name of the capability where the notification originates from"
+    },
+    "$schema": { "type": "string" }
+  },
+  "required": [
+    "level",
+    "origin"
+  ],
+  "$defs": {
+    "SeverityLevel": {
+      "type": "string",
+      "description": "Notification severity level",
+      "enum": [
+        "ALERT",
+        "WARNING",
+        "SUCCESS",
+        "INFO"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
