@@ -1,0 +1,8 @@
+{
+  "name": "new-transaction-occurred-push",
+  "description": "Push notification template for New Transaction Occurred general notification",
+  "title": "New Transaction Occurred",
+  "engagement": "general-notification",
+  "channel": "push",
+  "placeholderGroups": ["transactionAdded", "userProfile"]
+}

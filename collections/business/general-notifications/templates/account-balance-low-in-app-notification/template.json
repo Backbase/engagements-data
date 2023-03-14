@@ -1,0 +1,8 @@
+{
+   "name":"account-balance-low-in-app-notification",
+   "description":"In-app notification template for Account Balance Low general notification",
+   "title":"Account Balance Low",
+   "engagement": "general-notification",
+   "channel": "in-app-notification",
+   "placeholderGroups":["accountBalanceChanged", "userProfile"]
+} 
