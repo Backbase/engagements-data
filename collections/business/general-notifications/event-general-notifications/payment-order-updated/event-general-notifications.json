@@ -3,7 +3,7 @@
   "id": "payment-order-updated",
   "eventBusinessName": "Payment Order Updated",
   "recipientType": "internal",
-  "extractor": "#this['paymentOrder']['createdBy']",
+  "extractor": "#this['paymentOrder']['internalUserId']",
   "serviceAgreementExtractor": "#this['paymentOrder']['serviceAgreementId']",
   "generalNotifications": [
     {
