@@ -13,7 +13,7 @@
             "manageable": false,
             "deliveryOptions": [
                 {
-                    "channel": "in-app-notification",
+                    "channel": "email",
                     "channelSettings": "pp-ach-exceptions-created/in-app-notification/in-app_channel-settings.json",
                     "isEnabledByDefault": true,
                     "isManageableByUser": true,
