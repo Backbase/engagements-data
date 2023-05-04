@@ -85,3 +85,13 @@ if [ -d "${repositories_azure_location}" ] && [ ! -z "$(ls -A ${repositories_azu
   writeManifestFile
   cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/repositories/repositories-azure.zip" "." && cd - && rm -rf assembly
 fi
+
+repositories_db_location=${workspace}/collections/${PRODUCT_LINE}/repositories/repositories-db
+if [ -d "${repositories_db_location}" ] && [ ! -z "$(ls -A ${repositories_db_location})" ]; then
+  echo "Create Repository package for Database"
+  cd "${repositories_db_location}"
+  buildZipsFromSubFolders .
+  addManifestEntries . repository
+  writeManifestFile
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/repositories/repositories-db.zip" "." && cd - && rm -rf assembly
+fi
