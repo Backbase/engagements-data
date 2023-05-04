@@ -32,7 +32,7 @@ ARG PRODUCT_LINE=retail
 # bootstrap folders structure
 COPY --chown=nonroot:nonroot ./target/assembly/${PRODUCT_LINE}/repositories/repositories-s3.zip /content/init/repositories-s3.zip
 COPY --chown=nonroot:nonroot ./target/assembly/${PRODUCT_LINE}/repositories/repositories-azure.zip /content/init-azure/repositories-azure.zip
-COPY --chown=nonroot:nonroot ./target/assembly/${PRODUCT_LINE}/repositories/repositories-db.zip /content/init-azure/repositories-db.zip
+COPY --chown=nonroot:nonroot ./target/assembly/${PRODUCT_LINE}/repositories/repositories-db.zip /content/init-db/repositories-db.zip
 COPY --chown=nonroot:nonroot ./target/assembly/${PRODUCT_LINE}/collections/*.zip /content/upgrade/
 
 USER nonroot
