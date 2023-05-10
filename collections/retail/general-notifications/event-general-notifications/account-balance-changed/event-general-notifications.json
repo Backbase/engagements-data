@@ -34,7 +34,7 @@
         {
           "channel": "push",
           "channelSettings": "/account-balance-low/push/push_channel-settings.json",
-          "isEnabledByDefault": false,
+          "isEnabledByDefault": true,
           "routeInfo": {
             "whereTo": "arrangement-view",
             "data": "{\"id\":\"{{event.arrangementId}}\"}"
