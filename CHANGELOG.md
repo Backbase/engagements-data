@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.24.0] - 2023-05-16
+
+### New/Improved
+
+- Add general notification for conversation history export completed event for Retail & Business.
+
 ## [0.11.0] - 2022-11-22
 
 ### New/Improved
