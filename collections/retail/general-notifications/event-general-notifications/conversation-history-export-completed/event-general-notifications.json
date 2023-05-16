@@ -1,0 +1,56 @@
+{
+  "eventClassName": "com.backbase.employee.actions.event.spec.v1.ConvHistExportCompletedEvent",
+  "id": "conv-hist-export-completed",
+  "eventBusinessName": "Conversation History Export Completed",
+  "recipientType": "internal",
+  "extractor": "#this['userId']",
+  "serviceAgreementExtractor": "#this['serviceAgreement']",
+  "generalNotifications": [
+    {
+      "id": "conv-hist-export-ready",
+      "name": "Conversation History Export Ready",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'successful'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "conv-hist-export-ready/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-trends-download-view",
+            "data": "{\"exportId\":\"{{{event.exportId}}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/conv-hist-export-ready/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conv-hist-export-failed",
+      "name": "Conversation History Export Failed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'failed'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "conv-hist-export-failed/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/conv-hist-export-failed/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
