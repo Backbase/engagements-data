@@ -1,0 +1,4 @@
+{
+  "title": "Contacts file upload failed",
+  "body": "Failed to upload file {{{event.fileName}}}"
+}

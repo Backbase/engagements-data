@@ -1,0 +1,4 @@
+{
+  "title": "Contacts file uploaded",
+  "body": "Uploaded {{{event.importedContacts}}} of {{{event.totalContacts}}} contacts from file {{{event.fileName}}}"
+}
