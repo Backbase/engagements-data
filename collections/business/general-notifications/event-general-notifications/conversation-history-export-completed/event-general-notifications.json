@@ -20,7 +20,7 @@
           "isManageableByUser": false,
           "routeInfo": {
             "whereTo": "conversation-trends-download-view",
-            "data": "{\"exportId\":\"{{{event.exportId}}}\"}"
+            "data": "{\"exportId\":\"{{{event.exportId}}}\",\"fileType\":\"{{{event.fileType}}}\"}"
           },
           "engagementTemplates": [
             {
