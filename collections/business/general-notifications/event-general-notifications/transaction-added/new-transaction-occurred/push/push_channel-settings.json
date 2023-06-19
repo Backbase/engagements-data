@@ -12,7 +12,6 @@
       "settings": {
         "category": "NEW_TRANSACTION_CATEGORY",
         "sound": "bingbong.aiff",
-        "badge": 2,
         "interruption-level": "active"
       }
     },
