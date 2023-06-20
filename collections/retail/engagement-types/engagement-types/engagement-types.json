@@ -1,0 +1,56 @@
+[
+  {
+    "engagement":"custom",
+    "title":"Custom",
+    "description":"App maintenance, new products, new features, branch maintenance and more could all be used for this type",
+    "userPreferenceEnabled":false,
+    "activeByDefault":true,
+    "channels":["message-center","banner"]
+  },
+  {
+    "engagement":"offers",
+    "title":"Product Offers",
+    "description":"This engagement type is for when you’re looking to upsell, cross sell or start a new selling product",
+    "userPreferenceEnabled":true,
+    "activeByDefault":true,
+    "channels":["message-center","banner"],
+    "subTypes":[
+      {
+        "engagement":"checking",
+        "title":"Checking",
+        "userPreferenceEnabled":true,
+        "activeByDefault":true
+      },
+      {
+        "engagement":"saving",
+        "title":"Savings",
+        "userPreferenceEnabled":true,
+        "activeByDefault":true
+      },
+      {
+        "engagement":"mortgages",
+        "title":"Mortgages",
+        "userPreferenceEnabled":true,
+        "activeByDefault":true
+      },
+      {
+        "engagement":"loans",
+        "title":"Loans",
+        "userPreferenceEnabled":true,
+        "activeByDefault":true
+      },
+      {
+        "engagement":"investing",
+        "title":"Investing",
+        "userPreferenceEnabled":true,
+        "activeByDefault":true
+      },
+      {
+        "engagement":"credit-cards",
+        "title":"Credit Cards",
+        "userPreferenceEnabled":true,
+        "activeByDefault":true
+      }
+    ]
+  }
+]

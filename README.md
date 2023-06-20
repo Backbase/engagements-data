@@ -54,6 +54,9 @@ This repository has the following structure:
     │   │        │       ├── image.png                          # Images that are used within the template
     │   │        │       └── thumbnail.png                      # A representation of the rendered version of your template (recommended size: 164 x 217)
     │   │        └── ...
+    │   ├── engagement-types                                    # The folder to store engagement types definition
+    │   │    └── engagement-types                               
+    │   │        └── engagement-types.json
     │   └── repositories                                        # The folder with a repository definition.
     │        ├── {repositories-type}                            #  Contains a repository that has a cloud storage (AWS S3 or Azure) as the underlying storage
     │        │    ├── {repository-name}
