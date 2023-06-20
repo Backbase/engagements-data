@@ -66,6 +66,16 @@ if [ -d "${custom_engagements_location}" ] && [ ! -z "$(ls -A ${custom_engagemen
   cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/custom-engagements-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
 fi
 
+engagement_types_location=${workspace}/collections/${PRODUCT_LINE}/engagement-types
+if [ -d "${engagement_types_location}" ] && [ ! -z "$(ls -A ${engagement_types_location})" ]; then
+  echo "Create Engagement Types package"
+  cd "${engagement_types_location}"
+  buildZipsFromSubFolders .
+  addManifestEntries . engagement:/engagement-types
+  writeManifestFile
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/engagement-types-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
+fi
+
 repositories_s3_location=${workspace}/collections/${PRODUCT_LINE}/repositories/repositories-s3
 if [ -d "${repositories_s3_location}" ] && [ ! -z "$(ls -A ${repositories_s3_location})" ]; then
   echo "Create Repository package for S3"
