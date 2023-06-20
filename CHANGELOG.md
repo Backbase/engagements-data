@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.25.0] - 2023-06-20
+
+-   Add Engagement Types definition to retail collection
+
 ## [0.11.0] - 2022-11-22
 
 ### New/Improved
