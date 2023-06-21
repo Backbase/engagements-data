@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.26.0] - 2023-06-20
+
+### New/Improved
+
+- Add general notification for conversation history export completed event for Retail & Business.
+
 ## [0.25.0] - 2023-06-20
 
 -   Add Engagement Types definition to retail collection
