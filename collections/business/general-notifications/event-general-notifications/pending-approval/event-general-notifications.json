@@ -28,6 +28,22 @@
               "locale": "en_US"
             }
           ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/payment-to-approve/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "payment-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/payment-to-approve/push/en_US/engagement-template.json",
+              "templateName": "payment-to-approve-push",
+              "locale": "en_US"
+            }
+          ]
         }
       ]
     },
@@ -50,6 +66,22 @@
             {
               "path": "/contact-to-approve/in-app-notification/en_US/engagement-template.json",
               "templateName": "contact-to-approve-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/contact-to-approve/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "party-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/contact-to-approve/push/en_US/engagement-template.json",
+              "templateName": "contact-to-approve-push",
               "locale": "en_US"
             }
           ]
