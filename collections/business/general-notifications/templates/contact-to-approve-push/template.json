@@ -1,0 +1,8 @@
+{
+   "name":"contact-to-approve-push",
+   "description":"Push notification template for Contact To Approve general notification",
+   "title":"Contact To Approve",
+   "engagement": "general-notification",
+   "channel": "push",
+   "placeholderGroups":["userProfile"]
+} 

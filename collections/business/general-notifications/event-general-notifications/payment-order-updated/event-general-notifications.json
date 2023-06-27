@@ -29,6 +29,22 @@
               "locale": "en_US"
             }
           ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/payment-status-updated-rejected/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "payment-view",
+            "data": "{\"id\": \"{{event.paymentOrder.id}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/payment-status-updated-rejected/push/en_US/engagement-template.json",
+              "templateName": "payment-status-updated-rejected-push",
+              "locale": "en_US"
+            }
+          ]
         }
       ]
     }

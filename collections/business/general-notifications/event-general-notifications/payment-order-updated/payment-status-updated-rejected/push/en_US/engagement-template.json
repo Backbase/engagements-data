@@ -1,0 +1,4 @@
+{
+  "title": "Payment status change",
+  "body": "Hi {{{user.preferredName}}}, your payment to {{{event.paymentOrder.transferTransactionInformation.counterparty.name}}} of {{{event.paymentOrder.totalAmount.currencyCode}}} {{formatAmount event.paymentOrder.totalAmount.amount locale}} has changed to {{lower event.paymentOrder.status}}"
+}

@@ -29,6 +29,22 @@
               "locale": "en_US"
             }
           ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/contact-status-updated-rejected/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "party-view",
+            "data": "{\"id\": \"{{event.party.id}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/contact-status-updated-rejected/push/en_US/engagement-template.json",
+              "templateName": "contact-status-updated-rejected-push",
+              "locale": "en_US"
+            }
+          ]
         }
       ]
     }
