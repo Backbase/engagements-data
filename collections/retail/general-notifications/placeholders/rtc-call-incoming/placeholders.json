@@ -1,0 +1,31 @@
+[
+  {
+    "name": "rtcCallIncoming",
+    "placeholders": [
+      {
+        "name": "customer-id",
+        "title": "Customer ID",
+        "description": "Identifier of the user being called",
+        "value": "{{event.customerId}}"
+      },
+      {
+        "name": "conversation-id",
+        "title": "Conversation ID",
+        "description": "Identifier of the RTC conversation where a call has been initiated",
+        "value": "{{event.conversationId}}"
+      },
+      {
+        "name": "csr-name",
+        "title": "Customer Service Representative Name",
+        "description": "Name of the customer service representative that has initiated the call",
+        "value": "{{{event.csrName}}}"
+      },
+      {
+        "name": "call-type",
+        "title": "Call Type",
+        "description": "Indicates whether the call is voice (VOICE_CALL_INITIATED) or video (VIDEO_CALL_INITIATED)",
+        "value": "{{event.callType}}"
+      }
+    ]
+  }
+]

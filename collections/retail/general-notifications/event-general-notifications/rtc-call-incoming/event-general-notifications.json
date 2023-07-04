@@ -1,0 +1,57 @@
+{
+  "eventClassName": "com.backbase.rtc.event.spec.v1.CallInitiated",
+  "id": "rtc-call-initiated",
+  "eventBusinessName": "RTC Call Initiated",
+  "recipientType": "subscription",
+  "extractor": "#this['arrangementId']", ??
+  "subscriptionType": "arrangement", ??
+  "eventSlicer": "#this['transactions']", ??
+  "generalNotifications": [
+    {
+      "id": "rtc-voice-call-initiated",
+      "name": "RTC Voice Call Initiated",
+      "userPreferenceEnabled": true,
+      "deliveryOptions": [
+        {
+          "channel": "push",
+          "channelSettings": "/rtc-voice-call-initiated/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "rtc-view",
+            "data": "{\"customerId\":\"{{event.customerId}}\",\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.csrName}}\",\"messageType\":\"{{event.callType}}}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/rtc-voice-call-initiated/push/en_US/engagement-template.json",
+              "templateName": "rtc-voice-call-initiated-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rtc-video-call-initiated",
+      "name": "RTC Video Call Initiated",
+      "userPreferenceEnabled": true,
+      "deliveryOptions": [
+        {
+          "channel": "push",
+          "channelSettings": "/rtc-video-call-initiated/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "rtc-view",
+            "data": "{\"customerId\":\"{{event.customerId}}\",\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.csrName}}\",\"messageType\":\"{{event.callType}}}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/rtc-video-call-initiated/push/en_US/engagement-template.json",
+              "templateName": "rtc-video-call-initiated-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

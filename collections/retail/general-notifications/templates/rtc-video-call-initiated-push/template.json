@@ -1,0 +1,8 @@
+{
+  "name": "rtc-video-call-initiated-push",
+  "description": "Push notification template for RTC Video Call Initiated general notification",
+  "title": "RTC Video Call Initiated",
+  "engagement": "general-notification",
+  "channel": "push",
+  "placeholderGroups": ["rtcCallIncoming", "userProfile"]
+}

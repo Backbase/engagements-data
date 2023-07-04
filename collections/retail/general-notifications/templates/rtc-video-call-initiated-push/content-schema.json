@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Incoming Video Call",
+  "description": "Action event for push notifications when a video call is initiated",
+  "type": "object",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string",
+      "metadata": {
+        "placeholderText": "Enter a title (max. 50 chars)",
+        "renderingHint": "textarea",
+        "customErrorMessages" :  {
+          "required": "Please provide a title"
+        }
+      },
+      "default": "Incoming video call"
+    },
+    "body": {
+      "title": "Body",
+      "type": "string",
+      "metadata": {
+        "placeholderText": "Enter a body message (max. 2000 chars)",
+        "renderingHint": "textarea",
+        "customErrorMessages" :  {
+          "required": "Please provide a body text"
+        }
+      },
+      "default": "You are being invited to a video call"
+    }
+  },
+  "required": ["title", "body"]
+}

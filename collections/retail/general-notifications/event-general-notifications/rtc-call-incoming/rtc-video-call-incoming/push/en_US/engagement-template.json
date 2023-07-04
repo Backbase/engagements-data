@@ -1,0 +1,4 @@
+{
+  "title": "Incoming voice call",
+  "body": "{{event.employeeName}} is inviting you to a voice call"
+}
