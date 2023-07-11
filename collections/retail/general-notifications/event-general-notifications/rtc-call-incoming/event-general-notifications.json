@@ -1,5 +1,5 @@
 {
-  "eventClassName": "com.backbase.rtc.event.spec.v1.CallInitiated",
+  "eventClassName": "com.backbase.rtc.event.spec.v1.CallInitiatedEvent",
   "id": "rtc-call-initiated",
   "eventBusinessName": "RTC Call Initiated",
   "recipientType": "internal",
@@ -12,15 +12,15 @@
       "deliveryOptions": [
         {
           "channel": "push",
-          "channelSettings": "/rtc-voice-call-initiated/push/push_channel-settings.json",
+          "channelSettings": "/rtc-voice-call-incoming/push/push_channel-settings.json",
           "isEnabledByDefault": true,
           "routeInfo": {
             "whereTo": "rtc-view",
-            "data": "{\"customerId\":\"{{event.customerId}}\",\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.csrName}}\",\"messageType\":\"{{event.callType}}}"
+            "data": "{\"customerId\":\"{{event.customerId}}\",\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.csrName}}\",\"messageType\":\"{{event.callType}}\"}"
           },
           "engagementTemplates": [
             {
-              "path": "/rtc-voice-call-initiated/push/en_US/engagement-template.json",
+              "path": "/rtc-voice-call-incoming/push/en_US/engagement-template.json",
               "locale": "en_US"
             }
           ]
@@ -34,15 +34,15 @@
       "deliveryOptions": [
         {
           "channel": "push",
-          "channelSettings": "/rtc-video-call-initiated/push/push_channel-settings.json",
+          "channelSettings": "/rtc-video-call-incoming/push/push_channel-settings.json",
           "isEnabledByDefault": true,
           "routeInfo": {
             "whereTo": "rtc-view",
-            "data": "{\"customerId\":\"{{event.customerId}}\",\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.csrName}}\",\"messageType\":\"{{event.callType}}}"
+            "data": "{\"customerId\":\"{{event.customerId}}\",\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.csrName}}\",\"messageType\":\"{{event.callType}}\"}"
           },
           "engagementTemplates": [
             {
-              "path": "/rtc-video-call-initiated/push/en_US/engagement-template.json",
+              "path": "/rtc-video-call-incoming/push/en_US/engagement-template.json",
               "locale": "en_US"
             }
           ]
