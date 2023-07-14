@@ -16,7 +16,7 @@
           "isEnabledByDefault": true,
           "routeInfo": {
             "whereTo": "rtc-view",
-            "data": "{\"customerId\":\"{{event.customerId}}\",\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.employeeName}}\",\"messageType\":\"{{event.callType}}\"}"
+            "data": "{\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.employeeName}}\",\"messageType\":\"{{event.callType}}\"}"
           },
           "engagementTemplates": [
             {
@@ -38,7 +38,7 @@
           "isEnabledByDefault": true,
           "routeInfo": {
             "whereTo": "rtc-view",
-            "data": "{\"customerId\":\"{{event.customerId}}\",\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.csrName}}\",\"messageType\":\"{{event.callType}}\"}"
+            "data": "{\"conversationId\":\"{{event.conversationId}}\",\"employeeName\":\"{{event.csrName}}\",\"messageType\":\"{{event.callType}}\"}"
           },
           "engagementTemplates": [
             {
