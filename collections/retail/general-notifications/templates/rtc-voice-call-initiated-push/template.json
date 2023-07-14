@@ -1,8 +1,0 @@
-{
-  "name": "rtc-voice-call-initiated-push",
-  "description": "Push notification template for RTC Voice Call Initiated general notification",
-  "title": "RTC Voice Call Initiated",
-  "engagement": "general-notification",
-  "channel": "push",
-  "placeholderGroups": ["rtcCallIncoming", "userProfile"]
-}
