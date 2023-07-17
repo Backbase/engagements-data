@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
     <meta name="googlebot" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Libre Franklin:wght@300;500&display=swap");
 
         html,
         body {
@@ -19,7 +19,7 @@
         }
 
         body {
-            font-family: "Inter", sans-serif;
+            font-family: "Libre Franklin", sans-serif;
             width: 100vw;
             height: 100vh;
         }
@@ -31,91 +31,123 @@
             left: 0;
             bottom: 0;
             border-radius: 16px;
-            background: linear-gradient(0deg, #68cc66 0%, #44d7b6 100%);
+            background-color: rgba(0, 27, 70, 1);
             overflow: hidden;
         }
 
         .container,
         .background {
-            max-width: 492px;
+            max-width: 392px;
             margin: 0 auto;
         }
 
         .inner {
             position: relative;
-            z-index: 1;
             box-sizing: border-box;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 9.1% 12.2% 69.5% 8.5%;
             color: #ffffff;
         }
 
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 0 14% 6% 14%;
+        }
+
         .heading {
-            font-size: min(9vw, 45px);
-            line-height: normal;
+            font-size: min(9vw, 28px);
+            line-height: 2.25rem;
             font-weight: 500;
             margin: 0;
-            margin-bottom: 12px;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.025rem;
         }
 
         .subheading {
-            font-size: min(4.8vw, 24px);
-            line-height: normal;
-            margin-bottom: 12px;
-        }
-
-        .image-container {
-            position: absolute;
-            z-index: -1;
-            height: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            padding-top: 77%;
+            font-size: min(5vw, 14px);
+            font-style: normal;
+            font-weight: 300;
+            line-height: 1.25rem;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.025rem;
         }
 
         img {
             display: block;
-            position: absolute;
-            object-fit: contain;
+            align-self: flex-start;
             width: 100%;
-            height: 100%;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
         }
 
         .cta-btn {
-            display: inline-block;
-            align-self: flex-start;
-            margin-bottom: 18px;
-            padding: 8px 28px;
-            line-height: 1.5;
-            font-size: min(4.8vw, 24px);
-            font-weight: 600;
+            display: flex;
+            font-size: min(4.5vw, 14px);
+            font-weight: 300;
             text-align: center;
+            line-height: 1.5;
+            align-items: center;
             border: 0;
             outline: 0;
-            border-radius: 25px;
             color: #ffffff;
-            background-color: #0079c9;
             text-decoration: none;
         }
+
+        .cta-btn-icon{
+            background-color: #6170ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-right: 0.5rem;
+            height: min(10vw, 41px);
+            width: min(10vw, 41px);
+        }
+
+        .right-arrow{
+            border: solid #ffffff;
+            display: inline-block;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            margin-left: -2.5px;
+            padding: min(1.2vw, 1vh, 4.5px);
+            border-width: 0 min(1vw, 1vh, 2.5px) min(1vw, 1vh, 2.5px) 0;
+        }
+
+        @media screen and ( min-height: 450px ) {
+            .inner {
+                position: relative;
+                box-sizing: border-box;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                color: #ffffff;
+                padding: 1rem;
+            }
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="background"></div>
     <div class="container">
-        <div class="inner">
-            <h1 class="heading">{{title}}</h1>
-            <div class="subheading">{{message}}</div>
-            <a class="cta-btn" href="{{buttonLink}}" target="_blank" rel="noopener">{{buttonText}}</a>
-            <div class="image-container">
-                <img src="{{picture}}"/>
+        <div class="background"></div>
+        <div class="container">
+            <div class="inner">
+                <img alt="template picture" src="{{picture}}" />
+                <div class="content">
+                    <h1 class="heading">{{title}}</h1>
+                    <div class="subheading">{{message}}</div>
+                    <a class="cta-btn" href="{{buttonLink}}" target="_blank" rel="noopener">
+                        <span class="cta-btn-icon">
+                            <i class="right-arrow"> </i>    
+                        </span>
+                        {{buttonText}}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
