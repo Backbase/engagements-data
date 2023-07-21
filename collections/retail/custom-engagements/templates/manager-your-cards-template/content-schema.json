@@ -40,7 +40,7 @@
         "picture": {
           "title": "Image",
           "type": "file",
-          "default":"{{contextRoot}}/assets/manage_cards.png",
+          "default":"{{contextRoot}}/assets/light.png",
           "metadata": {
             "renderingHint": "image"
           }

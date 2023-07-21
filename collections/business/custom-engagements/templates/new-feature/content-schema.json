@@ -1,14 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Stay Safe and Healthy",
-  "description": "Protect yourself and your family with health insurance",
+  "title": "New feature",
+  "description": "Raise your invoicing game",
   "type": "object",
   "properties": {
     "subject": {
       "title": "Subject",
       "type": "string",
       "maxLength": 100,
-      "default": "We Care About You...",
+      "default": "New feature!",
       "metadata": {
         "placeholderText": "Enter a subject (max. 100 chars)",
         "escaping": false
@@ -22,25 +22,25 @@
           "title": "Title",
           "type": "string",
           "maxLength": 35,
-          "default": "Stay Safe and Healthy",
+          "default": "Raise your invoicing game",
           "metadata": {
-            "placeholderText": "Enter a title (max. 35 chars)"
+            "placeholderText": "Enter a title (max. 100 chars)"
           }
         },
         "message": {
           "title": "Message",
           "type": "string",
           "maxLength": 70,
-          "default": "Protect yourself and your family with health insurance",
+          "default": "Try our invoicing feature to create and send professional invoices, and easily match  incoming payments to your invoices.",
           "metadata": {
-            "placeholderText": "Enter a text (max. 70 chars)",
+            "placeholderText": "Enter a text (max. 100 chars)",
             "renderingHint": "textarea"
           }
         },
         "picture": {
           "title": "Image",
           "type": "file",
-          "default":"{{contextRoot}}/assets/covid-alert.png",
+          "default":"{{contextRoot}}/assets/dark.png",
           "metadata": {
             "renderingHint": "image"
           }
@@ -49,7 +49,7 @@
           "title": "Button text",
           "type": "string",
           "maxLength": 40,
-          "default": "Talk to Us",
+          "default": "Create an invoice",
           "metadata": {
             "placeholderText": "Enter a button text (max. 40 chars)"
           }

@@ -1,0 +1,9 @@
+{
+  "name": "blank-template",
+  "description": "Create Your Own Content",
+  "title": "Blank Template",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": true,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "positive-pay",
+  "description": "Take full control over your cards through our card management feature",
+  "title": "Positive pay",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}
