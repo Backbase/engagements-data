@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Remote Check Deposit Downtime",
+  "description": "We are doing repairs over the weekend",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "title": "Subject of message",
+      "type": "string",
+      "maxLength": 100,
+      "default": "Scheduled Weekend Maintenance Ahead",
+      "metadata": {
+        "placeholderText": "Enter a subject (max. 100 chars)",
+        "escaping": false
+      }
+    },
+    "body": {
+      "title": "Body of message",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 45,
+          "default": "Mobile apps unavailable evening of Oct 11",
+          "metadata": {
+            "placeholderText": "Enter a title (max. 45 chars)"
+          }
+        },
+        "message": {
+          "title": "Message",
+          "type": "string",
+          "maxLength": 177,
+          "default": "Your mobile banking apps won’t be available from 9:30 PM (PST) to 10:30 PM (PST) on Oct 11 because of maintenance tasks. You’ll still be able to bank online on our website app.",
+          "metadata": {
+            "placeholderText": "Enter a text (max. 177 chars)",
+            "renderingHint": "textarea"
+          }
+        },
+        "picture": {
+          "title": "Image",
+          "type": "file",
+          "default":"{{contextRoot}}/assets/light.png",
+          "metadata": {
+            "renderingHint": "image"
+          }
+        }
+      },
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  },
+  "required": [
+    "subject",
+    "title",
+    "message",
+    "picture",
+    "buttonText",
+    "buttonLink"
+  ]
+}

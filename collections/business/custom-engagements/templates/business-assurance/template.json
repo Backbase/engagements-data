@@ -1,0 +1,9 @@
+{
+  "name": "business-assurance-message-center",
+  "description": "Protect yourself and your employees with business insurance",
+  "title": "Insurance & Safety",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}

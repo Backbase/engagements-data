@@ -1,0 +1,9 @@
+{
+  "name": "first-time-welcome-center",
+  "description": "Thank you for joining us Explore our new products",
+  "title": "Welcome",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}

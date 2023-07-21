@@ -1,0 +1,9 @@
+{
+  "name": "new-feature",
+  "description": "Raise your invoicing game",
+  "title": "New feature",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png"
+}

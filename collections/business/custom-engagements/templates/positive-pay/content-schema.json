@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Positive pay",
+  "description": "Prevent fraud",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "title": "Subject of message",
+      "type": "string",
+      "maxLength": 100,
+      "default": "Set up positive pay",
+      "metadata": {
+        "placeholderText": "Enter a subject (max. 100 chars)",
+        "escaping": false
+      }
+    },
+    "body": {
+      "title": "Body of message",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 35,
+          "default": "Stop check fraud in its tracks",
+          "metadata": {
+            "placeholderText": "Enter a title (max. 35 chars)"
+          }
+        },
+        "message": {
+          "title": "Message",
+          "type": "string",
+          "maxLength": 120,
+          "default": "Check fraud is increasing across the country. Use positive pay to make sure that your business won’t become a victim.",
+          "metadata": {
+            "placeholderText": "Enter a text (max. 120 chars)",
+            "renderingHint": "textarea"
+          }
+        },
+        "picture": {
+          "title": "Image",
+          "type": "file",
+          "default":"{{contextRoot}}/assets/light.png",
+          "metadata": {
+            "renderingHint": "image"
+          }
+        },
+        "buttonText": {
+          "title": "Button text",
+          "type": "string",
+          "maxLength": 40,
+          "default": "Set up positive pay",
+          "metadata": {
+            "placeholderText": "Enter a button text (max. 40 chars)"
+          }
+        },
+        "buttonLink": {
+          "title": "Button link",
+          "type": "string",
+          "maxLength": 100,
+          "default": "",
+          "metadata": {
+            "placeholderText": "Enter a button link (max. 100 chars)",
+            "renderingHint": "url"
+          }
+        }
+      },
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  },
+  "required": [
+    "subject",
+    "title",
+    "message",
+    "picture",
+    "buttonText",
+    "buttonLink"
+  ]
+}
