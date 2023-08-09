@@ -37,6 +37,12 @@
         "title": "Previous Balance Formatted",
         "description": "Formatted Previous Balance according to locale",
         "value": "{{formatAmount event.previousBalance locale}}"
+      },
+      {
+        "name": "amount-threshold",
+        "title": "Amount Threshold",
+        "description": "Current threshold specified by user",
+        "value": "{{formatAmount preference.amount locale}}"
       }
     ]
   }
