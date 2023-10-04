@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### New/Improved
+
+- Add Contacts File Upload General Notifications for business
+
 ## [0.26.0] - 2023-06-20
 
 ### New/Improved

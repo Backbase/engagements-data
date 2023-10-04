@@ -1,0 +1,52 @@
+{
+  "eventClassName": "com.backbase.dbs.contactmanager.contact.event.spec.v1.ContactsFileImportFinishedEvent",
+  "id": "contacts-file-upload-finished",
+  "eventBusinessName": "Contacts File Upload Finished",
+  "recipientType": "internal",
+  "extractor": "#this['internalUserId']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "contacts-file-upload-completed",
+      "name": "Contacts File Upload Completed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'SUCCESS'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "contacts-file-upload-completed/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/contacts-file-upload-completed/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contacts-file-upload-failed",
+      "name": "Contacts File Upload Failed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'FAILURE'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "contacts-file-upload-failed/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/contacts-file-upload-failed/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
