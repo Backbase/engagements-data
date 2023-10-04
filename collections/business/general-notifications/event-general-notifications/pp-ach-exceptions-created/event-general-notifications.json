@@ -16,7 +16,7 @@
                     "channel": "in-app-notification",
                     "channelSettings": "pp-ach-exceptions-created/in-app-notification/in-app_channel-settings.json",
                     "isEnabledByDefault": true,
-                    "isManageableByUser": true,
+                    "isManageableByUser": false,
                     "routeInfo": {
                         "whereTo": "positive-pay-ach-active-exceptions-view",
                         "data": ""
