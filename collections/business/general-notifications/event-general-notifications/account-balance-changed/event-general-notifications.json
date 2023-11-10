@@ -46,6 +46,18 @@
               "locale": "en_US"
             }
           ]
+        },
+        {
+          "channel": "sms",
+          "channelSettings": "/account-balance-low/sms/sms_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low/sms/en_US/engagement-template.json",
+              "templateName": "account-balance-low-sms",
+              "locale": "en_US"
+            }
+          ]
         }
       ]
     }
