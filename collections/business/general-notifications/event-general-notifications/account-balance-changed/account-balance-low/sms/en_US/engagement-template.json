@@ -1,0 +1,3 @@
+{
+    "message": "Hi {{{user.preferredName}}}, your {{{event.alias}}} balance just went below threshold. The current balance is {{formatAmount event.currentBalance locale}}"
+}
