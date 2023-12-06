@@ -1,0 +1,8 @@
+{
+    "name":"account-balance-low-email",
+    "description":"Email template for Account Balance Low general notification",
+    "title":"Account Balance Low",
+    "engagement": "general-notification",
+    "channel": "email",
+    "placeholderGroups":["accountBalanceChanged", "userProfile"]
+}

@@ -48,6 +48,18 @@
           ]
         },
         {
+          "channel": "email",
+          "channelSettings": "/account-balance-low/email/email_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low/email/en_US/engagement-template.json",
+              "templateName": "account-balance-low-email",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
           "channel": "sms",
           "channelSettings": "/account-balance-low/sms/sms_channel-settings.json",
           "isEnabledByDefault": false,
