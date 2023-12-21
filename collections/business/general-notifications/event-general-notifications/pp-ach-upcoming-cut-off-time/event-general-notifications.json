@@ -16,7 +16,6 @@
           "channel": "in-app-notification",
           "channelSettings": "pp-ach-upcoming-cut-off-time/in-app-notification/in-app_channel-settings.json",
           "isEnabledByDefault": true,
-          "isManageableByUser": true,
           "routeInfo": {
             "whereTo": "positive-pay-ach-active-exceptions-view",
             "data": ""
@@ -30,12 +29,8 @@
         },
         {
           "channel": "email",
+          "channelSettings": "pp-ach-upcoming-cut-off-time/email/email_channel-settings.json",
           "isEnabledByDefault": false,
-          "isManageableByUser": true,
-          "routeInfo": {
-            "whereTo": "positive-pay-ach-active-exceptions-view",
-            "data": ""
-          },
           "engagementTemplates": [
             {
               "path": "/pp-ach-upcoming-cut-off-time/email/en_US/engagement-template.json",

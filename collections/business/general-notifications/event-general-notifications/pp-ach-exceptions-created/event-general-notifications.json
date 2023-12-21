@@ -16,7 +16,6 @@
                     "channel": "in-app-notification",
                     "channelSettings": "pp-ach-exceptions-created/in-app-notification/in-app_channel-settings.json",
                     "isEnabledByDefault": true,
-                    "isManageableByUser": true,
                     "routeInfo": {
                         "whereTo": "positive-pay-ach-active-exceptions-view",
                         "data": ""
@@ -32,11 +31,6 @@
                     "channel": "email",
                     "channelSettings": "pp-ach-exceptions-created/email/email_channel-settings.json",
                     "isEnabledByDefault": false,
-                    "isManageableByUser": true,
-                    "routeInfo": {
-                        "whereTo": "positive-pay-ach-active-exceptions-view",
-                        "data": ""
-                    },
                     "engagementTemplates": [
                         {
                             "path": "/pp-ach-exceptions-created/email/en_US/engagement-template.json",
