@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div>
+  <p>Dear {{{user.preferredName}}},</p>
+  <br>
+  <p>The phone number you use for online banking was removed on {{ formatDate event.dateTime 'MMMM d yyyy \'at\' HH:mm:ss z' 'en' 'US/Eastern' }}.</p>
+  <br>
+  <p>If this was you:</p>
+  <ul>
+    <li>You don't have to do anything</li>
+  </ul>
+  <p>If this wasn't you:</p>
+  <ul>
+    <li>Contact us right away. You should also:</li>
+    <ul>
+      <li>Change your password, and check your online banking for activity.</li>
+      <li>Make sure your phone numbers on online banking are correct.</li>
+    </ul>
+  </ul>
+  <p>Regards,</p>
+  <p>Backbase Bank</p>
+</div>
+</body>
+</html>
