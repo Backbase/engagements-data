@@ -1,0 +1,28 @@
+{
+  "eventClassName": "com.backbase.identity.device.event.spec.v1.DeviceAddedEvent",
+  "id": "device-registered",
+  "eventBusinessName": "Device Registered",
+  "recipientType": "internal",
+  "extractor": "#this['internalUserId']",
+  "generalNotifications": [
+    {
+      "id": "device-registered",
+      "name": "Device Registered",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/device-registered/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/device-registered/email/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+From 513b5e2b1d3587b0e22e32a1e100a49c1ab67a43 Mon Sep 17 00:00:00 2001
+From: Christopher Morgan
+ <77390968+christopherm-backbase@users.noreply.github.com>
+Date: Wed, 10 Jan 2024 14:59:29 +0000
+Subject: [PATCH] Add device-registered and device-removed general
+ notifications for retail & business.
+
+---
+ .../email/email_channel-settings.json         |  3 ++
+ .../email/en_US/engagement-template.json      |  4 ++
+ .../event-general-notifications.json          | 28 +++++++++++++
+ .../email/email_channel-settings.json         |  3 ++
+ .../email/en_US/engagement-template.json      |  4 ++
+ .../event-general-notifications.json          | 28 +++++++++++++
+ .../email/email_channel-settings.json         |  3 ++
+ .../email/en_US/engagement-template.json      |  4 ++
+ .../event-general-notifications.json          | 28 +++++++++++++
+ .../email/email_channel-settings.json         |  3 ++
+ .../email/en_US/engagement-template.json      |  4 ++
+ .../event-general-notifications.json          | 28 +++++++++++++
+ documentation/EVENT_GENERAL_NOTIFICATIONS.md  | 42 ++++++++++---------
+ 13 files changed, 162 insertions(+), 20 deletions(-)
+ create mode 100644 collections/business/general-notifications/event-general-notifications/device-registered/device-registered/email/email_channel-settings.json
+ create mode 100644 collections/business/general-notifications/event-general-notifications/device-registered/device-registered/email/en_US/engagement-template.json
+ create mode 100644 collections/business/general-notifications/event-general-notifications/device-registered/event-general-notifications.json
+ create mode 100644 collections/business/general-notifications/event-general-notifications/device-removed/device-removed/email/email_channel-settings.json
+ create mode 100644 collections/business/general-notifications/event-general-notifications/device-removed/device-removed/email/en_US/engagement-template.json
+ create mode 100644 collections/business/general-notifications/event-general-notifications/device-removed/event-general-notifications.json
+ create mode 100644 collections/retail/general-notifications/event-general-notifications/device-registered/device-registered/email/email_channel-settings.json
+ create mode 100644 collections/retail/general-notifications/event-general-notifications/device-registered/device-registered/email/en_US/engagement-template.json
+ create mode 100644 collections/retail/general-notifications/event-general-notifications/device-registered/event-general-notifications.json
+ create mode 100644 collections/retail/general-notifications/event-general-notifications/device-removed/device-removed/email/email_channel-settings.json
+ create mode 100644 collections/retail/general-notifications/event-general-notifications/device-removed/device-removed/email/en_US/engagement-template.json
+ create mode 100644 collections/retail/general-notifications/event-general-notifications/device-removed/event-general-notifications.json
+
+diff --git a/collections/business/general-notifications/event-general-notifications/device-registered/device-registered/email/email_channel-settings.json b/collections/business/general-notifications/event-general-notifications/device-registered/device-registered/email/email_channel-settings.json
+new file mode 100644
+index 0000000..12b303c
+--- /dev/null
++++ b/collections/business/general-notifications/event-general-notifications/device-registered/device-registered/email/email_channel-settings.json
+@@ -0,0 +1,3 @@
++{
++    "from": "engage-qa@backbase.com"
++}
+\ No newline at end of file
+diff --git a/collections/business/general-notifications/event-general-notifications/device-registered/device-registered/email/en_US/engagement-template.json b/collections/business/general-notifications/event-general-notifications/device-registered/device-registered/email/en_US/engagement-template.json
+new file mode 100644
+index 0000000..6684500
+--- /dev/null
++++ b/collections/business/general-notifications/event-general-notifications/device-registered/device-registered/email/en_US/engagement-template.json
+@@ -0,0 +1,4 @@
++{
++    "subject": "New device registered",
++    "body": "Dear {{{user.preferredName}}} {{{user.familyName}}},\n\n A device, {{#if event.friendlyName}}\"{{{event.friendlyName}}}\" {{/if}}was registered to your online banking on {{ formatDate event.created 'dd-MMMM-yyyy \\'at\\' HH:mm:ss z' 'en' 'US/Eastern' }}.\n\nIf this was you:\n\n\tYou're good to go! We'll remember this device in the future.\n\n\nIf you don't want this device remembered:\n\n\n\tYou can go to Backbase and remove it. This will help keep your account more secure.\n\n\nIf this wasn't you:\n\tChange your password right away, and check your online banking for activity\n\tRemove this device from your online banking\n\n\nRegards, \nBackbase Bank"
++}
+\ No newline at end of file
+diff --git a/collections/business/general-notifications/event-general-notifications/device-registered/event-general-notifications.json b/collections/business/general-notifications/event-general-notifications/device-registered/event-general-notifications.json
+new file mode 100644
+index 0000000..740aa28
+--- /dev/null
++++ b/collections/business/general-notifications/event-general-notifications/device-registered/event-general-notifications.json
+@@ -0,0 +1,28 @@
++{
++  "eventClassName": "com.backbase.identity.device.event.spec.v1.DeviceAddedEvent",
++  "id": "device-registered",
++  "eventBusinessName": "Device Registered",
++  "recipientType": "internal",
++  "extractor": "#this['internalUserId']",
++  "generalNotifications": [
++    {
++      "id": "device-registered",
++      "name": "Device Registered",
++      "userPreferenceEnabled": false,
++      "deliveryOptions": [
++        {
++          "channel": "email",
++          "channelSettings": "/device-registered/email/email_channel-settings.json",
++          "isEnabledByDefault": true,
++          "isManageableByUser": false,
++          "engagementTemplates": [
++            {
++              "path": "/device-registered/email/en_US/engagement-template.json",
++              "locale": "en_US"
++            }
++          ]
++        }
++      ]
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/collections/business/general-notifications/event-general-notifications/device-removed/device-removed/email/email_channel-settings.json b/collections/business/general-notifications/event-general-notifications/device-removed/device-removed/email/email_channel-settings.json
+new file mode 100644
+index 0000000..12b303c
+--- /dev/null
++++ b/collections/business/general-notifications/event-general-notifications/device-removed/device-removed/email/email_channel-settings.json
+@@ -0,0 +1,3 @@
++{
++    "from": "engage-qa@backbase.com"
++}
+\ No newline at end of file
+diff --git a/collections/business/general-notifications/event-general-notifications/device-removed/device-removed/email/en_US/engagement-template.json b/collections/business/general-notifications/event-general-notifications/device-removed/device-removed/email/en_US/engagement-template.json
+new file mode 100644
+index 0000000..40e18ac
+--- /dev/null
++++ b/collections/business/general-notifications/event-general-notifications/device-removed/device-removed/email/en_US/engagement-template.json
+@@ -0,0 +1,4 @@
++{
++    "subject": "Device removed",
++    "body": "Dear {{{user.preferredName}}} {{{user.familyName}}},\n\n A device, {{#if event.friendlyName}}\"{{{event.friendlyName}}}\" {{/if}}was removed from your online banking on {{ formatDate event.created 'dd-MMMM-yyyy \\'at\\' HH:mm:ss z' 'en' 'US/Eastern' }}.\n\nIf this was you:\n\n\tAll done! The device is now removed.\n\n\nIf you did not want to remove this device:\n\n\n\tYou can go to Backbase and add it again.\n\n\nIf this wasn't you:\n\tChange your password right away, and check your account for activity\n\tAdd the device again to your online banking\n\n\nRegards, \nBackbase Bank"
++}
+\ No newline at end of file
+diff --git a/collections/business/general-notifications/event-general-notifications/device-removed/event-general-notifications.json b/collections/business/general-notifications/event-general-notifications/device-removed/event-general-notifications.json
+new file mode 100644
+index 0000000..501fdf1
+--- /dev/null
++++ b/collections/business/general-notifications/event-general-notifications/device-removed/event-general-notifications.json
+@@ -0,0 +1,28 @@
++{
++  "eventClassName": "com.backbase.identity.device.event.spec.v1.DeviceRemovedEvent",
++  "id": "device-removed",
++  "eventBusinessName": "Device Removed",
++  "recipientType": "internal",
++  "extractor": "#this['internalUserId']",
++  "generalNotifications": [
++    {
++      "id": "device-removed",
++      "name": "Device Removed",
++      "userPreferenceEnabled": false,
++      "deliveryOptions": [
++        {
++          "channel": "email",
++          "channelSettings": "/device-removed/email/email_channel-settings.json",
++          "isEnabledByDefault": true,
++          "isManageableByUser": false,
++          "engagementTemplates": [
++            {
++              "path": "/device-removed/email/en_US/engagement-template.json",
++              "locale": "en_US"
++            }
++          ]
++        }
++      ]
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/collections/retail/general-notifications/event-general-notifications/device-registered/device-registered/email/email_channel-settings.json b/collections/retail/general-notifications/event-general-notifications/device-registered/device-registered/email/email_channel-settings.json
+new file mode 100644
+index 0000000..12b303c
+--- /dev/null
++++ b/collections/retail/general-notifications/event-general-notifications/device-registered/device-registered/email/email_channel-settings.json
+@@ -0,0 +1,3 @@
++{
++    "from": "engage-qa@backbase.com"
++}
+\ No newline at end of file
+diff --git a/collections/retail/general-notifications/event-general-notifications/device-registered/device-registered/email/en_US/engagement-template.json b/collections/retail/general-notifications/event-general-notifications/device-registered/device-registered/email/en_US/engagement-template.json
+new file mode 100644
+index 0000000..6684500
+--- /dev/null
++++ b/collections/retail/general-notifications/event-general-notifications/device-registered/device-registered/email/en_US/engagement-template.json
+@@ -0,0 +1,4 @@
++{
++    "subject": "New device registered",
++    "body": "Dear {{{user.preferredName}}} {{{user.familyName}}},\n\n A device, {{#if event.friendlyName}}\"{{{event.friendlyName}}}\" {{/if}}was registered to your online banking on {{ formatDate event.created 'dd-MMMM-yyyy \\'at\\' HH:mm:ss z' 'en' 'US/Eastern' }}.\n\nIf this was you:\n\n\tYou're good to go! We'll remember this device in the future.\n\n\nIf you don't want this device remembered:\n\n\n\tYou can go to Backbase and remove it. This will help keep your account more secure.\n\n\nIf this wasn't you:\n\tChange your password right away, and check your online banking for activity\n\tRemove this device from your online banking\n\n\nRegards, \nBackbase Bank"
++}
+\ No newline at end of file
+diff --git a/collections/retail/general-notifications/event-general-notifications/device-registered/event-general-notifications.json b/collections/retail/general-notifications/event-general-notifications/device-registered/event-general-notifications.json
+new file mode 100644
+index 0000000..740aa28
+--- /dev/null
++++ b/collections/retail/general-notifications/event-general-notifications/device-registered/event-general-notifications.json
+@@ -0,0 +1,28 @@
++{
++  "eventClassName": "com.backbase.identity.device.event.spec.v1.DeviceAddedEvent",
++  "id": "device-registered",
++  "eventBusinessName": "Device Registered",
++  "recipientType": "internal",
++  "extractor": "#this['internalUserId']",
++  "generalNotifications": [
++    {
++      "id": "device-registered",
++      "name": "Device Registered",
++      "userPreferenceEnabled": false,
++      "deliveryOptions": [
++        {
++          "channel": "email",
++          "channelSettings": "/device-registered/email/email_channel-settings.json",
++          "isEnabledByDefault": true,
++          "isManageableByUser": false,
++          "engagementTemplates": [
++            {
++              "path": "/device-registered/email/en_US/engagement-template.json",
++              "locale": "en_US"
++            }
++          ]
++        }
++      ]
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/collections/retail/general-notifications/event-general-notifications/device-removed/device-removed/email/email_channel-settings.json b/collections/retail/general-notifications/event-general-notifications/device-removed/device-removed/email/email_channel-settings.json
+new file mode 100644
+index 0000000..12b303c
+--- /dev/null
++++ b/collections/retail/general-notifications/event-general-notifications/device-removed/device-removed/email/email_channel-settings.json
+@@ -0,0 +1,3 @@
++{
++    "from": "engage-qa@backbase.com"
++}
+\ No newline at end of file
+diff --git a/collections/retail/general-notifications/event-general-notifications/device-removed/device-removed/email/en_US/engagement-template.json b/collections/retail/general-notifications/event-general-notifications/device-removed/device-removed/email/en_US/engagement-template.json
+new file mode 100644
+index 0000000..40e18ac
+--- /dev/null
++++ b/collections/retail/general-notifications/event-general-notifications/device-removed/device-removed/email/en_US/engagement-template.json
+@@ -0,0 +1,4 @@
++{
++    "subject": "Device removed",
++    "body": "Dear {{{user.preferredName}}} {{{user.familyName}}},\n\n A device, {{#if event.friendlyName}}\"{{{event.friendlyName}}}\" {{/if}}was removed from your online banking on {{ formatDate event.created 'dd-MMMM-yyyy \\'at\\' HH:mm:ss z' 'en' 'US/Eastern' }}.\n\nIf this was you:\n\n\tAll done! The device is now removed.\n\n\nIf you did not want to remove this device:\n\n\n\tYou can go to Backbase and add it again.\n\n\nIf this wasn't you:\n\tChange your password right away, and check your account for activity\n\tAdd the device again to your online banking\n\n\nRegards, \nBackbase Bank"
++}
+\ No newline at end of file
+diff --git a/collections/retail/general-notifications/event-general-notifications/device-removed/event-general-notifications.json b/collections/retail/general-notifications/event-general-notifications/device-removed/event-general-notifications.json
+new file mode 100644
+index 0000000..501fdf1
+--- /dev/null
++++ b/collections/retail/general-notifications/event-general-notifications/device-removed/event-general-notifications.json
+@@ -0,0 +1,28 @@
++{
++  "eventClassName": "com.backbase.identity.device.event.spec.v1.DeviceRemovedEvent",
++  "id": "device-removed",
++  "eventBusinessName": "Device Removed",
++  "recipientType": "internal",
++  "extractor": "#this['internalUserId']",
++  "generalNotifications": [
++    {
++      "id": "device-removed",
++      "name": "Device Removed",
++      "userPreferenceEnabled": false,
++      "deliveryOptions": [
++        {
++          "channel": "email",
++          "channelSettings": "/device-removed/email/email_channel-settings.json",
++          "isEnabledByDefault": true,
++          "isManageableByUser": false,
++          "engagementTemplates": [
++            {
++              "path": "/device-removed/email/en_US/engagement-template.json",
++              "locale": "en_US"
++            }
++          ]
++        }
++      ]
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/documentation/EVENT_GENERAL_NOTIFICATIONS.md b/documentation/EVENT_GENERAL_NOTIFICATIONS.md
+index 6660024..6507056 100644
+--- a/documentation/EVENT_GENERAL_NOTIFICATIONS.md
++++ b/documentation/EVENT_GENERAL_NOTIFICATIONS.md
+@@ -5,26 +5,28 @@ This documents builds on our official Community guide, so be sure to read that f
+ ### Reference General Notifications
+ Backbase provides the following reference General Notification that can be adopted to your project needs.
+ 
+-| Id                                           | Description                                                                                                                                                    | Trigger Event                                                                                     | Channels                      |
+-|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|-------------------------------|
+-| `account-balance-low`                        | Notify users when their account balance drops below their specified threshold amount as per their specific notification preference for the account             | `com.backbase.dbs.actions.reactive.event.spec.v2.AccountBalanceChangedEvent`                      | `in-app-notification`, `push` |
+-| `account-statement-ready`                    | Notify users when account statement is ready                                                                                                                   | `com.backbase.dbs.actions.reactive.event.spec.v2.AccountStatementReadyEvent`                      | `in-app-notification`, `push` |
+-| `account-statements-archive-download-ready`  | Notify users when account statements archive is ready to download                                                                                              | `com.backbase.account.statement.event.spec.v1.AccountStatementsArchiveCreationCompletedEvent`     | `in-app-notification`         |
+-| `account-statements-archive-creation-failed` | Notify users when account statements archive creation failed and cannot be downloaded                                                                          | `com.backbase.account.statement.event.spec.v1.AccountStatementsArchiveCreationFailedEvent`        | `in-app-notification`         |
+-| `audit-export-ready`                         | Notify users when the Audit Export CSV file they initiated is ready to download                                                                                | `com.backbase.audit.persistence.event.spec.v1.AuditExportCompletedEvent`                          | `in-app-notification`         |
+-| `audit-export-failed`                        | Notify users when the Audit Export CSV file they initiated has failed                                                                                          | `com.backbase.audit.persistence.event.spec.v1.AuditExportCompletedEvent`                          | `in-app-notification`         |
+-| `contacts-file-upload-completed`             | Notify users when contacts file upload is completed and contacts data imported to the system                                                                   | `com.backbase.dbs.contactmanager.contact.event.spec.v1.ContactsFileImportFinishedEvent`           | `in-app-notification`         |
+-| `contacts-file-upload-failed`                | Notify users when contacts file upload failed and cannot be imported                                                                                           | `com.backbase.dbs.contactmanager.contact.event.spec.v1.ContactsFileImportFinishedEvent`           | `in-app-notification`         |
+-| `new-message-received`                       | Notify users when there is a new message or a reply to their existing conversation                                                                             | `com.backbase.dbs.messages.pandp.event.spec.v4.MessageReceivedEvent`                              | `in-app-notification`, `push` |
+-| `new-transaction-occurred`                   | Notify users when a new transaction is posted to their account for which they have enabled their notification preference for the account                       | `com.backbase.transaction.persistence.event.spec.v1.TransactionsAddedEvent`                       | `in-app-notification`, `push` |
+-| `contact-status-updated-rejected`            | Notify users when contact status is updated (rejected) as per their specific notification preference for the account                                           | `com.backbase.party.persistence.event.spec.v1.PartyUpdatedEvent`                                  | `in-app-notification`         |
+-| `payment-status-updated-rejected`            | Notify users when payment status is updated (rejected) as per their specific notification preference for the account                                           | `com.backbase.payment.event.spec.v1.PaymentOrderUpdatedEvent`                                     | `in-app-notification`         |
+-| `payment-to-approve`                         | Notify users when the payment to approve is received as per their specific notification preference for the account                                             | `com.backbase.dbs.approval.persistence.event.spec.v3.PendingApprovalEvent`                        | `in-app-notification`         |
+-| `contact-to-approve`                         | Notify users when the contact to approve is received as per their specific notification preference for the account                                             | `com.backbase.dbs.approval.persistence.event.spec.v3.PendingApprovalEvent`                        | `in-app-notification`         |
+-| `conv-hist-export-ready`                     | Notify users when the Conversation History Export file they initiated is ready to download                                                                     | `com.backbase.employee.actions.event.spec.v1.ConvHistExportCompletedEvent`                        | `in-app-notification`         |
+-| `conv-hist-export-failed`                    | Notify users when the Conversation History Export file they initiated has failed                                                                               | `com.backbase.employee.actions.event.spec.v1.ConvHistExportCompletedEvent`                        | `in-app-notification`         |
+-| `pp-ach-exceptions-created`                  | Notify users about newly created exceptions to resolve                                                                                                         | `com.backbase.positivepay.event.spec.v1.PpAchExceptionsCreatedEvent`                              | `in-app-notification`         |
+-| `pp-ach-upcoming-cut-off-time`               | Notify users about about upcoming cut-off time event so users can review active exceptions during that time before default system decision is applied to them  | `com.backbase.positivepay.event.spec.v1.PpAchUpcomingCutOffTimeEvent`                             | `in-app-notification`         |
++| Id                                           | Description                                                                                                                                                   | Trigger Event                                                                                   | Channels                      |
++|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|-------------------------------|
++| `account-balance-low`                        | Notify users when their account balance drops below their specified threshold amount as per their specific notification preference for the account            | `com.backbase.dbs.actions.reactive.event.spec.v2.AccountBalanceChangedEvent`                    | `in-app-notification`, `push` |
++| `account-statement-ready`                    | Notify users when account statement is ready                                                                                                                  | `com.backbase.dbs.actions.reactive.event.spec.v2.AccountStatementReadyEvent`                    | `in-app-notification`, `push` |
++| `account-statements-archive-download-ready`  | Notify users when account statements archive is ready to download                                                                                             | `com.backbase.account.statement.event.spec.v1.AccountStatementsArchiveCreationCompletedEvent`   | `in-app-notification`         |
++| `account-statements-archive-creation-failed` | Notify users when account statements archive creation failed and cannot be downloaded                                                                         | `com.backbase.account.statement.event.spec.v1.AccountStatementsArchiveCreationFailedEvent`      | `in-app-notification`         |
++| `audit-export-ready`                         | Notify users when the Audit Export CSV file they initiated is ready to download                                                                               | `com.backbase.audit.persistence.event.spec.v1.AuditExportCompletedEvent`                        | `in-app-notification`         |
++| `audit-export-failed`                        | Notify users when the Audit Export CSV file they initiated has failed                                                                                         | `com.backbase.audit.persistence.event.spec.v1.AuditExportCompletedEvent`                        | `in-app-notification`         |
++| `contacts-file-upload-completed`             | Notify users when contacts file upload is completed and contacts data imported to the system                                                                  | `com.backbase.dbs.contactmanager.contact.event.spec.v1.ContactsFileImportFinishedEvent`         | `in-app-notification`         |
++| `contacts-file-upload-failed`                | Notify users when contacts file upload failed and cannot be imported                                                                                          | `com.backbase.dbs.contactmanager.contact.event.spec.v1.ContactsFileImportFinishedEvent`         | `in-app-notification`         |
++| `new-message-received`                       | Notify users when there is a new message or a reply to their existing conversation                                                                            | `com.backbase.dbs.messages.pandp.event.spec.v4.MessageReceivedEvent`                            | `in-app-notification`, `push` |
++| `new-transaction-occurred`                   | Notify users when a new transaction is posted to their account for which they have enabled their notification preference for the account                      | `com.backbase.transaction.persistence.event.spec.v1.TransactionsAddedEvent`                     | `in-app-notification`, `push` |
++| `contact-status-updated-rejected`            | Notify users when contact status is updated (rejected) as per their specific notification preference for the account                                          | `com.backbase.party.persistence.event.spec.v1.PartyUpdatedEvent`                                | `in-app-notification`         |
++| `payment-status-updated-rejected`            | Notify users when payment status is updated (rejected) as per their specific notification preference for the account                                          | `com.backbase.payment.event.spec.v1.PaymentOrderUpdatedEvent`                                   | `in-app-notification`         |
++| `payment-to-approve`                         | Notify users when the payment to approve is received as per their specific notification preference for the account                                            | `com.backbase.dbs.approval.persistence.event.spec.v3.PendingApprovalEvent`                      | `in-app-notification`         |
++| `contact-to-approve`                         | Notify users when the contact to approve is received as per their specific notification preference for the account                                            | `com.backbase.dbs.approval.persistence.event.spec.v3.PendingApprovalEvent`                      | `in-app-notification`         |
++| `conv-hist-export-ready`                     | Notify users when the Conversation History Export file they initiated is ready to download                                                                    | `com.backbase.employee.actions.event.spec.v1.ConvHistExportCompletedEvent`                      | `in-app-notification`         |
++| `conv-hist-export-failed`                    | Notify users when the Conversation History Export file they initiated has failed                                                                              | `com.backbase.employee.actions.event.spec.v1.ConvHistExportCompletedEvent`                      | `in-app-notification`         |
++| `pp-ach-exceptions-created`                  | Notify users about newly created exceptions to resolve                                                                                                        | `com.backbase.positivepay.event.spec.v1.PpAchExceptionsCreatedEvent`                            | `in-app-notification`         |
++| `pp-ach-upcoming-cut-off-time`               | Notify users about about upcoming cut-off time event so users can review active exceptions during that time before default system decision is applied to them | `com.backbase.positivepay.event.spec.v1.PpAchUpcomingCutOffTimeEvent`                           | `in-app-notification`         |
++| `device-added`                               | A device is registered to an account                                                                                                                          | `com.backbase.identity.device.event.spec.v1.DeviceAddedEvent`                                   | `email`                       |
++| `device-removed`                             | A device is removed from an account                                                                                                                           | `com.backbase.identity.device.event.spec.v1.DeviceRemovedEvent`                                 | `email`                       |
+ 
+ ### Backbase Events
+ Below is a list of all the Backbase events that can be used to trigger your custom General Notification.
+-- 
+2.41.0
+
