@@ -1,0 +1,31 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.DeletePostalAddressSecNotEvent",
+  "id": "postal-address-deleted",
+  "eventBusinessName": "Postal Address Deleted",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "postal-address-deleted",
+      "name": "Postal Address Deleted",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/postal-address-deleted/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Mailing address removed from online banking",
+                "body": "file:/postal-address-deleted/email/assets/postal-address-deleted-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
