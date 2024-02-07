@@ -1,0 +1,33 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.UpdateEmailSecNotEvent",
+  "id": "update-email-address",
+  "eventBusinessName": "Update Email Address",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "emailExtractor": "!#triggeredEvent['newPrimaryFlagValue'] && !#triggeredEvent['previousPrimaryFlagValue'] ?  #triggeredEvent['primaryEmail'] : new String[] {#triggeredEvent['primaryEmail'], #triggeredEvent['newValue']}",
+  "generalNotifications": [
+    {
+      "id": "update-email-address",
+      "name": "Update email address",
+      "userPreferenceEnabled": false,
+      "additionalFilterLogic": "#triggeredEvent['primaryEmail'] != null",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/update-email/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Email address for online banking was changed",
+                "body": "file:/update-email/email/assets/update-email-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
