@@ -1,0 +1,31 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.ChangeOwnPasswordSecNotEvent",
+  "id": "password-changed",
+  "eventBusinessName": "Password Changed",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "password-changed",
+      "name": "Password Changed",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/password-changed/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Password changed",
+                "body": "file:/password-changed/email/assets/password-changed-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
