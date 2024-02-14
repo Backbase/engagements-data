@@ -5,6 +5,7 @@
 ### New/Improved
 
 - Add Contacts File Upload General Notifications for business
+- Add general notification for Positive Pay Checks events `Exception Created` and `CutOff Time`
 
 ## [0.26.0] - 2023-06-20
 
