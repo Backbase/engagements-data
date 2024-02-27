@@ -1,0 +1,36 @@
+{
+  "eventClassName": "com.backbase.paymentbatch.event.spec.v1.BatchOrderStatusUpdatedEvent",
+  "id": "batch-status-updated",
+  "eventBusinessName": "Batch Status Updated",
+  "recipientType": "internal",
+  "extractor": "#this['internalUserId']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "batch-status-updated",
+      "name": "Batch Status Updated",
+      "userPreferenceEnabled": true,
+      "manageable": true,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'REJECTED' || (#triggeredEvent['status'] == 'PROCESSED' && #triggeredEvent['rejectedTransactionsCount'] >= 1)",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/batch-status-updated/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "batch-view",
+            "data": "{\"id\":\"{{event.id}}\",\"batchType\":\"{{event.type}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/batch-status-updated/in-app-notification/en_US/engagement-template.json",
+              "templateName": "batch-status-updated-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
