@@ -5,6 +5,7 @@
   "engagement": "general-notification",
   "channel": "in-app-notification",
   "placeholderGroups": [
+    "pendingApproval",
     "userProfile"
   ]
 }
