@@ -1,0 +1,33 @@
+{
+    "eventClassName": "com.backbase.positivepay.event.spec.v1.PpCheckExceptionsCreatedEvent",
+    "id": "pp-check-exceptions-created",
+    "eventBusinessName": "Positive Pay Check Exceptions Created",
+    "recipientType": "subscription",
+    "extractor": "#this['arrangementId']",
+    "subscriptionType": "arrangement",
+    "generalNotifications": [
+      {
+        "id": "pp-check-exceptions-created",
+        "name": "Positive Pay Check Exceptions Created",
+        "userPreferenceEnabled": true,
+        "manageable": false,
+        "deliveryOptions": [
+          {
+            "channel": "in-app-notification",
+            "channelSettings": "pp-check-exceptions-created/in-app-notification/in-app_channel-settings.json",
+            "isEnabledByDefault": true,
+            "routeInfo": {
+              "whereTo": "positive-pay-check-active-exceptions-view",
+              "data": ""
+            },
+            "engagementTemplates": [
+              {
+                "path": "/pp-check-exceptions-created/in-app-notification/en_US/engagement-template.json",
+                "locale": "en_US"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
