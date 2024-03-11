@@ -6,6 +6,7 @@
 
 - Add Contacts File Upload General Notifications for business
 - Add general notification for Positive Pay Checks events `Exception Created` and `CutOff Time`
+- Add general notification for Payment Batch event `Batch status updated` and Batch Pending Approval event `Batch to approve`
 
 ## [0.26.0] - 2023-06-20
 

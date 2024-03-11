@@ -1,0 +1,11 @@
+{
+  "name": "batch-status-updated-in-app-notification",
+  "description": "In-app notification template for Batch Status Updated general notification",
+  "title": "Batch Status Updated",
+  "engagement": "general-notification",
+  "channel": "in-app-notification",
+  "placeholderGroups": [
+    "batchStatusUpdated",
+    "userProfile"
+  ]
+}

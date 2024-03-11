@@ -87,6 +87,31 @@
           ]
         }
       ]
+    },
+    {
+      "id": "batch-to-approve",
+      "name": "Batch To Approve",
+      "userPreferenceEnabled": true,
+      "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Batch'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/batch-to-approve/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "batch-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\", \"businessFunction\":\"{{event.approval.function}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/batch-to-approve/in-app-notification/en_US/engagement-template.json",
+              "templateName": "batch-to-approve-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
