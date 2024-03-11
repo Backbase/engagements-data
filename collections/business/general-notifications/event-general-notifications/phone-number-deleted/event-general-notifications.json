@@ -1,0 +1,31 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.DeletePhoneNumberSecNotEvent",
+  "id": "phone-number-deleted",
+  "eventBusinessName": "Phone Number Deleted",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "phone-number-deleted",
+      "name": "Phone number deleted",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/phone-number-deleted/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Phone number removed from online banking",
+                "body": "file:/phone-number-deleted/email/assets/delete-phone-number-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

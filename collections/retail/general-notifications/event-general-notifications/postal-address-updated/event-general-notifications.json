@@ -1,0 +1,31 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.UpdatePostalAddressSecNotEvent",
+  "id": "postal-address-updated",
+  "eventBusinessName": "Postal Address Updated",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "postal-address-updated",
+      "name": "Postal Address Updated",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/postal-address-updated/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Mailing address for online banking was changed",
+                "body": "file:/postal-address-updated/email/assets/postal-address-updated-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

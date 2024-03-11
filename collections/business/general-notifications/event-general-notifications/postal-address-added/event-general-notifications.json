@@ -1,0 +1,31 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.AddPostalAddressSecNotEvent",
+  "id": "postal-address-added",
+  "eventBusinessName": "Postal Address Added",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "postal-address-added",
+      "name": "Postal Address Added",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/postal-address-added/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Mailing address added to online banking",
+                "body": "file:/postal-address-added/email/assets/postal-address-added-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

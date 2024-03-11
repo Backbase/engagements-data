@@ -1,0 +1,33 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.DeleteEmailSecNotEvent",
+  "id": "email-address-deleted",
+  "eventBusinessName": "Email Address Deleted",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "emailExtractor": "#triggeredEvent['previousContactEmail']",
+  "generalNotifications": [
+    {
+      "id": "email-address-deleted",
+      "name": "Email address deleted",
+      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/email-address-deleted/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Email address removed from online banking",
+                "body": "file:/email-address-deleted/email/assets/email-address-deleted-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "eventClassName": "com.backbase.identity.accountrecovery.event.spec.v1.PasswordResetFailureEvent",
+  "id": "password-reset-failure",
+  "eventBusinessName": "Password Reset Failure",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "password-reset-failure",
+      "name": "Password Reset Failure ",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/password-reset-failure/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Your password was not changed",
+                "body": "file:/password-reset-failure/email/assets/password-reset-failure-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
