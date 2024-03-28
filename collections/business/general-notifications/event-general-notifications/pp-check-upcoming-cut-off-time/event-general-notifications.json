@@ -16,6 +16,7 @@
           "channel": "in-app-notification",
           "channelSettings": "pp-check-upcoming-cut-off-time/in-app-notification/in-app_channel-settings.json",
           "isEnabledByDefault": true,
+          "isManageableByUser": false,
           "routeInfo": {
             "whereTo": "positive-pay-check-active-exceptions-view",
             "data": ""
