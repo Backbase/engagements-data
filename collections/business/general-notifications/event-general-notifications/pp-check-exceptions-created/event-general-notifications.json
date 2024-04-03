@@ -16,6 +16,7 @@
             "channel": "in-app-notification",
             "channelSettings": "pp-check-exceptions-created/in-app-notification/in-app_channel-settings.json",
             "isEnabledByDefault": true,
+            "isManageableByUser": false,
             "routeInfo": {
               "whereTo": "positive-pay-check-active-exceptions-view",
               "data": ""
@@ -23,6 +24,17 @@
             "engagementTemplates": [
               {
                 "path": "/pp-check-exceptions-created/in-app-notification/en_US/engagement-template.json",
+                "locale": "en_US"
+              }
+            ]
+          },
+          {
+            "channel": "email",
+            "channelSettings": "pp-check-exceptions-created/email/email_channel-settings.json",
+            "isEnabledByDefault": false,
+            "engagementTemplates": [
+              {
+                "path": "/pp-check-exceptions-created/email/en_US/engagement-template.json",
                 "locale": "en_US"
               }
             ]

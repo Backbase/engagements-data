@@ -16,6 +16,7 @@
           "channel": "in-app-notification",
           "channelSettings": "pp-check-upcoming-cut-off-time/in-app-notification/in-app_channel-settings.json",
           "isEnabledByDefault": true,
+          "isManageableByUser": false,
           "routeInfo": {
             "whereTo": "positive-pay-check-active-exceptions-view",
             "data": ""
@@ -23,6 +24,17 @@
           "engagementTemplates": [
             {
               "path": "/pp-check-upcoming-cut-off-time/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "email",
+          "channelSettings": "pp-check-upcoming-cut-off-time/email/email_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/pp-check-upcoming-cut-off-time/email/en_US/engagement-template.json",
               "locale": "en_US"
             }
           ]
