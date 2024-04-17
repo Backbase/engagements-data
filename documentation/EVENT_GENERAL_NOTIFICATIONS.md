@@ -31,6 +31,20 @@ Backbase provides the following reference General Notification that can be adopt
 | `pp-check-upcoming-cut-off-time`             | Notify users about about upcoming cut-off time event so users can review active exceptions during that time before default system decision is applied to them | `com.backbase.positivepay.event.spec.v1.PpAchUpcomingCutOffTimeEvent`                           | `in-app-notification`         |
 | `device-added`                               | A device is registered to an account                                                                                                                          | `com.backbase.identity.device.event.spec.v1.DeviceAddedEvent`                                   | `email`                       |
 | `device-removed`                             | A device is removed from an account                                                                                                                           | `com.backbase.identity.device.event.spec.v1.DeviceRemovedEvent`                                 | `email`                       |
+| `email-address-added` | Notify users when a new email address is added to their account      | `com.backbase.dbs.user.manager.event.spec.v2.AddEmailSecNotEvent` | `email`
+| `update-email-address` | Notify users when an email address is updated on their account      | `com.backbase.dbs.user.manager.event.spec.v2.UpdateEmailSecNotEvent` | `email`
+| `email-address-deleted` | Notify users when an email address is deleted from their account      | `com.backbase.dbs.user.manager.event.spec.v2.DeleteEmailSecNotEvent` | `email`
+| `phone-number-added` | Notify users when a new phone number is added to their account      | `com.backbase.dbs.user.manager.event.spec.v2.AddPhoneNumberSecNotEvent` | `email`
+| `phone-number-updated` | Notify users when a phone number is updated on their account      | `com.backbase.dbs.user.manager.event.spec.v2.UpdatePhoneNumberSecNotEvent` | `email`
+| `phone-number-deleted` | Notify users when a phone number is deleted from their account      | `com.backbase.dbs.user.manager.event.spec.v2.DeletePhoneNumberSecNotEvent` | `email`
+| `postal-address-added` | Notify users when a new postal address is added to their account      | `com.backbase.dbs.user.manager.event.spec.v2.AddPostalAddressSecNotEvent` | `email`
+| `postal-address-updated` | Notify users when a postal address is updated on their account      | `com.backbase.dbs.user.manager.event.spec.v2.UpdatePostalAddressSecNotEvent` | `email`
+| `postal-address-deleted` | Notify users when a postal address is deleted from their account      | `com.backbase.dbs.user.manager.event.spec.v2.DeletePostalAddressSecNotEvent` | `email`
+| `username-changed` | Notify users when their username is changed      | `com.backbase.dbs.user.manager.event.spec.v2.ChangeUsernameSecNotEvent` | `email`
+| `password-changed` | Notify users when their password is changed      | `com.backbase.dbs.user.manager.event.spec.v2.ChangeOwnPasswordSecNotEvent` | `email`
+| `password-reset-success` | Notify users when their password is reset successfully     | `com.backbase.identity.accountrecovery.event.spec.v1.PasswordResetSuccessEvent` | `email`
+| `password-reset-failure` | Notify users when their password reset fails     | `com.backbase.identity.accountrecovery.event.spec.v1.PasswordResetFailureEvent` | `email`
+
 
 ### Backbase Events
 Below is a list of all the Backbase events that can be used to trigger your custom General Notification.
