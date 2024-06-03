@@ -1,4 +1,4 @@
 {
-    "title": "Batch to approve",
-    "body": "Hi {{{user.preferredName}}}, you have a new batch of {{event.approval.amountDetails.currencyCode}} {{formatAmount event.approval.amountDetails.amount locale}} to approve."
-  }
+  "title": "Batch to approve",
+  "body": "Hi {{{user.preferredName}}}, you have a new batch of {{event.approval.amountDetails.currencyCode}} {{formatAmount event.approval.amountDetails.amount locale}} to approve."
+}
