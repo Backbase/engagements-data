@@ -1,0 +1,4 @@
+{
+  "title": "Payment to approve",
+  "body": "Hi {{{user.preferredName}}}, you have a new payment of {{event.approval.amountDetails.currencyCode}} {{formatAmount event.approval.amountDetails.amount locale}} to approve."
+}

@@ -1,0 +1,33 @@
+{
+  "eventClassName": "com.backbase.dbs.messages.pandp.event.spec.v4.NewMsgInAssignedConversationEvent",
+  "id": "new-message-in-assigned-conversation",
+  "eventBusinessName": "New Message In Assigned Conversation",
+  "recipientType": "internal",
+  "extractor": "#this['messageThreadAssignee']",
+  "generalNotifications": [
+    {
+      "id": "new-message-in-assigned-conversation",
+      "name": "New Message In Assigned Conversation",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "new-message-in-assigned-conversation/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-message-in-assigned-conversation/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

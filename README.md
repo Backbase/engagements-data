@@ -97,6 +97,22 @@ This repository has the following structure:
              │    │   └── repository.xml                        # A repository definitions
              │    └── ...
              └── ...
+    └── oneruntime                                              # Oeruntime collection
+        └── general-notifications                               # General notifications related collection
+            └── event-general-notifications     
+                ├── {event-general-notifications-name}              
+                │   ├── {general-notification-name}             # The folder to store channel specific data for general notifications.  
+                │   │   ├── in-app-notification                         
+                │   │   │   ├── {locale}                        # The folder to store locale-specific engagement templates
+                │   │   │   │   └── engagement-template.json    # The engagement template that contains default messages with the Handlebars expressions
+                │   │   │   └── in-app_channel-settings.json    # The channel settings for in-app notification channels per locale
+                │   │   └── push
+                │   │       ├── {locale} 
+                │   │       │   └── engagement-template.json 
+                │   │       └── in-app_channel-settings.json     
+                │   └── event-general-notifications.json        # The event with one or more general-notification definitions
+                └── ... 
+
 ```
 
 ### Repository definition configuration

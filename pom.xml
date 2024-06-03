@@ -12,7 +12,7 @@
     <name>Backbase :: Engagement Data</name>
 
     <properties>
-        <backbase-bom.version>2024.04</backbase-bom.version>
+        <backbase-bom.version>2024.06</backbase-bom.version>
         <docker.repo.url>ecr.backbase.com/development</docker.repo.url>
         <gitflow-maven-plugin.version>1.17.0</gitflow-maven-plugin.version>
         <docker-maven-plugin.version>0.40.2</docker-maven-plugin.version>
@@ -103,6 +103,17 @@
                             <arguments>business</arguments>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>create-collections-oneruntime</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>compile</phase>
+                        <configuration>
+                            <executable>${project.basedir}/ci/scripts/create-collections.sh</executable>
+                            <arguments>oneruntime</arguments>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
@@ -157,6 +168,25 @@
                                             <build>
                                                 <args>
                                                     <PRODUCT_LINE>business</PRODUCT_LINE>
+                                                </args>
+                                            </build>
+                                        </image>
+                                    </images>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>docker-build-oneruntime</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                                <configuration>
+                                    <images>
+                                        <image>
+                                            <name>${docker.repo.url}/${project.artifactId}-oneruntime:${backbase-bom.version}-${project.version}</name>
+                                            <build>
+                                                <args>
+                                                    <PRODUCT_LINE>oneruntime</PRODUCT_LINE>
                                                 </args>
                                             </build>
                                         </image>
@@ -250,6 +280,46 @@
         </profile>
 
         <profile>
+            <id>build-oneruntime</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <docker.skip>false</docker.skip>
+                <docker.skipPush>true</docker.skipPush>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>docker-build-oneruntime</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <images>
+                                <image>
+                                    <name>${docker.repo.url}/${project.artifactId}-oneruntime:${backbase-bom.version}-${project.version}</name>
+                                    <build>
+                                        <args>
+                                            <PRODUCT_LINE>oneruntime</PRODUCT_LINE>
+                                        </args>
+                                    </build>
+                                </image>
+                            </images>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
             <id>push-retail</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -323,6 +393,48 @@
                                     <build>
                                         <args>
                                             <PRODUCT_LINE>business</PRODUCT_LINE>
+                                        </args>
+                                    </build>
+                                </image>
+                            </images>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>push-oneruntime</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <docker.skipPush>false</docker.skipPush>
+                <docker.push.registry>${docker.repo.url}</docker.push.registry>
+                <docker.registry>${docker.repo.url}</docker.registry>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>docker-push-oneruntime</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>push</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <registry>${docker.repo.url}</registry>
+                            <images>
+                                <image>
+                                    <name>${docker.repo.url}/${project.artifactId}-oneruntime:${backbase-bom.version}-${project.version}</name>
+                                    <build>
+                                        <args>
+                                            <PRODUCT_LINE>oneruntime</PRODUCT_LINE>
                                         </args>
                                     </build>
                                 </image>

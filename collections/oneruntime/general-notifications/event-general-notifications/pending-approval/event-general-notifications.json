@@ -1,0 +1,120 @@
+{
+  "eventClassName": "com.backbase.dbs.approval.persistence.event.spec.v3.PendingApprovalEvent",
+  "id": "pending-approval",
+  "eventBusinessName": "Pending Approval",
+  "recipientType": "internal",
+  "extractor": "#this['approverIds']",
+  "serviceAgreementExtractor": "#this['approval']['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "payment-to-approve",
+      "name": "Payment To Approve",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Payments'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/payment-to-approve/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "payment-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/payment-to-approve/in-app-notification/en_US/engagement-template.json",
+              "templateName": "payment-to-approve-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/payment-to-approve/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "payment-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/payment-to-approve/push/en_US/engagement-template.json",
+              "templateName": "payment-to-approve-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact-to-approve",
+      "name": "Contact To Approve",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Contacts'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/contact-to-approve/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "party-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/contact-to-approve/in-app-notification/en_US/engagement-template.json",
+              "templateName": "contact-to-approve-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/contact-to-approve/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "party-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/contact-to-approve/push/en_US/engagement-template.json",
+              "templateName": "contact-to-approve-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "batch-to-approve",
+      "name": "Batch To Approve",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Batch'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/batch-to-approve/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "batch-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\", \"businessFunction\":\"{{event.approval.function}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/batch-to-approve/in-app-notification/en_US/engagement-template.json",
+              "templateName": "batch-to-approve-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
