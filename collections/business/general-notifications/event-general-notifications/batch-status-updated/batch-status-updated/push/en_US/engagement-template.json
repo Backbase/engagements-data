@@ -1,0 +1,4 @@
+{
+  "title": "{{#eq event.status 'REJECTED' }}Batch rejected{{else}}Batch contains rejected {{#eq event.rejectedTransactionsCount 1 }}transfer{{else}}transfers{{/eq}}{{/eq}}",
+  "body": "Hi {{{user.preferredName}}}, your batch {{event.name}} of {{event.totalInstructedAmount.currencyCode}} {{formatAmount event.totalInstructedAmount.amount locale}}{{#eq event.status 'REJECTED' }} has changed to rejected{{else}} contains {{event.rejectedTransactionsCount}} rejected {{#eq event.rejectedTransactionsCount 1 }}transfer{{else}}transfers{{/eq}}{{/eq}}"
+}
