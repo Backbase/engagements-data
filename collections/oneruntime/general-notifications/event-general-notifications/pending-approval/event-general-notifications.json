@@ -113,6 +113,22 @@
               "locale": "en_US"
             }
           ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/batch-to-approve/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "batch-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/batch-to-approve/push/en_US/engagement-template.json",
+              "templateName": "batch-to-approve-push",
+              "locale": "en_US"
+            }
+          ]
         }
       ]
     }
