@@ -1,0 +1,93 @@
+{
+  "eventClassName": "com.backbase.transaction.persistence.event.spec.v1.TransactionsAddedEvent",
+  "id": "transaction-added",
+  "eventBusinessName": "Transaction Added",
+  "recipientType": "subscription",
+  "extractor": "#this['arrangementId']",
+  "subscriptionType": "arrangement",
+  "eventSlicer": "#this['transactions']",
+  "generalNotifications": [
+    {
+      "id": "new-transaction-occurred",
+      "name": "New Transaction Occurred Retail",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/new-transaction-occurred-retail/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "transaction-view",
+            "data": "{\"id\":\"{{event.id}}\",\"arrangementId\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-transaction-occurred-retail/in-app-notification/en_US/engagement-template.json",
+              "templateName": "new-transaction-occurred-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/new-transaction-occurred-retail/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "transaction-view",
+            "data": "{\"id\":\"{{event.id}}\",\"arrangementId\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-transaction-occurred-retail/push/en_US/engagement-template.json",
+              "templateName": "new-transaction-occurred-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new-transaction-occurred-business",
+      "name": "New Transaction Occurred Business",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/new-transaction-occurred-business/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "transaction-view",
+            "data": "{\"id\":\"{{event.id}}\",\"arrangementId\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-transaction-occurred-business/in-app-notification/en_US/engagement-template.json",
+              "templateName": "new-transaction-occurred-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/new-transaction-occurred-business/push/push_channel-settings.json",
+          "isEnabledByDefault": false,
+          "routeInfo": {
+            "whereTo": "transaction-view",
+            "data": "{\"id\":\"{{event.id}}\",\"arrangementId\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-transaction-occurred-business/push/en_US/engagement-template.json",
+              "templateName": "new-transaction-occurred-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

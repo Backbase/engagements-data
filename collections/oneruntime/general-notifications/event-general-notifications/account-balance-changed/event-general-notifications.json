@@ -1,0 +1,145 @@
+{
+  "eventClassName": "com.backbase.dbs.actions.reactive.event.spec.v2.AccountBalanceChangedEvent",
+  "id": "account-balance-changed",
+  "eventBusinessName": "Account Balance Changed",
+  "recipientType": "subscription",
+  "extractor": "#this['arrangementId']",
+  "subscriptionType": "arrangement",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "account-balance-low",
+      "name": "Account Balance Low Retail",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "T(java.lang.Double).valueOf(#triggeredEvent['currentBalance']) < #userConditions['amount'] && T(java.lang.Double).valueOf(#triggeredEvent['previousBalance']) >= #userConditions['amount']",
+      "userPreferenceDefaults": "{\"amount\":0}",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/account-balance-low-retail/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "arrangement-view",
+            "data": "{\"id\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low-retail/in-app-notification/en_US/engagement-template.json",
+              "templateName": "account-balance-low-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/account-balance-low-retail/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "arrangement-view",
+            "data": "{\"id\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low-retail/push/en_US/engagement-template.json",
+              "templateName": "account-balance-low-push",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "sms",
+          "channelSettings": "/account-balance-low-retail/sms/sms_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low-retail/sms/en_US/engagement-template.json",
+              "templateName": "account-balance-low-sms",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "email",
+          "channelSettings": "/account-balance-low-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low-retail/email/en_US/engagement-template.json",
+              "templateName": "account-balance-low-email",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "account-balance-low-business",
+      "name": "Account Balance Low Business",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "T(java.lang.Double).valueOf(#triggeredEvent['currentBalance']) < #userConditions['amount'] && T(java.lang.Double).valueOf(#triggeredEvent['previousBalance']) >= #userConditions['amount']",
+      "userPreferenceDefaults": "{\"amount\":0}",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/account-balance-low-business/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "arrangement-view",
+            "data": "{\"id\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low-business/in-app-notification/en_US/engagement-template.json",
+              "templateName": "account-balance-low-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/account-balance-low-business/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "arrangement-view",
+            "data": "{\"id\":\"{{event.arrangementId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low-business/push/en_US/engagement-template.json",
+              "templateName": "account-balance-low-push",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "sms",
+          "channelSettings": "/account-balance-low-business/sms/sms_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low-business/sms/en_US/engagement-template.json",
+              "templateName": "account-balance-low-sms",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "email",
+          "channelSettings": "/account-balance-low-business/email/email_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/account-balance-low-business/email/en_US/engagement-template.json",
+              "templateName": "account-balance-low-email",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

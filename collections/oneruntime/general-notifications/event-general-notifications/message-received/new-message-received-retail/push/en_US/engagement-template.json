@@ -1,0 +1,4 @@
+{
+  "title": "New message (retail)",
+  "body": "From: {{{event.sender}}} Subject: {{{event.subject}}} Topic: {{{event.topicName}}}"
+}

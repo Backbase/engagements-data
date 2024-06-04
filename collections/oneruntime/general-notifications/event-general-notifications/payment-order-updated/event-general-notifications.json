@@ -1,0 +1,52 @@
+{
+  "eventClassName": "com.backbase.payment.event.spec.v1.PaymentOrderUpdatedEvent",
+  "id": "payment-order-updated",
+  "eventBusinessName": "Payment Order Updated",
+  "recipientType": "internal",
+  "extractor": "#this['paymentOrder']['internalUserId']",
+  "serviceAgreementExtractor": "#this['paymentOrder']['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "payment-status-updated-rejected",
+      "name": "Payment Status Updated (Rejected)",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['paymentOrder']['status'] == 'REJECTED'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/payment-status-updated-rejected/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "payment-view",
+            "data": "{\"id\": \"{{event.paymentOrder.id}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/payment-status-updated-rejected/in-app-notification/en_US/engagement-template.json",
+              "templateName": "payment-status-updated-rejected-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/payment-status-updated-rejected/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "payment-view",
+            "data": "{\"id\": \"{{event.paymentOrder.id}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/payment-status-updated-rejected/push/en_US/engagement-template.json",
+              "templateName": "payment-status-updated-rejected-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
