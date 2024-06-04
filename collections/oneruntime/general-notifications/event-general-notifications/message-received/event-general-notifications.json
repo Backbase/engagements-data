@@ -1,0 +1,95 @@
+{
+  "eventClassName": "com.backbase.dbs.messages.pandp.event.spec.v4.MessageReceivedEvent",
+  "id": "message-received",
+  "eventBusinessName": "Message Received",
+  "recipientType": "internal",
+  "extractor": "#this['recipient']",
+  "generalNotifications": [
+    {
+      "id": "new-message-received",
+      "name": "New Message Received Retail",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/new-message-received-retail/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-message-received-retail/in-app-notification/en_US/engagement-template.json",
+              "templateName": "new-message-received-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/new-message-received-retail/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-message-received-retail/push/en_US/engagement-template.json",
+              "templateName": "new-message-received-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new-message-received-business",
+      "name": "New Message Received Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/new-message-received-business/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-message-received-business/in-app-notification/en_US/engagement-template.json",
+              "templateName": "new-message-received-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/new-message-received-business/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-message-received-business/push/en_US/engagement-template.json",
+              "templateName": "new-message-received-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

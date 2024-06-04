@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:repositories
+  xmlns:ns2="http://www.backbase.com/content/model/1.0">
+  <ns2:repository>
+    <ns2:repositoryId>engagement-template-custom</ns2:repositoryId>
+    <ns2:name>Engagement Template Custom Repository</ns2:name>
+    <ns2:description>Repository to store engagement templates for engagements where engagement is custom</ns2:description>
+    <ns2:isPrivate>false</ns2:isPrivate>
+    <ns2:implementation>s3</ns2:implementation>
+    <ns2:c3RepositoryId>engagement-template-custom</ns2:c3RepositoryId>
+    <ns2:versioningEnabled>false</ns2:versioningEnabled>
+    <ns2:isProtected>true</ns2:isProtected>
+  </ns2:repository>
+</ns2:repositories>
