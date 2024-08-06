@@ -44,6 +44,8 @@ Backbase provides the following reference General Notification that can be adopt
 | `password-changed` | Notify users when their password is changed      | `com.backbase.dbs.user.manager.event.spec.v2.ChangeOwnPasswordSecNotEvent` | `email`
 | `password-reset-success` | Notify users when their password is reset successfully     | `com.backbase.identity.accountrecovery.event.spec.v1.PasswordResetSuccessEvent` | `email`
 | `password-reset-failure` | Notify users when their password reset fails     | `com.backbase.identity.accountrecovery.event.spec.v1.PasswordResetFailureEvent` | `email`
+| `direct-deposit-success` | Notify users when a Direct Deposit is successful | `com.backbase.directdepositswitch.event.spec.v1.DirectDepositSuccessEvent` | `in-app-notification`         |
+| `direct-deposit-failed`  | Notify users when a Direct Deposit is failed     | `com.backbase.directdepositswitch.event.spec.v1.DirectDepositFailedEvent`  | `in-app-notification`         |
 
 
 ### Backbase Events
@@ -83,6 +85,8 @@ Below is a list of all the Backbase events that can be used to trigger your cust
 | `postal-address-updated` | `com.backbase.dbs.user.manager.event.spec.v2.UpdatePostalAddressSecNotEvent` | A postal address is updated | User | [UpdatePostalAddressEvent](https://repo.backbase.com/ui/native/repo/com/backbase/dbs/user/user-manager/) |
 | `username-changed` | `com.backbase.dbs.user.manager.event.spec.v2.ChangeUsernameSecNotEvent` | A username is changed | User | [UsernameChangedEvent](https://repo.backbase.com/ui/native/repo/com/backbase/dbs/user/user-manager/) |
 | `password-changed` | `com.backbase.dbs.user.manager.event.spec.v2.ChangeOwnPasswordSecNotEvent` | A password is changed | User | [PasswordChangedEvent](https://repo.backbase.com/ui/native/repo/com/backbase/dbs/user/user-manager/) |
+| `direct-deposit-success` | `com.backbase.directdepositswitch.event.spec.v1.DirectDepositSuccessEvent` | Direct Deposit is successful | Direct Deposit Switch | [DirectDepositSuccessEvent](https://repo.backbase.com/ui/native/repo/com/backbase/directdepositswitch/direct-deposit-switch/)                                           |
+| `direct-deposit-failed`  | `com.backbase.directdepositswitch.event.spec.v1.DirectDepositFailedEvent`  | Direct Deposit failed        | Direct Deposit Switch | [DirectDepositFailedEvent](https://repo.backbase.com/ui/native/repo/com/backbase/directdepositswitch/direct-deposit-switch/)                                           |
 
 ### Notification Route
 Below is a list of routes that can be used by your notification.
