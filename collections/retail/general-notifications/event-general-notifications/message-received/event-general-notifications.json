@@ -9,6 +9,7 @@
       "id": "new-message-received",
       "name": "New Message Received",
       "userPreferenceEnabled": false,
+      "additionalFilterLogic": "!(#triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement')",
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
@@ -40,6 +41,31 @@
             {
               "path": "/new-message-received/push/en_US/engagement-template.json",
               "templateName": "new-message-received-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "new-message-received-mailout",
+      "name": "New Message Received Mailout",
+      "userPreferenceEnabled": false,
+      "additionalFilterLogic": "#triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/new-message-received-mailout/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "conversation-view",
+            "data": "{\"id\":\"{{event.conversationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/new-message-received-mailout/in-app-notification/en_US/engagement-template.json",
+              "templateName": "new-message-received-in-app-notification",
               "locale": "en_US"
             }
           ]
