@@ -1,0 +1,4 @@
+{
+    "subject": "New device registered",
+    "body": "Dear {{{user.preferredName}}} {{{user.familyName}}},\n\n A device, {{#if event.friendlyName}}\"{{{event.friendlyName}}}\" {{/if}}was registered to your business online banking on {{ formatDate event.created 'dd-MMMM-yyyy \\'at\\' HH:mm:ss z' 'en' 'US/Eastern' }}.\n\nIf this was you:\n\n\tYou're good to go! We'll remember this device in the future.\n\n\nIf you don't want this device remembered:\n\n\n\tYou can go to Backbase and remove it. This will help keep your account more secure.\n\n\nIf this wasn't you:\n\tChange your password right away, and check your online banking for activity\n\tRemove this device from your online banking\n\n\nRegards, \nBackbase Bank"
+}

@@ -1,0 +1,49 @@
+{
+  "eventClassName": "com.backbase.identity.device.event.spec.v1.DeviceRemovedEvent",
+  "id": "device-removed",
+  "eventBusinessName": "Device Removed",
+  "recipientType": "internal",
+  "extractor": "#this['internalUserId']",
+  "generalNotifications": [
+    {
+      "id": "device-removed-retail",
+      "name": "Device Removed",
+      "userPreferenceEnabled": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/device-removed-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/device-removed-retail/email/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "device-removed-business",
+      "name": "Device Removed",
+      "userPreferenceEnabled": false,
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/device-removed-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : false",
+          "engagementTemplates": [
+            {
+              "path": "/device-removed-business/email/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
