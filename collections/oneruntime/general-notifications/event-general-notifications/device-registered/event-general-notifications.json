@@ -6,7 +6,7 @@
   "extractor": "#this['internalUserId']",
   "generalNotifications": [
     {
-      "id": "device-registered-retail",
+      "id": "device-registered",
       "name": "Device Registered",
       "userPreferenceEnabled": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",

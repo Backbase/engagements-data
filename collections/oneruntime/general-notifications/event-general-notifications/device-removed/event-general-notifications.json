@@ -6,7 +6,7 @@
   "extractor": "#this['internalUserId']",
   "generalNotifications": [
     {
-      "id": "device-removed-retail",
+      "id": "device-removed",
       "name": "Device Removed",
       "userPreferenceEnabled": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
