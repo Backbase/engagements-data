@@ -1,0 +1,57 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.DeletePostalAddressSecNotEvent",
+  "id": "postal-address-deleted",
+  "eventBusinessName": "Postal Address Deleted",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "postal-address-deleted",
+      "name": "Postal Address Deleted",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/postal-address-deleted-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Mailing address removed from online banking",
+                "body": "file:/postal-address-deleted-retail/email/assets/postal-address-deleted-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "postal-address-deleted-business",
+      "name": "Postal Address Deleted Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/postal-address-deleted-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Mailing address removed from online banking",
+                "body": "file:/postal-address-deleted-business/email/assets/postal-address-deleted-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

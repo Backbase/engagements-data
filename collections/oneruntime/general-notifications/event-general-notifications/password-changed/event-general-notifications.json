@@ -1,0 +1,57 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.ChangeOwnPasswordSecNotEvent",
+  "id": "password-changed",
+  "eventBusinessName": "Password Changed",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "password-changed",
+      "name": "Password Changed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/password-changed-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Password changed",
+                "body": "file:/password-changed-retail/email/assets/password-changed-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "password-changed-business",
+      "name": "Password Changed Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/password-changed-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Password changed",
+                "body": "file:/password-changed-business/email/assets/password-changed-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

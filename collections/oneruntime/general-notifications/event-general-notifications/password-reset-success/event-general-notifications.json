@@ -1,0 +1,57 @@
+{
+  "eventClassName": "com.backbase.identity.accountrecovery.event.spec.v1.PasswordResetSuccessEvent",
+  "id": "password-reset-success",
+  "eventBusinessName": "Password Reset Success",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "password-reset-success",
+      "name": "Password Reset Success",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/password-reset-success-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "You changed your password",
+                "body": "file:/password-reset-success-retail/email/assets/password-reset-success-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "password-reset-success-business",
+      "name": "Password Reset Success Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/password-reset-success-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "You changed your password",
+                "body": "file:/password-reset-success-business/email/assets/password-reset-success-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

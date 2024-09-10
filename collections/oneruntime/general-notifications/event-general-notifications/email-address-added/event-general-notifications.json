@@ -1,0 +1,58 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.AddEmailSecNotEvent",
+  "id": "email-address-added",
+  "eventBusinessName": "Email Address Added",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "emailExtractor": "#triggeredEvent['newPrimaryFlagValue'] ?  new String[] {#triggeredEvent['previousContactEmail'], #triggeredEvent['newEmailValue']}: #triggeredEvent['previousContactEmail']",
+  "generalNotifications": [
+    {
+      "id": "email-address-added",
+      "name": "Email Address Added Retail",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && #lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/email-address-added-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Email address added to online banking",
+                "body": "file:/email-address-added-retail/email/assets/email-address-added-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "email-address-added-business",
+      "name": "Email Address Added Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && #lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/email-address-added-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Email address added to online banking",
+                "body": "file:/email-address-added-business/email/assets/email-address-added-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

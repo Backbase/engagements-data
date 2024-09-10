@@ -1,0 +1,57 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.DeletePhoneNumberSecNotEvent",
+  "id": "phone-number-deleted",
+  "eventBusinessName": "Phone Number Deleted",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "phone-number-deleted",
+      "name": "Phone Number Deleted",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/phone-number-deleted-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+            "content": {
+              "subject": "Phone number removed from online banking",
+              "body": "file:/phone-number-deleted-retail/email/assets/delete-phone-number-template.html"
+            },
+            "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phone-number-deleted-business",
+      "name": "Phone Number Deleted Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/phone-number-deleted-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Phone number removed from online banking",
+                "body": "file:/phone-number-deleted-business/email/assets/delete-phone-number-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.UpdatePhoneNumberSecNotEvent",
+  "id": "phone-number-updated",
+  "eventBusinessName": "Phone Number Updated",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "phone-number-updated",
+      "name": "Phone Number Updated",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/phone-number-updated-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Phone number for online banking was changed",
+                "body": "file:/phone-number-updated-retail/email/assets/phone-number-updated-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phone-number-updated-business",
+      "name": "Phone Number Updated Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/phone-number-updated-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Phone number for online banking was changed",
+                "body": "file:/phone-number-updated-business/email/assets/phone-number-updated-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

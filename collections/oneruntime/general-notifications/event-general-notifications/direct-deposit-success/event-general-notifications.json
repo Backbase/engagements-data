@@ -1,0 +1,31 @@
+{
+  "eventClassName": "com.backbase.directdepositswitch.event.spec.v1.DirectDepositSuccessEvent",
+  "id": "direct-deposit-success",
+  "eventBusinessName": "Direct Deposit Success",
+  "recipientType": "internal",
+  "extractor": "#this['internalUserId']",
+  "generalNotifications": [
+    {
+      "id": "direct-deposit-success",
+      "name": "Direct Deposit Success",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/direct-deposit-success-retail/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/direct-deposit-success-retail/in-app-notification/en_US/engagement-template.json",
+              "templateName": "direct-deposit-success-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

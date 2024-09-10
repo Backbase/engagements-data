@@ -1,0 +1,46 @@
+{
+  "eventClassName": "com.backbase.positivepay.event.spec.v1.PpCheckExceptionsCreatedEvent",
+  "id": "pp-check-exceptions-created",
+  "eventBusinessName": "Positive Pay Check Exceptions Created",
+  "recipientType": "subscription",
+  "extractor": "#this['arrangementId']",
+  "subscriptionType": "arrangement",
+  "generalNotifications": [
+    {
+      "id": "pp-check-exceptions-created-business",
+      "name": "Positive Pay Check Exceptions Created Business",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "pp-check-exceptions-created-business/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "positive-pay-check-active-exceptions-view",
+            "data": ""
+          },
+          "engagementTemplates": [
+            {
+              "path": "/pp-check-exceptions-created-business/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "email",
+          "channelSettings": "pp-check-exceptions-created-business/email/email_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/pp-check-exceptions-created-business/email/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

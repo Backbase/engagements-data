@@ -1,0 +1,31 @@
+{
+  "eventClassName": "com.backbase.directdepositswitch.event.spec.v1.DirectDepositFailedEvent",
+  "id": "direct-deposit-failed",
+  "eventBusinessName": "Direct Deposit Failed",
+  "recipientType": "internal",
+  "extractor": "#this['internalUserId']",
+  "generalNotifications": [
+    {
+      "id": "direct-deposit-failed",
+      "name": "Direct Deposit Failed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/direct-deposit-failed-retail/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/direct-deposit-failed-retail/in-app-notification/en_US/engagement-template.json",
+              "templateName": "direct-deposit-failed-in-app-notification",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

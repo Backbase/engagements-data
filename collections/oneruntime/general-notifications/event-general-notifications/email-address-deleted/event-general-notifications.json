@@ -1,0 +1,58 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.DeleteEmailSecNotEvent",
+  "id": "email-address-deleted",
+  "eventBusinessName": "Email Address Deleted",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "emailExtractor": "#triggeredEvent['previousContactEmail']",
+  "generalNotifications": [
+    {
+      "id": "email-address-deleted",
+      "name": "Email Address Deleted",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && #lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/email-address-deleted-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Email address removed from online banking",
+                "body": "file:/email-address-deleted-retail/email/assets/email-address-deleted-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "email-address-deleted-business",
+      "name": "Email Address Deleted Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && #lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/email-address-deleted-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "Email address removed from online banking",
+                "body": "file:/email-address-deleted-business/email/assets/email-address-deleted-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

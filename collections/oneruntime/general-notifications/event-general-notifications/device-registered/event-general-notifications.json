@@ -10,6 +10,7 @@
       "name": "Device Registered",
       "userPreferenceEnabled": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",
@@ -30,6 +31,7 @@
       "name": "Device Registered",
       "userPreferenceEnabled": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : false",
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",
