@@ -7,9 +7,10 @@
   "generalNotifications": [
     {
       "id": "device-removed",
-      "name": "Device Removed",
+      "name": "Device Removed Retail",
       "userPreferenceEnabled": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",
@@ -27,15 +28,16 @@
     },
     {
       "id": "device-removed-business",
-      "name": "Device Removed",
+      "name": "Device Removed Business",
       "userPreferenceEnabled": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : false",
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",
           "channelSettings": "/device-removed-business/email/email_channel-settings.json",
           "isEnabledByDefault": true,
           "isManageableByUser": false,
-          "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : false",
           "engagementTemplates": [
             {
               "path": "/device-removed-business/email/en_US/engagement-template.json",

@@ -1,0 +1,46 @@
+{
+  "eventClassName": "com.backbase.positivepay.event.spec.v1.PpCheckUpcomingCutOffTimeEvent",
+  "id": "pp-check-upcoming-cut-off-time",
+  "eventBusinessName": "Positive Pay Check Upcoming cut-off time",
+  "recipientType": "subscription",
+  "extractor": "#this['arrangementId']",
+  "subscriptionType": "arrangement",
+  "generalNotifications": [
+    {
+      "id": "pp-check-upcoming-cut-off-time-business",
+      "name": "Positive Pay Check Upcoming Cut-Off Time Business",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "pp-check-upcoming-cut-off-time-business/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "positive-pay-check-active-exceptions-view",
+            "data": ""
+          },
+          "engagementTemplates": [
+            {
+              "path": "/pp-check-upcoming-cut-off-time-business/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "email",
+          "channelSettings": "pp-check-upcoming-cut-off-time-business/email/email_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/pp-check-upcoming-cut-off-time-business/email/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

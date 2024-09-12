@@ -1,0 +1,57 @@
+{
+  "eventClassName": "com.backbase.dbs.user.manager.event.spec.v2.ChangeUsernameSecNotEvent",
+  "id": "username-changed",
+  "eventBusinessName": "Username Changed",
+  "recipientType": "internal",
+  "extractor": "#this['userInternalId']",
+  "generalNotifications": [
+    {
+      "id": "username-changed",
+      "name": "Username Changed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/username-changed-retail/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "You changed your username",
+                "body": "file:/username-changed-retail/email/assets/username-changed-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "username-changed-business",
+      "name": "Username Changed Business",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "email",
+          "channelSettings": "/username-changed-business/email/email_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "content": {
+                "subject": "You changed your username",
+                "body": "file:/username-changed-business/email/assets/username-changed-template.html"
+              },
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

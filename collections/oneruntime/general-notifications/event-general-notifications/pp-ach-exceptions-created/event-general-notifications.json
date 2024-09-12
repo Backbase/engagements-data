@@ -1,0 +1,45 @@
+{
+  "eventClassName": "com.backbase.positivepay.event.spec.v1.PpAchExceptionsCreatedEvent",
+  "id": "pp-ach-exceptions-created",
+  "eventBusinessName": "Positive Pay ACH Exceptions Created",
+  "recipientType": "subscription",
+  "extractor": "#this['arrangementId']",
+  "subscriptionType": "arrangement",
+  "generalNotifications": [
+    {
+      "id": "pp-ach-exceptions-created-business",
+      "name": "Positive Pay ACH Exceptions Created Business",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "pp-ach-exceptions-created-business/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "positive-pay-ach-active-exceptions-view",
+            "data": ""
+          },
+          "engagementTemplates": [
+            {
+              "path": "/pp-ach-exceptions-created-business/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        },
+        {
+          "channel": "email",
+          "channelSettings": "pp-ach-exceptions-created-business/email/email_channel-settings.json",
+          "isEnabledByDefault": false,
+          "engagementTemplates": [
+            {
+              "path": "/pp-ach-exceptions-created-business/email/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

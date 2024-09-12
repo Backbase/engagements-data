@@ -1,0 +1,4 @@
+{
+  "subject": "Review ACH exceptions by {{{event.cutOffTime}}} today",
+  "body": "Dear {{{user.preferredName}}} {{{user.familyName}}},\n\nYou have exceptions that need to be reviewed by {{{event.cutOffTime}}} today.\n\nIf you do not review them before this cut-off time, they will be {{#eq event.defaultDecision 'PAY' }}paid{{else}}rejected{{/eq}}.\n\nTo review your exceptions:\n\n\t* Log in to Backbase\n\t* Go to ACH Positive Pay\n\t* Click Exceptions-Active\n\nIf you have any questions about this email, please contact [contact details].\n\nRegards,\n\n[Responsible Dept name]"
+}
