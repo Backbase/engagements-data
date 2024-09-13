@@ -33,6 +33,17 @@
         overflow: hidden;
     }
 
+    .break-word {
+        white-space: normal;
+        word-wrap: break-word;
+        word-break: break-all;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        hyphens: none;
+    }
+
     .container,
     .background {
         max-width: 392px;
@@ -148,7 +159,7 @@
     <div class="container">
         <div class="inner">
             <img alt="template picture" src="{{picture}}" />
-            <div class="content">
+            <div class="content break-word">
                 <h1 class="heading">{{title}}</h1>
                 <div class="subheading">{{message}}</div>
                 <a class="cta-btn" href="{{buttonLink}}" target="_blank" rel="noopener">
