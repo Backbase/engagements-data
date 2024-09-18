@@ -1,4 +1,4 @@
 {
   "title": "Contact status change",
-  "body": "Hi {{{user.preferredName}}}, the status for Contact: {{{event.party.name}}} has changed to {{lower event.party.status}}"
+  "body": "Hi {{{user.preferredName}}}, the status for Contact: {{{event.contact.name}}} has changed to {{lower event.contact.status}}"
 }

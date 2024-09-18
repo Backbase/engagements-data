@@ -1,17 +1,17 @@
 {
-  "eventClassName": "com.backbase.party.persistence.event.spec.v1.PartyUpdatedEvent",
+  "eventClassName": "com.backbase.dbs.contactmanager.contact.event.spec.v1.ContactUpdatedEvent",
   "id": "party-updated",
   "eventBusinessName": "Party Updated",
   "recipientType": "internal",
-  "extractor": "#this['party']['internalUserId']",
-  "serviceAgreementExtractor": "#this['party']['serviceAgreementId']",
+  "extractor": "#this['contact']['internalUserId']",
+  "serviceAgreementExtractor": "#this['contact']['serviceAgreementId']",
   "generalNotifications": [
     {
       "id": "contact-status-updated-rejected",
       "name": "Contact Status Updated (Rejected)",
       "userPreferenceEnabled": true,
       "manageable": false,
-      "additionalFilterLogic": "#triggeredEvent['party']['status'] == 'REJECTED'",
+      "additionalFilterLogic": "#triggeredEvent['contact']['status'] == 'REJECTED'",
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
@@ -20,7 +20,7 @@
           "isManageableByUser": false,
           "routeInfo": {
             "whereTo": "party-view",
-            "data": "{\"id\": \"{{event.party.id}}\"}"
+            "data": "{\"id\": \"{{event.contact.id}}\"}"
           },
           "engagementTemplates": [
             {
@@ -36,7 +36,7 @@
           "isEnabledByDefault": true,
           "routeInfo": {
             "whereTo": "party-view",
-            "data": "{\"id\": \"{{event.party.id}}\"}"
+            "data": "{\"id\": \"{{event.contact.id}}\"}"
           },
           "engagementTemplates": [
             {
