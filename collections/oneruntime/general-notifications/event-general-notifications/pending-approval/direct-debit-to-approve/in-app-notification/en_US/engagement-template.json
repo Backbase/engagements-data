@@ -1,0 +1,4 @@
+{
+  "title": "Direct debit batch to approve",
+  "body": "Hi {{{user.preferredName}}}, you have a new direct debit batch of {{event.approval.amountDetails.currencyCode}} {{formatAmount event.approval.amountDetails.amount locale}} to approve."
+}
