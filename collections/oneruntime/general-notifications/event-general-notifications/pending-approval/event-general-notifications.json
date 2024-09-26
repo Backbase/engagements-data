@@ -145,7 +145,7 @@
           "isEnabledByDefault": true,
           "isManageableByUser": false,
           "routeInfo": {
-            "whereTo": "batch-approve-view",
+            "whereTo": "direct-debit-approve-view",
             "data": "{\"id\":\"{{event.approval.itemId}}\", \"businessFunction\":\"{{event.approval.function}}\"}"
           },
           "engagementTemplates": [
