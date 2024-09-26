@@ -41,7 +41,7 @@
               "isEnabledByDefault": true,
               "isManageableByUser": false,
               "routeInfo": {
-                "whereTo": "batch-view",
+                "whereTo": "direct-debit-view",
                 "data": "{\"id\":\"{{event.id}}\",\"batchType\":\"{{event.type}}\"}"
               },
               "engagementTemplates": [
