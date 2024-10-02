@@ -1,4 +1,4 @@
 {
-  "title": "{{#eq event.status 'REJECTED' }}Direct debit batch rejected{{else}}Direct debit batch contains rejected {{#eq event.rejectedTransactionsCount 1 }}transfer{{else}}transfers{{/eq}}{{/eq}}",
-  "body": "Hi {{{user.preferredName}}}, your direct debit batch {{event.name}} of {{event.totalInstructedAmount.currencyCode}} {{formatAmount event.totalInstructedAmount.amount locale}}{{#eq event.status 'REJECTED' }} has changed to rejected{{else}} contains {{event.rejectedTransactionsCount}} rejected {{#eq event.rejectedTransactionsCount 1 }}transfer{{else}}transfers{{/eq}}{{/eq}}"
+  "title": "{{#eq event.status 'REJECTED' }}Direct debit batch rejected{{else}}Direct debit payments rejected{{/eq}}",
+  "body": "Batch {{event.name}} of {{event.totalInstructedAmount.currencyCode}} {{formatAmount event.totalInstructedAmount.amount locale}}{{#eq event.status 'REJECTED' }} has been rejected {{else}} has {{event.rejectedTransactionsCount}} rejected {{#eq event.rejectedTransactionsCount 1 }}payment{{else}}payments{{/eq}}{{/eq}}"
 }
