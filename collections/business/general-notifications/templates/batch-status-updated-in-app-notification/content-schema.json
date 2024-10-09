@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Batch status updated",
+  "title": "Batch Status Updated",
   "description": "Action event for in-app notification when a batch status is updated",
   "type": "object",
   "properties": {
