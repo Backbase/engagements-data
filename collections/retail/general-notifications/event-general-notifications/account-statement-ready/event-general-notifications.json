@@ -1,9 +1,11 @@
 {
-  "eventClassName": "com.backbase.dbs.actions.reactive.event.spec.v2.AccountStatementReadyEvent",
+  "eventClassName": "com.backbase.account.statement.event.spec.v1.AccountStatementReadyEvent",
   "id": "account-statement-ready",
   "eventBusinessName": "Account Statement Ready",
   "recipientType": "internal",
   "extractor": "#this['userId']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "manageable": false,
   "generalNotifications": [
     {
       "id": "account-statement-ready",
