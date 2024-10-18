@@ -11,7 +11,7 @@
       "name": "Batch Status Updated",
       "userPreferenceEnabled": true,
       "manageable": false,
-      "additionalFilterLogic": "#triggeredEvent['status'] == 'REJECTED' || (#triggeredEvent['status'] == 'PROCESSED' && #triggeredEvent['rejectedTransactionsCount'] >= 1)",
+      "additionalFilterLogic": "(#triggeredEvent['status'] == 'REJECTED' || (#triggeredEvent['status'] == 'PROCESSED' && #triggeredEvent['rejectedTransactionsCount'] >= 1)) && #triggeredEvent['type'] != 'SEPADD'",
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
@@ -42,6 +42,32 @@
             {
               "path": "/batch-status-updated/push/en_US/engagement-template.json",
               "templateName": "batch-status-updated-push",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "direct-debit-status-updated",
+      "name": "Direct Debit Status Updated",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "(#triggeredEvent['status'] == 'REJECTED' || (#triggeredEvent['status'] == 'PROCESSED' && #triggeredEvent['rejectedTransactionsCount'] >= 1)) && #triggeredEvent['type'] == 'SEPADD'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/direct-debit-status-updated/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "direct-debit-view",
+            "data": "{\"id\":\"{{event.id}}\",\"batchType\":\"{{event.type}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/direct-debit-status-updated/in-app-notification/en_US/engagement-template.json",
+              "templateName": "batch-status-updated-in-app-notification",
               "locale": "en_US"
             }
           ]

@@ -1,0 +1,4 @@
+{
+  "title": "{{#eq event.status 'REJECTED' }}Batch rejected{{else}}Payments rejected{{/eq}}",
+  "body": "Direct debit batch {{event.name}} of {{event.totalInstructedAmount.currencyCode}} {{formatAmount event.totalInstructedAmount.amount locale}}{{#eq event.status 'REJECTED' }} has been rejected{{else}} has {{event.rejectedTransactionsCount}} rejected {{#eq event.rejectedTransactionsCount 1 }}payment{{else}}payments{{/eq}}{{/eq}}"
+}
