@@ -11,7 +11,7 @@
       "name": "Email Address Added Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
-      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && #lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
+      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && (#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true)",
       "deliveryOptions": [
         {
           "channel": "email",
@@ -35,7 +35,7 @@
       "name": "Email Address Added Business",
       "userPreferenceEnabled": false,
       "manageable": false,
-      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && #lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",
+      "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && (#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true)",
       "deliveryOptions": [
         {
           "channel": "email",

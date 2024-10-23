@@ -10,7 +10,7 @@
       "name": "New Message Received From Customer Support Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
-      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true && !(#triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement')",
+      "additionalFilterLogic": "(#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true) && !(#triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement')",
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
@@ -53,7 +53,7 @@
       "name": "New Message Received From Marketer Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
-      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true && #triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement'",
+      "additionalFilterLogic": "(#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true) && #triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement'",
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
@@ -79,7 +79,7 @@
       "name": "New Message Received From Customer Support Business",
       "userPreferenceEnabled": false,
       "manageable": false,
-      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true && !(#triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement')",
+      "additionalFilterLogic": "(#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true) && !(#triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement')",
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
@@ -122,7 +122,7 @@
       "name": "New Message Received From Marketer Business",
       "userPreferenceEnabled": false,
       "manageable": false,
-      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true && #triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement'",
+      "additionalFilterLogic": "(#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true) && #triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement'",
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
