@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Template for push campaign for Business",
+  "description": "Template for push notification",
+  "type": "object",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string",
+      "maxLength": 75,
+      "metadata": {
+        "placeholderText": "Enter a title (max. 75 chars)",
+        "renderingHint": "textarea",
+        "customErrorMessages" :  {
+          "required": "Please provide a title"
+        }
+      }
+    },
+    "body": {
+      "title": "Body",
+      "type": "string",
+      "maxLength": 256,
+      "metadata": {
+        "placeholderText": "Enter a body message (max. 256 chars)",
+        "renderingHint": "textarea",
+        "customErrorMessages" :  {
+          "required": "Please provide a body text"
+        }
+      }
+    }
+  },
+  "required": ["title", "body"]
+}

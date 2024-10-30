@@ -56,14 +56,54 @@ fi
 
 custom_engagements_location=${workspace}/collections/${PRODUCT_LINE}/custom-engagements
 if [ -d "${custom_engagements_location}" ] && [ ! -z "$(ls -A ${custom_engagements_location})" ]; then
-  echo "Create Custom Engagements package"
+  echo "Create Custom Engagements package for banners"
   cd ${custom_engagements_location}
   buildZipsFromSubFolders placeholders
   addManifestEntries placeholders content-enricher:/placeholder
-  buildZipsFromSubFolders templates
-  addManifestEntries templates content-enricher:/template
+  cd ${custom_engagements_location}/templates
+  buildZipsFromSubFolders banner
+  addManifestEntries banner content-enricher:/template
   writeManifestFile
-  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/custom-engagements-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/custom-engagements-banner-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
+fi
+
+custom_engagements_location=${workspace}/collections/${PRODUCT_LINE}/custom-engagements
+if [ -d "${custom_engagements_location}" ] && [ ! -z "$(ls -A ${custom_engagements_location})" ]; then
+  echo "Create Custom Engagements package for message-center"
+  cd ${custom_engagements_location}
+  buildZipsFromSubFolders placeholders
+  addManifestEntries placeholders content-enricher:/placeholder
+  cd ${custom_engagements_location}/templates
+  buildZipsFromSubFolders message-center
+  addManifestEntries message-center content-enricher:/template
+  writeManifestFile
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/custom-engagements-message-center-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
+fi
+
+custom_engagements_location=${workspace}/collections/${PRODUCT_LINE}/custom-engagements
+if [ -d "${custom_engagements_location}" ] && [ ! -z "$(ls -A ${custom_engagements_location})" ]; then
+  echo "Create Custom Engagements package for push"
+  cd ${custom_engagements_location}
+  buildZipsFromSubFolders placeholders
+  addManifestEntries placeholders content-enricher:/placeholder
+  cd ${custom_engagements_location}/templates
+  buildZipsFromSubFolders push
+  addManifestEntries push content-enricher:/template
+  writeManifestFile
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/custom-engagements-push-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
+fi
+
+custom_engagements_location=${workspace}/collections/${PRODUCT_LINE}/custom-engagements
+if [ -d "${custom_engagements_location}" ] && [ ! -z "$(ls -A ${custom_engagements_location})" ]; then
+  echo "Create Custom Engagements package for overlays"
+  cd ${custom_engagements_location}
+  buildZipsFromSubFolders placeholders
+  addManifestEntries placeholders content-enricher:/placeholder
+  cd ${custom_engagements_location}/templates
+  buildZipsFromSubFolders overlays
+  addManifestEntries overlays content-enricher:/template
+  writeManifestFile
+  cd assembly && zip -r "${workspace}/target/assembly/${PRODUCT_LINE}/collections/custom-engagements-overlays-${PRODUCT_LINE}.zip" "." && cd - && rm -rf assembly
 fi
 
 engagement_types_location=${workspace}/collections/${PRODUCT_LINE}/engagement-types
