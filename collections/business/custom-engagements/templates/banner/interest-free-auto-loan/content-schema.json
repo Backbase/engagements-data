@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Interest Free Auto Loans",
+  "description": "interest free auto loans available",
+  "type": "object",
+  "properties": {
+    "body":{
+      "title": "Body of message",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 60,
+          "default": "0% interest for 90 days when you refinance your auto loan",
+          "metadata": {
+            "placeholderText": "Enter a title (max. 60 chars)"
+          }
+        },
+        "picture": {
+          "title": "Image",
+          "type": "file",
+          "default": "{{contextRoot}}/assets/Car.png",
+          "metadata": {
+            "renderingHint": "image"
+          }
+        }
+      },
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "picture"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name":"push-template",
+  "description":"Push template for custom engagement",
+  "title":"Push Template",
+  "engagement": "custom",
+  "default": true,
+  "channel": "push"
+}

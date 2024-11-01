@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Go paperless</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700,600,500,400,200&display=swap');
+  </style>
+ <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Libre-franklin', sans-serif;
+    color: #091C35;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 50%;
+  }
+
+  p.message {
+    overflow: auto;
+    height: 30%;
+    font-size: 1.063rem;
+    font-weight: 400;
+    height: 30%;
+    padding: 0rem 2rem;
+    margin: 0;
+    line-height: 1.563rem;
+  }
+
+  .cta-btn {
+    width: 80%;
+    background: rgba(41, 94, 255, 1);
+    border-color: rgba(41, 94, 255, 1);
+    color: #FFF;
+    border-radius: 1rem;
+    font-weight: 600;
+    font-size: 15px;
+    display: block;
+    text-decoration: none;
+    left: 10%;
+    padding: 1rem 2rem;
+    margin: 1rem 2rem;
+    text-align: center;
+  }
+
+  .button-container {
+    position: fixed;
+    bottom: 0.1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+  }
+
+  h1.title {
+    font-weight: 600;
+    font-size: 1.75rem;
+    padding: 1.5rem 2rem 1rem 2rem;
+    line-height: 2.375rem;
+    margin: 0;
+  }
+
+  @media (min-width: 800px) {
+    .cta-btn {
+      height: 55px;
+      width: 60%;
+      font-size: 1.5rem;
+      left: 20%;
+      display: block;
+      cursor: pointer;
+    }
+
+    h1.title {
+      font-size: 2.125rem;
+      margin-bottom: 1rem;
+    }
+
+    p.message {
+      font-size: 1.5rem;
+      max-width: 92%;
+      margin-bottom: 0;
+      margin-top: 0;
+      height: 32%
+    }
+
+    img {
+      height: 53%;
+    }
+
+    .button-container {
+      bottom: 0.2rem;
+    }
+  }
+
+  @media (min-width: 500px) and (max-width: 760px) {
+    .cta-btn {
+      font-size: 15px;
+      display: block;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      line-height: 22px;
+      padding: 13px 18px;
+      width: 90%;
+    }
+
+    h1.title {
+      font-size: 2.125rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      line-height: 51px;
+      padding-bottom: 0.5rem;
+      margin: 0;
+    }
+
+    p.message {
+      font-size: 1rem;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    img {
+      height: 53%;
+    }
+  }
+
+  @media(min-width: 768px) {
+    .cta-btn {
+      font-size: 15px;
+      display: block;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      line-height: 22px;
+      padding: 13px 18px;
+      width: 91%;
+    }
+
+    h1.title {
+      font-size: 2.125rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      line-height: 51px;
+      padding-bottom: 0.5rem;
+      margin: 0;
+    }
+
+    p.message {
+      font-size: 1rem;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    img {
+      height: 53%;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .cta-btn {
+      font-size: 18px;
+      display: block;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      line-height: 20px;
+      padding: 18px 18px;
+      width: 91%;
+    }
+
+    h1.title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      line-height: 51px;
+      padding-bottom: 1rem;
+      margin-top: 1rem;
+    }
+
+    p.message {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+      margin-top: 0;
+      line-height: 2.25rem;
+    }
+
+    img {
+      height: 53%;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: 'Libre-franklin', sans-serif;
+      background: #292B2E;
+      color: #FFFFFF;
+    }
+
+    .cta-btn {
+      width: 80%;
+      background: #85A3FF;
+      border-color: #85A3FF;
+      color: #000;
+      border-radius: 1rem;
+      font-weight: 600;
+      font-size: 16px;
+      display: block;
+      text-decoration: none;
+      left: 10%;
+      padding: 1rem 2rem;
+      margin: 1rem 2rem;
+      text-align: center;
+      line-height: 24px;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: 'Libre-franklin', sans-serif;
+      background: #FFFFFF;
+      color: rgba(6, 18, 35, 1);
+    }
+
+    p.message {
+      color: rgba(58, 73, 93, 1);
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <img alt="money"
+      src="{{picture}}">
+    <h1 class="title">
+      {{title}}
+    </h1>
+    <p class="message">
+      {{message}}
+    </p>
+    <a href="cta://{{anchor.anchorText}}" class="cta-btn">
+     {{anchor.anchorText}}
+    </a>
+  </div>
+</body>
+
+</html>

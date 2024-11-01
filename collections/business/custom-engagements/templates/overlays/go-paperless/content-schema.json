@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Go paperless",
+  "description": "Go paperless",
+  "type": "object",
+  "properties": {
+    "body": {
+      "title": "Body of the message",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 50,
+          "default": "Go paperless with ease today",
+          "metadata": {
+            "placeholderText": "Enter title(Maximum 50 characters).",
+            "renderingHint": "text"
+          }
+        },
+        "message": {
+          "title": "Body",
+          "type": "string",
+          "maxLength": 300,
+          "default": "Activate e-statements. Update your settings today",
+          "metadata": {
+            "placeholderText": "Enter body(Maximum 300 characters).",
+            "renderingHint": "textarea"
+          }
+        },
+        "picture": {
+          "title": "Image",
+          "type": "file",
+          "default": "{{contextRoot}}/assets/image.png",
+          "metadata": {
+            "renderingHint": "image"
+          }
+        },
+        "anchor": {
+          "title": "Button 1",
+          "type": "object",
+          "properties": {
+            "anchorText": {
+              "title": "Button text",
+              "type": "string",
+              "maxLength": 25,
+              "default": "Activate e-statements",
+              "metadata": {
+                "placeholderText": "Enter a button text (max. 25 chars)"
+              }
+            },
+            "routing": {
+              "title": "Button Routing",
+              "type": "string",
+              "metadata": {
+                "renderingHint": "routing"
+              }
+            }
+          },
+          "required":[
+            "anchorText", "routing"
+          ]
+        }
+      },
+      "required": ["title", "picture"],
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  },
+  "required": ["body"]
+}

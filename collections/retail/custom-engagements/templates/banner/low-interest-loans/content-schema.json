@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Low Interest Loans",
+  "description": "low interest loans available",
+  "type": "object",
+  "properties": {
+    "body":{
+      "title": "Body of message",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 50,
+          "default": "Low interest loans available from 2.1% APR",
+          "metadata": {
+            "placeholderText": "Enter a title (max. 50 chars)"
+          }
+        },
+        "picture": {
+          "title": "Image",
+          "type": "file",
+          "default": "{{contextRoot}}/assets/Money.png",
+          "metadata": {
+            "renderingHint": "image"
+          }
+        }
+      },
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "picture"
+  ]
+}
