@@ -9,6 +9,7 @@
       "id": "device-registered",
       "name": "Device Registered",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",
