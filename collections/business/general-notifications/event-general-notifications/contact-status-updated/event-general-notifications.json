@@ -10,7 +10,6 @@
       "id": "contact-status-updated-rejected",
       "name": "Contact Status Updated (Rejected)",
       "userPreferenceEnabled": true,
-      "manageable": true,
       "additionalFilterLogic": "#triggeredEvent['contact']['status'] == 'REJECTED'",
       "deliveryOptions": [
         {
