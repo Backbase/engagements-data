@@ -10,7 +10,6 @@
       "id": "payment-status-updated-rejected",
       "name": "Payment Status Updated (Rejected)",
       "userPreferenceEnabled": true,
-      "manageable": true,
       "additionalFilterLogic": "#triggeredEvent['paymentOrder']['status'] == 'REJECTED'",
       "deliveryOptions": [
         {

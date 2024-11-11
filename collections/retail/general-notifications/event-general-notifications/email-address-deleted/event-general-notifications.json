@@ -11,6 +11,7 @@
       "name": "Email address deleted",
       "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

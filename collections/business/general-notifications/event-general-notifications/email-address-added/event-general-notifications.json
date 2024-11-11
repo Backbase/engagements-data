@@ -10,6 +10,7 @@
       "id": "email-address-added",
       "name": "Email address added",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null",
       "deliveryOptions": [
         {

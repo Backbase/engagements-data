@@ -9,6 +9,7 @@
       "id": "postal-address-added",
       "name": "Postal Address Added",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

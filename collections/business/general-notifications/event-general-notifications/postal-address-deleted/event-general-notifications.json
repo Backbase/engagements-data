@@ -9,6 +9,7 @@
       "id": "postal-address-deleted",
       "name": "Postal Address Deleted",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

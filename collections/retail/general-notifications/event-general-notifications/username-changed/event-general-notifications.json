@@ -9,6 +9,7 @@
       "id": "username-changed",
       "name": "Username Changed",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

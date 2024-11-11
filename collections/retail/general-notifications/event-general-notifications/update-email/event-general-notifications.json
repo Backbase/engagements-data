@@ -10,6 +10,7 @@
       "id": "update-email-address",
       "name": "Update email address",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['primaryEmail'] != null",
       "deliveryOptions": [
         {
