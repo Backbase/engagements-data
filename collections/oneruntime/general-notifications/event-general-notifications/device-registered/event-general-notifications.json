@@ -9,8 +9,8 @@
       "id": "device-registered",
       "name": "Device Registered",
       "userPreferenceEnabled": false,
-      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
       "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
       "deliveryOptions": [
         {
           "channel": "email",
@@ -30,8 +30,8 @@
       "id": "device-registered-business",
       "name": "Device Registered",
       "userPreferenceEnabled": false,
-      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : false",
       "manageable": false,
+      "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : false",
       "deliveryOptions": [
         {
           "channel": "email",

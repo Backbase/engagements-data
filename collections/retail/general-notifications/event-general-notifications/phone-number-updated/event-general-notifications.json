@@ -9,6 +9,7 @@
       "id": "phone-number-updated",
       "name": "Phone number updated",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

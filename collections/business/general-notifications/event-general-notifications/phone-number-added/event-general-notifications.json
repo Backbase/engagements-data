@@ -9,6 +9,7 @@
       "id": "phone-number-added",
       "name": "Phone number added",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

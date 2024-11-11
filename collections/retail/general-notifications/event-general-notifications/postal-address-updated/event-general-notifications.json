@@ -9,6 +9,7 @@
       "id": "postal-address-updated",
       "name": "Postal Address Updated",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

@@ -9,6 +9,7 @@
       "id": "phone-number-deleted",
       "name": "Phone number deleted",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

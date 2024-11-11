@@ -9,6 +9,7 @@
       "id": "password-reset-success",
       "name": "Password Reset Success",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

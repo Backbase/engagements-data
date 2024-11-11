@@ -133,6 +133,7 @@
       "id": "direct-debit-to-approve",
       "name": "Direct Debit To Approve",
       "userPreferenceEnabled": true,
+      "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Batch' && #triggeredEvent['approval']['function'] == 'Batch - SEPA DD'",
       "deliveryOptions": [
         {

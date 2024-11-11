@@ -9,6 +9,7 @@
       "id": "password-changed",
       "name": "Password Changed",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",

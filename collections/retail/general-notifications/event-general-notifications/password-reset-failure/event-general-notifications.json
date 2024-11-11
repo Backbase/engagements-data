@@ -9,6 +9,7 @@
       "id": "password-reset-failure",
       "name": "Password Reset Failure ",
       "userPreferenceEnabled": false,
+      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "email",
