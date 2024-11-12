@@ -9,7 +9,7 @@
   "generalNotifications": [
     {
       "id": "new-transaction-occurred",
-      "name": "New Transaction Occurred Retail",
+      "name": "New Transaction Occurred - Retail",
       "userPreferenceEnabled": true,
       "deliveryOptions": [
         {
@@ -49,7 +49,7 @@
     },
     {
       "id": "new-transaction-occurred-business",
-      "name": "New Transaction Occurred Business",
+      "name": "New Transaction Occurred - Business",
       "userPreferenceEnabled": true,
       "deliveryOptions": [
         {

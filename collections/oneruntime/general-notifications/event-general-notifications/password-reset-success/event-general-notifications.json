@@ -7,7 +7,7 @@
   "generalNotifications": [
     {
       "id": "password-reset-success",
-      "name": "Password Reset Success",
+      "name": "Password Reset Success - Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
@@ -31,7 +31,7 @@
     },
     {
       "id": "password-reset-success-business",
-      "name": "Password Reset Success Business",
+      "name": "Password Reset Success - Business",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",

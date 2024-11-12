@@ -8,7 +8,7 @@
   "generalNotifications": [
     {
       "id": "update-email-address",
-      "name": "Update Email Address",
+      "name": "Update Email Address - Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['primaryEmail'] != null && (#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true)",
@@ -32,7 +32,7 @@
     },
     {
       "id": "update-email-address-business",
-      "name": "Update Email Address Business",
+      "name": "Update Email Address - Business",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['primaryEmail'] != null && (#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true)",

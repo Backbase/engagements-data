@@ -7,7 +7,7 @@
   "generalNotifications": [
     {
       "id": "postal-address-deleted",
-      "name": "Postal Address Deleted",
+      "name": "Postal Address Deleted - Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
@@ -31,7 +31,7 @@
     },
     {
       "id": "postal-address-deleted-business",
-      "name": "Postal Address Deleted Business",
+      "name": "Postal Address Deleted - Business",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",

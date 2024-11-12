@@ -8,7 +8,7 @@
   "generalNotifications": [
     {
       "id": "email-address-deleted",
-      "name": "Email Address Deleted",
+      "name": "Email Address Deleted - Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && (#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true)",
@@ -32,7 +32,7 @@
     },
     {
       "id": "email-address-deleted-business",
-      "name": "Email Address Deleted Business",
+      "name": "Email Address Deleted - Business",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['previousContactEmail'] != null && (#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true)",
