@@ -1,0 +1,11 @@
+{
+  "name": "batch-to-approve-in-app-notification",
+  "description": "In-app notification template for Batch To Approve general notification",
+  "title": "Batch To Approve",
+  "engagement": "general-notification",
+  "channel": "in-app-notification",
+  "placeholderGroups": [
+    "pendingApproval",
+    "userProfile"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "new-message-received-push",
+  "description": "Push notification template for New Message Received general notification",
+  "title": "New Message Received",
+  "engagement": "general-notification",
+  "channel": "push",
+  "placeholderGroups": ["messageReceived", "userProfile"]
+}

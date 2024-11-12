@@ -1,0 +1,8 @@
+{
+  "name":"batch-status-updated-push",
+  "description":"Push notification template for Batch Status Updated (Rejected) general notification",
+  "title":"Batch Status Updated (Rejected)",
+  "engagement": "general-notification",
+  "channel": "push",
+  "placeholderGroups":["batchStatusUpdated", "userProfile"]
+}

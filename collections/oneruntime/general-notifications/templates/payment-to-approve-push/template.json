@@ -1,0 +1,8 @@
+{
+   "name":"payment-to-approve-push",
+   "description":"Push notification template for Payment To Approve general notification",
+   "title":"Payment To Approve",
+   "engagement": "general-notification",
+   "channel": "push",
+   "placeholderGroups":["paymentToApprove", "userProfile"]
+} 

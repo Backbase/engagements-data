@@ -10,7 +10,6 @@
       "id": "batch-status-updated",
       "name": "Batch Status Updated",
       "userPreferenceEnabled": true,
-      "manageable": false,
       "additionalFilterLogic": "(#triggeredEvent['status'] == 'REJECTED' || (#triggeredEvent['status'] == 'PROCESSED' && #triggeredEvent['rejectedTransactionsCount'] >= 1)) && #triggeredEvent['type'] != 'SEPADD'",
       "deliveryOptions": [
         {

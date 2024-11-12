@@ -11,7 +11,6 @@
       "id": "account-balance-low",
       "name": "Account Balance Low Retail",
       "userPreferenceEnabled": true,
-      "manageable": false,
       "additionalFilterLogic": "T(java.lang.Double).valueOf(#triggeredEvent['currentBalance']) < #userConditions['amount'] && T(java.lang.Double).valueOf(#triggeredEvent['previousBalance']) >= #userConditions['amount']",
       "userPreferenceDefaults": "{\"amount\":0}",
       "deliveryOptions": [

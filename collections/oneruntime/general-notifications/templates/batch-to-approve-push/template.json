@@ -1,0 +1,8 @@
+{
+  "name":"batch-to-approve-push",
+  "description":"Push notification template for Batch To Approve general notification",
+  "title":"Batch To Approve",
+  "engagement": "general-notification",
+  "channel": "push",
+  "placeholderGroups":["pendingApproval", "userProfile"]
+} 

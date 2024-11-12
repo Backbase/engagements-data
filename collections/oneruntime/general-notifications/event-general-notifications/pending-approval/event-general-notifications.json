@@ -10,7 +10,6 @@
       "id": "payment-to-approve",
       "name": "Payment To Approve",
       "userPreferenceEnabled": true,
-      "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Payments'",
       "deliveryOptions": [
         {
@@ -52,7 +51,6 @@
       "id": "contact-to-approve",
       "name": "Contact To Approve",
       "userPreferenceEnabled": true,
-      "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Contacts'",
       "deliveryOptions": [
         {
@@ -94,7 +92,6 @@
       "id": "batch-to-approve",
       "name": "Batch To Approve",
       "userPreferenceEnabled": true,
-      "manageable": false,
       "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Batch' && #triggeredEvent['approval']['function'] != 'Batch - SEPA DD'",
       "deliveryOptions": [
         {

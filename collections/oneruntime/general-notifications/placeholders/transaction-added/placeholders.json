@@ -1,0 +1,85 @@
+[
+  {
+    "name": "transactionAdded",
+    "placeholders": [
+      {
+        "name": "debit-credit-indicator",
+        "title": "Debit Credit Indicator",
+        "description": "Indicates whether the transaction is incoming (CRDT) or outgoing (DBIT)",
+        "value": "{{event.creditDebitIndicator}}"
+      },
+      {
+        "name": "currency",
+        "title": "Currency",
+        "description": "Currency of the transaction",
+        "value": "{{event.transactionAmountCurrency.currencyCode}}"
+      },
+      {
+        "name": "transaction-description",
+        "title": "Transaction Description",
+        "description": "Description of the transaction",
+        "value": "{{{event.description}}}"
+      },
+      {
+        "name": "amount-formatted",
+        "title": "Amount Formatted",
+        "description": "Formatted amount of the transaction according to the locale",
+        "value": "{{formatAmount event.transactionAmountCurrency.amount locale}}"
+      },
+      {
+        "name": "amount",
+        "title": "Amount",
+        "description": "Numeric amount of the transaction",
+        "value": "{{event.transactionAmountCurrency.amount}}"
+      },
+      {
+        "name": "billing-status",
+        "title": "Billing Status",
+        "description": "Status of the transaction",
+        "value": "{{event.billingStatus}}"
+      },
+      {
+        "name": "cx-rate",
+        "title": "Currency Exchange Rate",
+        "description": "Exchange rate of the transaction (between account currency and transaction currency) that was used for the conversion",
+        "value": "{{event.currencyExchangeRate}}"
+      },
+      {
+        "name": "cx-rate-formatted",
+        "title": "Currency Exchange Rate Formatted",
+        "description": "Formatted Exchange rate of the transaction according to the locale",
+        "value": "{{formatAmount event.currencyExchangeRate locale}}"
+      },
+      {
+        "name": "reference",
+        "title": "Reference",
+        "description": "A tag/label issued by the initiator of the transaction in order to be able to refer to the respective transaction",
+        "value": "{{{event.reference}}}"
+      },
+      {
+        "name": "running-balance",
+        "title": "Running Balance",
+        "description": "Indicates the balance of the account after the transaction was executed",
+        "value": "{{event.runningBalance}}"
+      },
+      {
+        "name": "running-balance-formatted",
+        "title": "Running Balance Formatted",
+        "description": "Formatted Running Balance according to the locale",
+        "value": "{{formatAmount event.runningBalance locale}}"
+      },
+      {
+        "name": "category",
+        "title": "Transaction Category",
+        "description": "The category of transaction",
+        "value": "{{{event.category}}}"
+      },
+      {
+        "name": "counterparty-name",
+        "title": "Counterparty Name",
+        "description": "The name of the payer for a credit transaction or the receiver for a debit transaction",
+        "value": "{{{event.counterPartyName}}}"
+      }
+    ]
+  }
+]

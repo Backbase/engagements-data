@@ -1,0 +1,25 @@
+[
+  {
+    "name": "messageReceived",
+    "placeholders": [
+      {
+        "name": "sender",
+        "title": "Sender",
+        "description": "The sender of the message",
+        "value": "{{{event.sender}}}"
+      },
+      {
+        "name": "subject",
+        "title": "Subject",
+        "description": "The subject of the message",
+        "value": "{{{event.subject}}}"
+      },
+      {
+        "name": "topic",
+        "title": "Topic",
+        "description": "The topic of the message",
+        "value": "{{{event.topicName}}}"
+      }
+    ]
+  }
+]

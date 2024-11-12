@@ -1,0 +1,8 @@
+{
+   "name":"payment-status-updated-rejected-push",
+   "description":"Push notification template for Payment Status Updated (Rejected) general notification",
+   "title":"Payment Status Updated (Rejected)",
+   "engagement": "general-notification",
+   "channel": "push",
+   "placeholderGroups":["paymentOrderUpdated", "userProfile"]
+} 

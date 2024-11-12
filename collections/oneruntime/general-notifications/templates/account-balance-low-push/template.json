@@ -1,0 +1,8 @@
+{
+   "name":"account-balance-low-push",
+   "description":"Push template for Account Balance Low general notification",
+   "title":"Account Balance Low",
+   "engagement": "general-notification",
+   "channel": "push",
+   "placeholderGroups":["accountBalanceChanged", "userProfile"]
+} 
