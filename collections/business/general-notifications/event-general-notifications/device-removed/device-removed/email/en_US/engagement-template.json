@@ -1,4 +1,0 @@
-{
-    "subject": "Device removed",
-    "body": "Dear {{{user.preferredName}}} {{{user.familyName}}},\n\n A device, {{#if event.friendlyName}}\"{{{event.friendlyName}}}\" {{/if}}was removed from your online banking on {{ formatDate event.created 'dd-MMMM-yyyy \\'at\\' HH:mm:ss z' 'en' 'US/Eastern' }}.\n\nIf this was you:\n\n\tAll done! The device is now removed.\n\n\nIf you did not want to remove this device:\n\n\n\tYou can go to Backbase and add it again.\n\n\nIf this wasn't you:\n\tChange your password right away, and check your account for activity\n\tAdd the device again to your online banking\n\n\nRegards, \nBackbase Bank"
-}
