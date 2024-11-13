@@ -1,0 +1,8 @@
+{
+    "name":"account-balance-low-sms",
+    "description":"Sms template for Account Balance Low general notification",
+    "title":"Account Balance Low",
+    "engagement": "general-notification",
+    "channel": "sms",
+    "placeholderGroups":["accountBalanceChanged", "userProfile"]
+}

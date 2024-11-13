@@ -7,7 +7,7 @@
   "generalNotifications": [
     {
       "id": "phone-number-added",
-      "name": "Phone Number Added",
+      "name": "Phone Number Added - Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
@@ -31,7 +31,7 @@
     },
     {
       "id": "phone-number-added-business",
-      "name": "Phone Number Added Business",
+      "name": "Phone Number Added - Business",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",

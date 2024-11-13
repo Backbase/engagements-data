@@ -7,9 +7,8 @@
   "generalNotifications": [
     {
       "id": "new-message-received",
-      "name": "New Message Received From Customer Support Retail",
+      "name": "New Message Received From Customer Support - Retail",
       "userPreferenceEnabled": false,
-      "manageable": false,
       "additionalFilterLogic": "(#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true) && !(#triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement')",
       "deliveryOptions": [
         {
@@ -50,9 +49,8 @@
     },
     {
       "id": "new-message-received-mailout",
-      "name": "New Message Received From Marketer Retail",
+      "name": "New Message Received From Marketer - Retail",
       "userPreferenceEnabled": false,
-      "manageable": false,
       "additionalFilterLogic": "(#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true) && #triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement'",
       "deliveryOptions": [
         {
@@ -76,9 +74,8 @@
     },
     {
       "id": "new-message-received-business",
-      "name": "New Message Received From Customer Support Business",
+      "name": "New Message Received From Customer Support - Business",
       "userPreferenceEnabled": false,
-      "manageable": false,
       "additionalFilterLogic": "(#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true) && !(#triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement')",
       "deliveryOptions": [
         {
@@ -119,9 +116,8 @@
     },
     {
       "id": "new-message-received-mailout-business",
-      "name": "New Message Received From Marketer Business",
+      "name": "New Message Received From Marketer - Business",
       "userPreferenceEnabled": false,
-      "manageable": false,
       "additionalFilterLogic": "(#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true) && #triggeredEvent['origin'] != null && #triggeredEvent['origin'] == 'engagement'",
       "deliveryOptions": [
         {

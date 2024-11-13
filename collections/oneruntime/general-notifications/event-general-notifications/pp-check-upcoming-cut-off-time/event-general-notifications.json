@@ -8,7 +8,7 @@
   "generalNotifications": [
     {
       "id": "pp-check-upcoming-cut-off-time-business",
-      "name": "Positive Pay Check Upcoming Cut-Off Time Business",
+      "name": "Positive Pay Check Upcoming Cut-Off Time - Business",
       "userPreferenceEnabled": true,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : true",

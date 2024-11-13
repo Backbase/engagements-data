@@ -1,0 +1,25 @@
+[
+  {
+    "name": "partyUpdated",
+    "placeholders": [
+      {
+        "name": "party-name",
+        "title": "Name",
+        "description": "Name of the party",
+        "value": "{{{event.contact.name}}}"
+      },
+      {
+        "name": "alias",
+        "title": "Alias",
+        "description": "Preferred alias of the party",
+        "value": "{{event.contact.alias}}"
+      },
+      {
+        "name": "status",
+        "title": "Status",
+        "description": "Status of the party",
+        "value": "{{lower event.contact.status}}"
+      }
+    ]
+  }
+]

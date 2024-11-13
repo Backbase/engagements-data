@@ -1,0 +1,8 @@
+{
+   "name":"payment-status-updated-rejected-in-app-notification",
+   "description":"In-app notification template for Payment Status Updated (Rejected) general notification",
+   "title":"Payment Status Updated (Rejected)",
+   "engagement": "general-notification",
+   "channel": "in-app-notification",
+   "placeholderGroups":["paymentOrderUpdated", "userProfile"]
+} 

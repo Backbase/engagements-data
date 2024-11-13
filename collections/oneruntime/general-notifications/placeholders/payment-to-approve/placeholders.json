@@ -1,0 +1,25 @@
+[
+  {
+    "name": "paymentToApprove",
+    "placeholders": [
+      {
+        "name": "currency-code",
+        "title": "Currency",
+        "description": "Currency of the amount to approve",
+        "value": "{{event.approval.amountDetails.currencyCode}}"
+      },
+      {
+        "name": "amount-formatted",
+        "title": "Amount Formatted",
+        "description": "Formatted amount to approve according to the locale",
+        "value": "{{formatAmount event.approval.amountDetails.amount locale}}"
+      },
+      {
+        "name": "amount",
+        "title": "Amount",
+        "description": "Numeric amount to approve",
+        "value": "{{event.approval.amountDetails.amount}}"
+      }
+    ]
+  }
+]

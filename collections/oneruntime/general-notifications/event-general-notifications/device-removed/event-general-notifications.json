@@ -7,7 +7,7 @@
   "generalNotifications": [
     {
       "id": "device-removed",
-      "name": "Device Removed Retail",
+      "name": "Device Removed - Retail",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'RETAIL' : true",
@@ -28,7 +28,7 @@
     },
     {
       "id": "device-removed-business",
-      "name": "Device Removed Business",
+      "name": "Device Removed - Business",
       "userPreferenceEnabled": false,
       "manageable": false,
       "additionalFilterLogic": "#lineOfBusiness != null ? #lineOfBusiness == 'BUSINESS' : false",

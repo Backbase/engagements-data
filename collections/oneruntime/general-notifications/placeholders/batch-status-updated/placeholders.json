@@ -1,0 +1,43 @@
+[
+  {
+    "name": "batchStatusUpdated",
+    "placeholders": [
+      {
+        "name": "batch-name",
+        "title": "Batch Name",
+        "description": "Name of the batch",
+        "value": "{{event.name}}"
+      },
+      {
+        "name": "currency-code",
+        "title": "Currency",
+        "description": "Currency of the batch",
+        "value": "{{event.totalInstructedAmount.currencyCode}}"
+      },
+      {
+        "name": "amount-details-formatted",
+        "title": "Amount Details Formatted",
+        "description": "Formatted amount of the batch according to the locale",
+        "value": "{{formatAmount event.totalInstructedAmount.amount locale}}"
+      },
+      {
+        "name": "amount-details",
+        "title": "Amount Details",
+        "description": "Numeric amount of the batch",
+        "value": "{{event.totalInstructedAmount.amount}}"
+      },
+      {
+        "name": "status",
+        "title": "Status",
+        "description": "Status of the batch",
+        "value": "{{event.status}}"
+      },
+      {
+        "name": "rejected-transactions-count",
+        "title": "Rejected Transactions Count",
+        "description": "The number of rejected transactions in a batch",
+        "value": "{{event.rejectedTransactionsCount}}"
+      }
+    ]
+  }
+]

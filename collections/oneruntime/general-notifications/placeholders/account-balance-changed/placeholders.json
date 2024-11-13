@@ -1,0 +1,49 @@
+[
+  {
+    "name": "accountBalanceChanged",
+    "placeholders": [
+      {
+        "name": "account-name",
+        "title": "Account Name",
+        "description": "Friendly name of account if set by the user or default product name if not set",
+        "value": "{{{event.alias}}}"
+      },
+      {
+        "name": "currency",
+        "title": "Currency",
+        "description": "Currency of the account",
+        "value": "{{event.currency}}"
+      },
+      {
+        "name": "current-balance",
+        "title": "Current Balance",
+        "description": "Current Balance of the account",
+        "value": "{{event.currentBalance}}"
+      },
+      {
+        "name": "current-balance-formatted",
+        "title": "Current Balance Formatted",
+        "description": "Formatted Current Balance according to locale",
+        "value": "{{formatAmount event.currentBalance locale}}"
+      },
+      {
+        "name": "previous-balance",
+        "title": "Previous Balance",
+        "description": "Previous Balance of the account",
+        "value": "{{event.previousBalance}}"
+      },
+      {
+        "name": "previous-balance-formatted",
+        "title": "Previous Balance Formatted",
+        "description": "Formatted Previous Balance according to locale",
+        "value": "{{formatAmount event.previousBalance locale}}"
+      },
+      {
+        "name": "amount-threshold",
+        "title": "Amount Threshold",
+        "description": "Current threshold specified by user",
+        "value": "{{formatAmount preference.amount locale}}"
+      }
+    ]
+  }
+]

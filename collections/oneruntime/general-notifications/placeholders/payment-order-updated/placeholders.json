@@ -1,0 +1,37 @@
+[
+  {
+    "name": "paymentOrderUpdated",
+    "placeholders": [
+      {
+        "name": "currency-code",
+        "title": "Currency",
+        "description": "Currency of the payment",
+        "value": "{{event.paymentOrder.totalAmount.currencyCode}}"
+      },
+      {
+        "name": "amount-details-formatted",
+        "title": "Amount Details Formatted",
+        "description": "Formatted amount of the payment according to the locale",
+        "value": "{{formatAmount event.paymentOrder.totalAmount.amount locale}}"
+      },
+      {
+        "name": "amount-details",
+        "title": "Amount Details",
+        "description": "Numeric amount of the payment",
+        "value": "{{event.paymentOrder.totalAmount.amount}}"
+      },
+      {
+        "name": "status",
+        "title": "Status",
+        "description": "Status of the payment",
+        "value": "{{lower event.paymentOrder.status}}"
+      },
+      {
+        "name": "name",
+        "title": "Name",
+        "description": "The name of the counterparty",
+        "value": "{{{event.paymentOrder.transferTransactionInformation.counterparty.name}}}"
+      }
+    ]
+  }
+]

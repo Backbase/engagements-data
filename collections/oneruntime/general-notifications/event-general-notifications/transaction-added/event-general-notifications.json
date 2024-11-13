@@ -9,9 +9,8 @@
   "generalNotifications": [
     {
       "id": "new-transaction-occurred",
-      "name": "New Transaction Occurred Retail",
+      "name": "New Transaction Occurred - Retail",
       "userPreferenceEnabled": true,
-      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
@@ -50,9 +49,8 @@
     },
     {
       "id": "new-transaction-occurred-business",
-      "name": "New Transaction Occurred Business",
+      "name": "New Transaction Occurred - Business",
       "userPreferenceEnabled": true,
-      "manageable": false,
       "deliveryOptions": [
         {
           "channel": "in-app-notification",
