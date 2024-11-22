@@ -1,14 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Business loans",
-  "description": "Grow your business with flexible loan options",
+  "title": "Insurance & Safety",
+  "description": "Protect yourself and your employees with business insurance",
   "type": "object",
   "properties": {
     "subject": {
       "title": "Subject",
       "type": "string",
       "maxLength": 100,
-      "default": "Grow Your Business with Ease",
+      "default": "We Care About You...",
       "metadata": {
         "placeholderText": "Enter a subject (max. 100 chars)",
         "escaping": false
@@ -21,19 +21,19 @@
         "title": {
           "title": "Title",
           "type": "string",
-          "maxLength": 100,
-          "default": "Borrow up to USD 20,000 with a business loan",
+          "maxLength": 45,
+          "default": "Business insurance tailored to your needs",
           "metadata": {
-            "placeholderText": "Enter a title (max. 100 chars)"
+            "placeholderText": "Enter a title (max. 45 chars)"
           }
         },
         "message": {
           "title": "Message",
           "type": "string",
-          "maxLength": 130,
-          "default": "As a top-tier customer, you're able to apply for any of our new loan products, which offer immediate finance to businesses.",
+          "maxLength": 170,
+          "default": "From USD 799 per year, our insurance can protect your business if something goes wrong.  Customize your plan so you get the right cover at the right cost.",
           "metadata": {
-            "placeholderText": "Enter a text (max. 130 chars)",
+            "placeholderText": "Enter a text (max. 170 chars)",
             "renderingHint": "textarea"
           }
         },
@@ -49,7 +49,7 @@
           "title": "Button text",
           "type": "string",
           "maxLength": 40,
-          "default": "Check eligibility",
+          "default": "Get a quote",
           "metadata": {
             "placeholderText": "Enter a button text (max. 40 chars)"
           }

@@ -1,0 +1,10 @@
+{
+  "name": "low-interest-loans",
+  "description": "low interest loans available",
+  "title": "Low Interest Loans",
+  "engagement": "custom",
+  "channel": "banner",
+  "default": true,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+  "tags": ["vertical","web","300x250","RETAIL","BUSINESS"]
+}

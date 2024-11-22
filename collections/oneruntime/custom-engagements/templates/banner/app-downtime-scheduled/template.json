@@ -1,0 +1,10 @@
+{
+  "name": "app-downtime-scheduled",
+  "description": "App downtime scheduled: 30th June - 1st July",
+  "title": "App downtime",
+  "engagement": "custom",
+  "channel": "banner",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+  "tags": ["vertical","web","300x250","RETAIL","BUSINESS"]
+}

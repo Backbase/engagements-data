@@ -1,0 +1,22 @@
+{
+  "appName": "model-bank-business",
+  "payload": {
+    "android": {
+      "settings": {
+        "sound": "default",
+        "color": "default",
+        "icon": "hello"
+      }
+    },
+    "ios": {
+      "settings": {
+        "category": "ENGAGEMENT",
+        "sound": "default",
+        "interruption-level": "active"
+      }
+    },
+    "data": {
+      "level": "INFO"
+    }
+  }
+}

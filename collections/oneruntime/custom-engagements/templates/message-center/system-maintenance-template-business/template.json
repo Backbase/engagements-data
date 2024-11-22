@@ -1,0 +1,10 @@
+{
+  "name": "system-maintenance-message-center-business",
+  "description": "We will have downtime at Monday 4:00 PM",
+  "title": "System Maintenance",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+  "tags": ["BUSINESS"]
+}

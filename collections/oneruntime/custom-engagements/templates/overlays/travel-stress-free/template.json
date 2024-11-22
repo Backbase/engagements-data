@@ -1,0 +1,11 @@
+{
+    "name": "travel-stress-free",
+    "description": "Travel Stress Free",
+    "title": "Travel Stress Free",
+    "engagement": "custom",
+    "channel": "overlays",
+    "default": false,
+    "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+    "tags": ["RETAIL", "BUSINESS"]
+  }
+  

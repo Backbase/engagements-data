@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Instant insurance cover",
+    "description": "Instant insurance cover in 10 minutes",
+    "type": "object",
+    "properties": {
+      "body": {
+        "title": "Body of the message",
+        "type": "object",
+        "properties": {
+          "title": {
+            "title": "Title",
+            "type": "string",
+            "maxLength": 50,
+            "default": "Instant insurance cover in 10 minutes",
+            "metadata": {
+              "placeholderText": "Enter a title (max. 100 chars)"
+            }
+          },
+          "picture": {
+            "title": "Image",
+            "type": "file",
+            "default":"{{contextRoot}}/assets/Success.png",
+            "metadata": {
+              "renderingHint": "image"
+            }
+          },
+          "buttonText": {
+            "title": "Button text",
+            "type": "string",
+            "maxLength": 40,
+            "default": "Get an insurance quote",
+            "metadata": {
+              "placeholderText": "Enter a button text (max. 40 chars)"
+            }
+          }
+        },
+        "metadata": {
+          "layoutPath": "{{contextRoot}}/assets/index.html"
+        }
+      }
+    },
+    "required": [
+      "title",
+      "picture",
+      "buttonText"
+    ]
+  }
+  

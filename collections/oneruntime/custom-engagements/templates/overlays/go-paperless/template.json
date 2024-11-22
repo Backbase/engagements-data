@@ -1,0 +1,11 @@
+{
+    "name": "go-paperless",
+    "description": "Go paperless",
+    "title": "Go paperless",
+    "engagement": "custom",
+    "channel": "overlays",
+    "default": false,
+    "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+    "tags": ["RETAIL", "BUSINESS"]
+  }
+  

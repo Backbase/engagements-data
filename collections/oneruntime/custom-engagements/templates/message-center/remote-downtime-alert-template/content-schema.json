@@ -1,46 +1,46 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Business loans",
-  "description": "Grow your business with flexible loan options",
+  "title": "Remote Check Deposit Downtime",
+  "description": "We are doing repairs over the weekend",
   "type": "object",
   "properties": {
     "subject": {
-      "title": "Subject",
+      "title": "Subject of message",
       "type": "string",
       "maxLength": 100,
-      "default": "Grow Your Business with Ease",
+      "default": "Scheduled Weekend Maintenance Ahead",
       "metadata": {
         "placeholderText": "Enter a subject (max. 100 chars)",
         "escaping": false
       }
     },
     "body": {
-      "title": "Body of the message",
+      "title": "Body of message",
       "type": "object",
       "properties": {
         "title": {
           "title": "Title",
           "type": "string",
-          "maxLength": 100,
-          "default": "Borrow up to USD 20,000 with a business loan",
+          "maxLength": 35,
+          "default": "Remote Check Deposit Downtime",
           "metadata": {
-            "placeholderText": "Enter a title (max. 100 chars)"
+            "placeholderText": "Enter a title (max. 35 chars)"
           }
         },
         "message": {
           "title": "Message",
           "type": "string",
-          "maxLength": 130,
-          "default": "As a top-tier customer, you're able to apply for any of our new loan products, which offer immediate finance to businesses.",
+          "maxLength": 70,
+          "default": "We are doing repairs over the weekend that may affect you",
           "metadata": {
-            "placeholderText": "Enter a text (max. 130 chars)",
+            "placeholderText": "Enter a text (max. 70 chars)",
             "renderingHint": "textarea"
           }
         },
         "picture": {
           "title": "Image",
           "type": "file",
-          "default":"{{contextRoot}}/assets/dark.png",
+          "default":"{{contextRoot}}/assets/light.png",
           "metadata": {
             "renderingHint": "image"
           }
@@ -49,7 +49,7 @@
           "title": "Button text",
           "type": "string",
           "maxLength": 40,
-          "default": "Check eligibility",
+          "default": "Learn More",
           "metadata": {
             "placeholderText": "Enter a button text (max. 40 chars)"
           }
