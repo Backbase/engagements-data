@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Interest free autoloan</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  </style>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 14px;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      border-radius: 1rem;
+      border: 1px solid #FFF;
+      align-items: center;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .content-area {
+      display: flex;
+      width: 62%;
+      height: 100%;
+      max-height: 100%;
+      color: #295EFF;
+      font-size: 0.75rem;
+      align-items: center;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .img-placeholder {
+      width: 38%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    img {
+      width: 80px;
+      height: 34px;
+      margin-left: 1.5rem;
+    }
+
+    @media(max-width: 768px) {
+      img {
+        margin-right: 2rem;
+      }
+    }
+
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .container {
+        max-width: 51.563rem;
+      }
+
+      .content-area {
+        font-size: 1.5rem;
+      }
+
+      img {
+        width: 160px;
+        height: 64px;
+        margin-left: 4.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      img {
+        margin-left: 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="img-placeholder">
+      <img src="{{picture}}" alt="A Car" />
+    </div>
+    <div class="content-area">
+      {{title}}
+    </div>
+  </div>
+</body>
+
+</html>

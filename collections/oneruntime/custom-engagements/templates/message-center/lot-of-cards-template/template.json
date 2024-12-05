@@ -1,0 +1,10 @@
+{
+  "name": "lot-of-cards-message-center",
+  "description": "Order our travel card now and spend freely without any fees.",
+  "title": "Travelling With Cards",
+  "engagement": "custom",
+  "channel": "message-center",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+  "tags": ["RETAIL"]
+}

@@ -1,0 +1,11 @@
+{
+    "name": "instant-insurance-cover",
+    "description": "Instant insurance cover in 10 minutes",
+    "title": "Instant insurance cover",
+    "engagement": "custom",
+    "channel": "banner",
+    "default": true,
+    "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+    "tags": ["web","1140x180","BUSINESS"]
+  }
+  

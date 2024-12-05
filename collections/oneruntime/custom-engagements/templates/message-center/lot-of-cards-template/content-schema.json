@@ -1,14 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Business loans",
-  "description": "Grow your business with flexible loan options",
+  "title": "Travelling with a lot of Cards?",
+  "description": "Order our travel card now and spend freely without any fees.",
   "type": "object",
   "properties": {
     "subject": {
       "title": "Subject",
       "type": "string",
       "maxLength": 100,
-      "default": "Grow Your Business with Ease",
+      "default": "Say Goodbye to Card Fees",
       "metadata": {
         "placeholderText": "Enter a subject (max. 100 chars)",
         "escaping": false
@@ -22,7 +22,7 @@
           "title": "Title",
           "type": "string",
           "maxLength": 100,
-          "default": "Borrow up to USD 20,000 with a business loan",
+          "default": "Travelling with a lot of Cards?",
           "metadata": {
             "placeholderText": "Enter a title (max. 100 chars)"
           }
@@ -30,10 +30,10 @@
         "message": {
           "title": "Message",
           "type": "string",
-          "maxLength": 130,
-          "default": "As a top-tier customer, you're able to apply for any of our new loan products, which offer immediate finance to businesses.",
+          "maxLength": 100,
+          "default": "Order our travel card now and spend freely without any fees",
           "metadata": {
-            "placeholderText": "Enter a text (max. 130 chars)",
+            "placeholderText": "Enter a text (max. 100 chars)",
             "renderingHint": "textarea"
           }
         },
@@ -49,7 +49,7 @@
           "title": "Button text",
           "type": "string",
           "maxLength": 40,
-          "default": "Check eligibility",
+          "default": "Order Now",
           "metadata": {
             "placeholderText": "Enter a button text (max. 40 chars)"
           }

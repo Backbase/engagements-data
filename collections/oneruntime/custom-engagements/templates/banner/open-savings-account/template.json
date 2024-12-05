@@ -1,0 +1,11 @@
+{
+  "name": "open-savings-account",
+  "description": "Extra money? Open a savings pocket",
+  "title": "Open Savings account",
+  "engagement": "custom",
+  "channel": "banner",
+  "default": true,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+  "tags": ["web","840x175","RETAIL"]
+}
+  

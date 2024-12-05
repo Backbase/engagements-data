@@ -1,0 +1,10 @@
+{
+  "name": "interest-free-auto-loans",
+  "description": "interest free auto loans available",
+  "title": "Interest Free Auto Loans",
+  "engagement": "custom",
+  "channel": "banner",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+  "tags": ["mobile","343x83","RETAIL","BUSINESS"]
+}

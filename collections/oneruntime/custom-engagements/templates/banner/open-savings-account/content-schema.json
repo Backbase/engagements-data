@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Open Savings account",
+  "description": "Extra money? Open a savings pocket",
+  "type": "object",
+  "properties": {
+    "body": {
+      "title": "Body of the message",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 50,
+          "default": "Extra money? Open a savings pocket",
+          "metadata": {
+            "placeholderText": "Enter a title (max. 50 chars)"
+          }
+        },
+        "message": {
+          "title": "Message",
+          "type": "string",
+          "maxLength": 100,
+          "default": "With market leading interest up to 3.2%, you'll be able to grow your money in no time.",
+          "metadata": {
+            "placeholderText": "Enter a text (max. 100 chars)",
+            "renderingHint": "textarea"
+          }
+        },
+        "buttonText": {
+          "title": "Button text",
+          "type": "string",
+          "maxLength": 40,
+          "default": "Open an account",
+          "metadata": {
+            "placeholderText": "Enter a button text (max. 40 chars)"
+          }
+        }
+      },
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "message",
+    "buttonText"
+  ]
+}
+  
