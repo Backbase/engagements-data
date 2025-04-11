@@ -1,0 +1,4 @@
+{
+  "title": "Nueva transferencia (business)",
+  "body": "\uD83D\uDCB8 {{#eq event.creditDebitIndicator 'CRDT' }}Recibida{{else}}Pagada{{/eq}} {{event.transactionAmountCurrency.currencyCode}} {{formatAmount event.transactionAmountCurrency.amount locale}}"
+}

@@ -26,6 +26,11 @@
               "path": "/new-transaction-occurred/in-app-notification/en_US/engagement-template.json",
               "templateName": "new-transaction-occurred-in-app-notification",
               "locale": "en_US"
+            },
+            {
+              "path": "/new-transaction-occurred/in-app-notification/es_ES/engagement-template.json",
+              "templateName": "new-transaction-occurred-in-app-notification",
+              "locale": "es_ES"
             }
           ]
         },
@@ -42,6 +47,11 @@
               "path": "/new-transaction-occurred/push/en_US/engagement-template.json",
               "templateName": "new-transaction-occurred-push",
               "locale": "en_US"
+            },
+            {
+              "path": "/new-transaction-occurred/push/es_ES/engagement-template.json",
+              "templateName": "new-transaction-occurred-push",
+              "locale": "es_ES"
             }
           ]
         }
