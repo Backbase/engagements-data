@@ -38,6 +38,21 @@
               "locale": "en_US"
             }
           ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "pp-ach-upcoming-cut-off-time-business/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "positive-pay-ach-active-exceptions-view",
+            "data": ""
+          },
+          "engagementTemplates": [
+            {
+              "path": "/pp-ach-upcoming-cut-off-time-business/push/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
         }
       ]
     }
