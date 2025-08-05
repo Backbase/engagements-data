@@ -1,0 +1,13 @@
+{
+  "name": "financial-safety-recommendation-card",
+  "description": "A buffer is an emergency fund that protects you from unexpected expenses and financial surprises.",
+  "title": "Financial Safety Net",
+  "engagement": "custom",
+  "channel": "banner",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/recommendationThumbnail.png",
+  "tags": [
+    "recommendation",
+    "311x120"
+  ]
+}

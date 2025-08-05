@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Financial Safety Net Card Data",
+  "description": "Schema for the Financial Safety Net card content.",
+  "type": "object",
+  "properties": {
+    "body": {
+      "title": "Card Content",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Card Title",
+          "type": "string",
+          "maxLength": 25,
+          "default": "Financial Safety Net",
+          "metadata": {
+            "placeholderText": "Enter a title (max. 25 chars)"
+          }
+        },
+        "picture": {
+          "title": "Image",
+          "type": "file",
+          "default": "{{contextRoot}}/assets/recommendationIcon.png",
+          "metadata": {
+            "renderingHint": "image"
+          }
+        },
+        "description": {
+          "title": "Card Description",
+          "type": "string",
+          "maxLength": 75,
+          "default": "A buffer is an emergency fund that protects you from unexpected expenses.",
+          "metadata": {
+            "placeholderText": "Enter a description (max. 75 chars)"
+          }
+        },
+        "ctaText": {
+          "title": "Call to Action Text",
+          "type": "string",
+          "maxLength": 25,
+          "default": "Set up automatic savings",
+          "metadata": {
+            "placeholderText": "Enter CTA text (max. 25 chars)"
+          }
+        }
+      },
+      "required": [
+        "title",
+        "picture",
+        "description",
+        "ctaText"
+      ],
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  },
+  "required": [
+    "body"
+  ]
+}
