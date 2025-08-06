@@ -12,7 +12,7 @@
     <name>Backbase :: Engagement Data</name>
 
     <properties>
-        <backbase-bom.version>2025.04</backbase-bom.version>
+        <backbase-bom.version>2025.08</backbase-bom.version>
         <docker.repo.url>ecr.backbase.com/development</docker.repo.url>
         <gitflow-maven-plugin.version>1.17.0</gitflow-maven-plugin.version>
         <docker-maven-plugin.version>0.40.2</docker-maven-plugin.version>
