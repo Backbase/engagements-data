@@ -1,0 +1,10 @@
+{
+  "name": "introductory-banner",
+  "description": "Discover our cutting-edge banking features designed for quick and secure transactions, along with personalized financial advice.",
+  "title": "Feature Introduction",
+  "engagement": "custom",
+  "channel": "banner",
+  "default": false,
+  "thumbnailPath": "{{contextRoot}}/assets/thumbnail.png",
+  "tags": ["mobile", "343x114", "RETAIL", "BUSINESS"]
+}

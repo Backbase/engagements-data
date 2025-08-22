@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Feature introduction",
+  "description": "Discover our cutting-edge banking features designed for quick and secure transactions, along with personalized financial advice.",
+  "type": "object",
+  "properties": {
+    "body": {
+      "title": "Body of message",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 35,
+          "default": "Introducing the banking features!",
+          "metadata": {
+            "placeholderText": "Enter a title (max. 35 chars)"
+          }
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "maxLength": 130,
+          "default": "Discover our cutting-edge banking features designed for quick and secure transactions, along with personalized financial advice.",
+          "metadata": {
+            "placeholderText": "Enter a description (max. 130 chars)"
+          }
+        }
+      },
+      "required": ["title", "description"],
+      "metadata": {
+        "layoutPath": "{{contextRoot}}/assets/index.html"
+      }
+    }
+  }
+}

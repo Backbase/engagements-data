@@ -6,5 +6,5 @@
   "channel": "banner",
   "default": false,
   "thumbnailPath": "{{contextRoot}}/assets/recommendationThumbnail.png",
-  "tags": ["recommendation", "311x120","RETAIL","BUSINESS"]
+  "tags": ["recommendation", "mobile", "311x120","RETAIL","BUSINESS"]
 }

@@ -5,11 +5,11 @@
   "type": "object",
   "properties": {
     "body": {
-      "title": "Card Content",
+      "title": "Body of message",
       "type": "object",
       "properties": {
         "title": {
-          "title": "Card Title",
+          "title": "Title",
           "type": "string",
           "maxLength": 25,
           "default": "Financial Safety Net",
@@ -26,7 +26,7 @@
           }
         },
         "description": {
-          "title": "Card Description",
+          "title": "Description",
           "type": "string",
           "maxLength": 75,
           "default": "A buffer is an emergency fund that protects you from unexpected expenses.",
@@ -44,18 +44,10 @@
           }
         }
       },
-      "required": [
-        "title",
-        "picture",
-        "description",
-        "ctaText"
-      ],
+      "required": ["title", "picture", "description", "ctaText"],
       "metadata": {
         "layoutPath": "{{contextRoot}}/assets/index.html"
       }
     }
-  },
-  "required": [
-    "body"
-  ]
+  }
 }
