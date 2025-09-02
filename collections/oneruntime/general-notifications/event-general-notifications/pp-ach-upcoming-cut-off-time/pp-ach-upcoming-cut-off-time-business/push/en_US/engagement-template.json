@@ -1,4 +1,4 @@
 {
   "title": "Pending ACH exceptions",
-  "body": "You have active exception(s) to pay or reject before default system decision at {{{event.cutOffTime}}}."
+  "body": "You have active exception(s) to pay or return before default system decision at {{{event.cutOffTime}}}."
 }
