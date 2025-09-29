@@ -1,0 +1,35 @@
+{
+  "eventClassName": "com.backbase.lending.tradefinance.letterofcredit.event.spec.v1.ImportLetterOfCreditStatusUpdatedEvent",
+  "id": "import-letter-of-credit-status-updated",
+  "eventBusinessName": "Import Letter of Credit Status Updated",
+  "recipientType": "internal",
+  "extractor": "#this['contributorsIds']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "import-letter-of-credit-status-updated",
+      "name": "Import Letter of Credit Status Updated",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic":  "#triggeredEvent['status'] in {'BANK_REVIEW', 'BANK_APPROVED', 'BANK_REJECTED', 'INTERNAL_REJECTED', 'ISSUED', 'DOCUMENT_REVIEW', 'DISCREPANCIES_FOUND', 'PENDING_SETTLEMENT', 'SETTLED', 'EXPIRED', 'CANCELLED'}",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/import-letter-of-credit-status-updated/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "import-lc-view",
+            "data": "{\"id\":\"{{event.lcId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/import-letter-of-credit-status-updated/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
