@@ -154,6 +154,31 @@
           ]
         }
       ]
+    },
+    {
+      "id": "import-letter-of-credit-to-approve",
+      "name": "Import Letter of Credit To Approve",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Letter of Credit' && #triggeredEvent['approval']['function'] == 'Letter of Credit - Application'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/import-letter-of-credit-to-approve/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "import-lc-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/import-letter-of-credit-to-approve/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
