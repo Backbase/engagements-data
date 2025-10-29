@@ -1,0 +1,56 @@
+{
+  "eventClassName": "com.backbase.dbs.messages.pandp.event.spec.v1.MessageDataExportCreatedEvent",
+  "id": "message-data-export-completed",
+  "eventBusinessName": "Message Data Export Completed",
+  "recipientType": "internal",
+  "extractor": "#this['userId']",
+  "serviceAgreementExtractor": "#this['serviceAgreement']",
+  "generalNotifications": [
+    {
+      "id": "message-data-export-ready",
+      "name": "Message Data Export Ready",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'successful'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "message-data-export-ready/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "message-data-download-view",
+            "data": "{\"exportId\":\"{{{event.exportId}}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/message-data-export-ready/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "message-data-export-failed",
+      "name": "Message Data Export Failed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['status'] == 'failed'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "message-data-export-failed/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "engagementTemplates": [
+            {
+              "path": "/message-data-export-failed/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
