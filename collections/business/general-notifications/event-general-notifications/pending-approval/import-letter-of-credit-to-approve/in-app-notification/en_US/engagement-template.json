@@ -1,0 +1,4 @@
+{
+  "title": "Import LC to approve",
+  "body": "Hi {{{user.preferredName}}}, you have a new import LC of {{event.approval.amountDetails.currencyCode}} {{formatAmount event.approval.amountDetails.amount locale}} to approve."
+}
