@@ -1,0 +1,5 @@
+{
+  "level": "ALERT",
+  "targetGroup": "USER",
+  "origin": "MessageCenter"
+}
