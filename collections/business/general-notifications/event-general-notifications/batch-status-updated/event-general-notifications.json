@@ -70,6 +70,22 @@
               "locale": "en_US"
             }
           ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/direct-debit-status-updated/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "direct-debit-view",
+            "data": "{\"id\":\"{{event.id}}\",\"batchType\":\"{{event.type}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/direct-debit-status-updated/push/en_US/engagement-template.json",
+              "templateName": "batch-status-updated-push",
+              "locale": "en_US"
+            }
+          ]
         }
       ]
     }
