@@ -152,6 +152,22 @@
               "locale": "en_US"
             }
           ]
+        },
+        {
+          "channel": "push",
+          "channelSettings": "/direct-debit-to-approve/push/push_channel-settings.json",
+          "isEnabledByDefault": true,
+          "routeInfo": {
+            "whereTo": "direct-debit-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\", \"businessFunction\":\"{{event.approval.function}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/direct-debit-to-approve/push/en_US/engagement-template.json",
+              "templateName": "batch-to-approve-push",
+              "locale": "en_US"
+            }
+          ]
         }
       ]
     },
