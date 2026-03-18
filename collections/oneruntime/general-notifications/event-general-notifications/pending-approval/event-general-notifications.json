@@ -195,6 +195,31 @@
           ]
         }
       ]
+    },
+    {
+      "id": "bank-guarantee-to-approve",
+      "name": "Bank Guarantee To Approve",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "#triggeredEvent['approval']['resource'] == 'Bank Guarantee' && #triggeredEvent['approval']['function'] == 'Bank Guarantee - Application'",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/bank-guarantee-to-approve/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "bank-guarantee-approve-view",
+            "data": "{\"id\":\"{{event.approval.itemId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/bank-guarantee-to-approve/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

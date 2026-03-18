@@ -1,0 +1,35 @@
+{
+  "eventClassName": "com.backbase.lending.tradefinance.bankguarantee.event.spec.v1.BankGuaranteeStatusUpdatedEvent",
+  "id": "bank-guarantee-status-updated",
+  "eventBusinessName": "Bank Guarantee Status Updated",
+  "recipientType": "internal",
+  "extractor": "#this['contributorsIds']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "bank-guarantee-status-updated",
+      "name": "Bank Guarantee Status Updated",
+      "userPreferenceEnabled": true,
+      "manageable": false,
+      "additionalFilterLogic": "{'BANK_REVIEW', 'BANK_APPROVED', 'BANK_REJECTED', 'INTERNAL_REJECTED', 'ISSUED', 'EXPIRED', 'CANCELLED'}.contains(#triggeredEvent['status'])",
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/bank-guarantee-status-updated/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "bank-guarantee-view",
+            "data": "{\"id\":\"{{event.bgId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/bank-guarantee-status-updated/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
