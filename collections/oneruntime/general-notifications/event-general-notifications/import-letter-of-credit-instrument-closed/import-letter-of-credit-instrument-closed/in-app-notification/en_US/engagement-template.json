@@ -1,0 +1,4 @@
+{
+  "title": "Import LC closed",
+  "body": "Hi {{{user.preferredName}}}, your Import LC {{event.lcReference}} is closed."
+}
