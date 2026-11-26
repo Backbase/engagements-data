@@ -1,0 +1,34 @@
+{
+  "eventClassName": "com.backbase.lending.tradefinance.letterofcredit.event.spec.v1.ImportLetterOfCreditInstrumentClosedEvent",
+  "id": "import-letter-of-credit-instrument-closed",
+  "eventBusinessName": "Import Letter of Credit Instrument Closed",
+  "recipientType": "internal",
+  "extractor": "#this['contributorsIds']",
+  "serviceAgreementExtractor": "#this['serviceAgreementId']",
+  "generalNotifications": [
+    {
+      "id": "import-letter-of-credit-instrument-closed",
+      "name": "Import Letter of Credit Instrument Closed",
+      "userPreferenceEnabled": false,
+      "manageable": false,
+      "deliveryOptions": [
+        {
+          "channel": "in-app-notification",
+          "channelSettings": "/import-letter-of-credit-instrument-closed/in-app-notification/in-app_channel-settings.json",
+          "isEnabledByDefault": true,
+          "isManageableByUser": false,
+          "routeInfo": {
+            "whereTo": "import-lc-view",
+            "data": "{\"serviceAgreementId\":\"{{serviceAgreementId}}\",\"id\":\"{{event.applicationId}}\"}"
+          },
+          "engagementTemplates": [
+            {
+              "path": "/import-letter-of-credit-instrument-closed/in-app-notification/en_US/engagement-template.json",
+              "locale": "en_US"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

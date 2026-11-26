@@ -1,0 +1,4 @@
+{
+  "title": "Import LC expired",
+  "body": "Hi {{{user.preferredName}}}, your Import LC {{event.lcReference}} has expired."
+}

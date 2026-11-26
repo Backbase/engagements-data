@@ -1,0 +1,4 @@
+{
+  "title": "Import LC rejected",
+  "body": "Hi {{{user.preferredName}}}, your Import LC {{event.applicationReference}} is rejected during internal review."
+}
